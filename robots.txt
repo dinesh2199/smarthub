@@ -1,0 +1,8 @@
+# SmartHub Robots.txt
+# https://smarthub.online
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://smarthub.online/sitemap.xml

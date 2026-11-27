@@ -1,0 +1,10 @@
+# Dependency directories
+node_modules/
+
+# Environment and local server logs
+*.log
+serve.js
+
+# OS metadata
+.DS_Store
+Thumbs.db
