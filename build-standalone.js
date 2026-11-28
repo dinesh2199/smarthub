@@ -158,7 +158,7 @@ function buildStandaloneIndex() {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>SmartHub – All-in-One Online Tools Website | Free, Fast &amp; Easy</title>
-  <meta name="description" content="SmartHub is your all-in-one suite of 39+ free, fast, and secure online tools for images, PDFs, calculations, QR codes, text, and development. 100% browser-based &amp; private.">
+  <meta name="description" content="SmartHub is your all-in-one suite of 48+ free, fast, and secure online tools for images, PDFs, calculations, QR codes, text, and development. 100% browser-based &amp; private.">
   <link rel="canonical" href="https://dinesh2199.github.io/smarthub/">
   
   <meta property="og:type" content="website">
@@ -169,7 +169,15 @@ function buildStandaloneIndex() {
   
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SmartHub – All-in-One Free Online Tools">
-  <meta name="twitter:description" content="39+ free, fast, and secure client-side browser tools for images, PDFs, math, code and converters.">
+  <meta name="twitter:description" content="48+ free, fast, and secure client-side browser tools for images, PDFs, math, code and converters.">
+
+  <!-- Progressive Web App (PWA) Manifest & Meta -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SmartHub">
+  <link rel="apple-touch-icon" href="assets/images/icon-192.png">
 
   <!-- Schema.org WebSite Structured Data -->
   <script type="application/ld+json">
@@ -630,6 +638,14 @@ function buildStandaloneToolsInRoot() {
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${pageTitle}">
   <meta name="twitter:description" content="${metaDesc}">
+
+  <!-- Progressive Web App (PWA) Manifest & Meta -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SmartHub">
+  <link rel="apple-touch-icon" href="assets/images/icon-192.png">
   
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -786,18 +802,26 @@ function buildStandaloneToolsDirectory() {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>All Online Tools – Directory &amp; Categories | SmartHub</title>
-  <meta name="description" content="Browse all 39+ free, fast, and secure online tools on SmartHub. Filter by image tools, PDF utilities, calculators, QR tools, text tools, converters and more.">
+  <meta name="description" content="Browse all 48+ free, fast, and secure online tools on SmartHub. Filter by AI tools, image tools, PDF utilities, calculators, QR tools, text tools, converters and more.">
   <link rel="canonical" href="https://dinesh2199.github.io/smarthub/tools.html">
   
   <meta property="og:type" content="website">
   <meta property="og:title" content="All Online Tools Directory | SmartHub">
-  <meta property="og:description" content="Explore 39+ online tools in one smart place. Client-side processing, 100% free forever.">
+  <meta property="og:description" content="Explore 48+ online tools in one smart place. Client-side processing, 100% free forever, no login.">
   <meta property="og:url" content="https://dinesh2199.github.io/smarthub/tools.html">
   <meta property="og:site_name" content="SmartHub">
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="All 39+ Online Tools Directory | SmartHub">
-  <meta name="twitter:description" content="Filter and browse 39+ free browser utilities for images, PDFs, math, code and converters.">
+  <meta name="twitter:title" content="All 48+ Online Tools Directory | SmartHub">
+  <meta name="twitter:description" content="Filter and browse 48+ free browser utilities for AI writing, images, PDFs, math, code and converters.">
+
+  <!-- Progressive Web App (PWA) Manifest & Meta -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SmartHub">
+  <link rel="apple-touch-icon" href="assets/images/icon-192.png">
 
   <!-- Schema.org CollectionPage Structured Data -->
   <script type="application/ld+json">

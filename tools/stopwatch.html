@@ -18,6 +18,14 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Stopwatch – Free Online Tool | SmartHub">
   <meta name="twitter:description" content="Precise online stopwatch with millisecond accuracy, start/pause controls, and lap split recording. 100% free, private browser-based tool on SmartHub with zero file upload limits or registration.">
+
+  <!-- Progressive Web App (PWA) Manifest & Meta -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SmartHub">
+  <link rel="apple-touch-icon" href="assets/images/icon-192.png">
   
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -3744,6 +3752,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGlobalSearch();
   initNewsletter();
   trackCurrentTool();
+  initPWA();
 });
 
 /* ===================================================================
@@ -4198,6 +4207,69 @@ function initToolRating(toolId) {
   }
 }
 
+/* ===================================================================
+   Progressive Web App (PWA) & Offline Mobile Installation
+=================================================================== */
+let deferredInstallPrompt = null;
+
+function initPWA() {
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    });
+  }
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    showPWAInstallBanner();
+  });
+
+  window.addEventListener('appinstalled', () => {
+    deferredInstallPrompt = null;
+    hidePWAInstallBanner();
+    showToast('SmartHub App installed successfully! 📱', 'success');
+  });
+}
+
+function showPWAInstallBanner() {
+  let banner = document.getElementById('pwa-install-banner');
+  if (!banner) {
+    banner = document.createElement('div');
+    banner.id = 'pwa-install-banner';
+    banner.style.cssText = 'position:fixed; bottom:76px; left:50%; transform:translateX(-50%); z-index:99998; background:var(--bg-surface); border:1px solid var(--border-color); border-radius:9999px; padding:0.45rem 1rem; box-shadow:0 10px 25px rgba(0,0,0,0.25); display:flex; align-items:center; gap:0.75rem; max-width:90vw;';
+    banner.innerHTML = `
+      <div style="display:flex; align-items:center; gap:0.4rem; font-size:0.85rem; font-weight:600; color:var(--text-main); white-space:nowrap;">
+        <span>📱 Install SmartHub App</span>
+        <span style="font-size:0.75rem; color:var(--text-muted);">(No Login)</span>
+      </div>
+      <button id="btn-pwa-install" class="btn btn-sm btn-primary" style="padding:0.3rem 0.75rem; font-size:0.8rem; border-radius:9999px;">Install</button>
+      <button id="btn-pwa-close" style="background:none; border:none; color:var(--text-muted); font-size:16px; cursor:pointer; padding:0 4px;" title="Dismiss">✕</button>
+    `;
+    document.body.appendChild(banner);
+
+    document.getElementById('btn-pwa-install').addEventListener('click', () => {
+      if (deferredInstallPrompt) {
+        deferredInstallPrompt.prompt();
+        deferredInstallPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            hidePWAInstallBanner();
+          }
+          deferredInstallPrompt = null;
+        });
+      }
+    });
+
+    document.getElementById('btn-pwa-close').addEventListener('click', hidePWAInstallBanner);
+  }
+  banner.style.display = 'flex';
+}
+
+function hidePWAInstallBanner() {
+  const banner = document.getElementById('pwa-install-banner');
+  if (banner) banner.style.display = 'none';
+}
+
 // Global exports
 window.showToast = showToast;
 window.copyToClipboard = copyToClipboard;
@@ -4210,8 +4282,6 @@ window.trackCurrentTool = trackCurrentTool;
 window.getRecentTools = getRecentTools;
 window.shareTool = shareTool;
 window.initToolRating = initToolRating;
-window.copyToClipboard = copyToClipboard;
-window.getToolUrl = getToolUrl;
 
   </script>
   <script>

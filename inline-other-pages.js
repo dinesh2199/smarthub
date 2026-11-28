@@ -16,6 +16,12 @@ pages.forEach(p => {
     /<img src="assets\/images\/logo\.svg"[^>]*>/g,
     logoSvg
   );
+  if (!content.includes('manifest.json')) {
+    content = content.replace(
+      '</head>',
+      `  <link rel="manifest" href="manifest.json">\n  <meta name="theme-color" content="#2563eb">\n  <meta name="apple-mobile-web-app-capable" content="yes">\n  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">\n  <meta name="apple-mobile-web-app-title" content="SmartHub">\n  <link rel="apple-touch-icon" href="assets/images/icon-192.png">\n</head>`
+    );
+  }
   fs.writeFileSync(p, content, 'utf8');
   console.log('Inlined:', p);
 });
