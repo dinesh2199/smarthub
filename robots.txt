@@ -1,8 +1,10 @@
 # SmartHub Robots.txt
-# https://smarthub.online
+# https://dinesh2199.github.io/smarthub
 
 User-agent: *
 Allow: /
 
 # Sitemap
+Sitemap: https://dinesh2199.github.io/smarthub/sitemap.xml
 Sitemap: https://smarthub.online/sitemap.xml
+

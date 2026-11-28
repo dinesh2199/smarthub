@@ -17,7 +17,8 @@ const {
   SMARTHUB_CATEGORIES,
   SMARTHUB_TOOLS,
   getAdSlot,
-  getToolSEOContent
+  getToolSEOContent,
+  getCategoryFAQs
 } = require('./generate-all-tools.js');
 
 const toolDefs = {
@@ -143,16 +144,36 @@ function buildStandaloneIndex() {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SmartHub – All-in-One Online Tools Website | Free, Fast & Easy</title>
-  <meta name="description" content="SmartHub is your all-in-one suite of 39+ free, fast, and secure online tools for images, PDFs, calculations, QR codes, text, and development. 100% browser-based & private.">
-  <link rel="canonical" href="https://smarthub.online/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>SmartHub – All-in-One Online Tools Website | Free, Fast &amp; Easy</title>
+  <meta name="description" content="SmartHub is your all-in-one suite of 39+ free, fast, and secure online tools for images, PDFs, calculations, QR codes, text, and development. 100% browser-based &amp; private.">
+  <link rel="canonical" href="https://dinesh2199.github.io/smarthub/">
   
   <meta property="og:type" content="website">
   <meta property="og:title" content="SmartHub – Everything You Need, All in One Smart Place">
-  <meta property="og:description" content="Free, fast & easy online tools for everyone. Compress images, merge PDFs, calculate EMI, generate QR codes, format JSON and more.">
-  <meta property="og:url" content="https://smarthub.online/">
+  <meta property="og:description" content="Free, fast &amp; easy online tools for everyone. Compress images, merge PDFs, calculate EMI, generate QR codes, format JSON and more.">
+  <meta property="og:url" content="https://dinesh2199.github.io/smarthub/">
   <meta property="og:site_name" content="SmartHub">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SmartHub – All-in-One Free Online Tools">
+  <meta name="twitter:description" content="39+ free, fast, and secure client-side browser tools for images, PDFs, math, code and converters.">
+
+  <!-- Schema.org WebSite Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "SmartHub",
+    "url": "https://dinesh2199.github.io/smarthub/",
+    "description": "All-in-one free, fast, and private browser-based tools directory.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://dinesh2199.github.io/smarthub/tools.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
   
   <style>
     ${cssStyle}
@@ -432,17 +453,92 @@ function buildStandaloneToolsInRoot() {
     if (!def) return;
 
     const pageTitle = `${tool.name} – Free Online Tool | SmartHub`;
-    const metaDesc = `${tool.desc} 100% free, private browser-based tool on SmartHub with no file upload limits or registration.`;
-    const canonicalUrl = `https://smarthub.online/${tool.id}.html`;
+    const metaDesc = `${tool.desc} 100% free, private browser-based tool on SmartHub with zero file upload limits or registration.`;
+    const canonicalUrl = `https://dinesh2199.github.io/smarthub/${tool.id}.html`;
+    const faqs = getCategoryFAQs ? getCategoryFAQs(tool) : [];
+
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": `${canonicalUrl}#webapp`,
+          "url": canonicalUrl,
+          "name": `${tool.name} – Free Online Tool`,
+          "description": tool.desc,
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "All",
+          "browserRequirements": "Requires modern browser with JavaScript enabled",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": `${canonicalUrl}#breadcrumbs`,
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://dinesh2199.github.io/smarthub/index.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": tool.categoryName,
+              "item": `https://dinesh2199.github.io/smarthub/tools.html?category=${tool.category}`
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": tool.name,
+              "item": canonicalUrl
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": `${canonicalUrl}#faq`,
+          "mainEntity": faqs.map(f => ({
+            "@type": "Question",
+            "name": f.q,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": f.a
+            }
+          }))
+        }
+      ]
+    };
 
     const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>${pageTitle}</title>
   <meta name="description" content="${metaDesc}">
   <link rel="canonical" href="${canonicalUrl}">
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="${pageTitle}">
+  <meta property="og:description" content="${metaDesc}">
+  <meta property="og:url" content="${canonicalUrl}">
+  <meta property="og:site_name" content="SmartHub">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${pageTitle}">
+  <meta name="twitter:description" content="${metaDesc}">
+  
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+${JSON.stringify(schemaData, null, 2)}
+  </script>
   
   <style>
     ${cssStyle}
@@ -567,10 +663,31 @@ function buildStandaloneToolsDirectory() {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>All Online Tools – Directory &amp; Categories | SmartHub</title>
   <meta name="description" content="Browse all 39+ free, fast, and secure online tools on SmartHub. Filter by image tools, PDF utilities, calculators, QR tools, text tools, converters and more.">
-  <link rel="canonical" href="https://smarthub.online/tools.html">
+  <link rel="canonical" href="https://dinesh2199.github.io/smarthub/tools.html">
+  
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="All Online Tools Directory | SmartHub">
+  <meta property="og:description" content="Explore 39+ online tools in one smart place. Client-side processing, 100% free forever.">
+  <meta property="og:url" content="https://dinesh2199.github.io/smarthub/tools.html">
+  <meta property="og:site_name" content="SmartHub">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="All 39+ Online Tools Directory | SmartHub">
+  <meta name="twitter:description" content="Filter and browse 39+ free browser utilities for images, PDFs, math, code and converters.">
+
+  <!-- Schema.org CollectionPage Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "SmartHub Online Tools Directory",
+    "url": "https://dinesh2199.github.io/smarthub/tools.html",
+    "description": "Full directory of 39+ free, private, browser-based online tools across 8 categories."
+  }
+  </script>
   
   <style>
     ${cssStyle}

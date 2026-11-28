@@ -2,10 +2,108 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Text to Speech – Free Online Tool | SmartHub</title>
-  <meta name="description" content="Convert written text into natural spoken voice using your browser's speech synthesis engine. 100% free, private browser-based tool on SmartHub with no file upload limits or registration.">
-  <link rel="canonical" href="https://smarthub.online/text-to-speech.html">
+  <meta name="description" content="Convert written text into natural spoken voice using your browser's speech synthesis engine. 100% free, private browser-based tool on SmartHub with zero file upload limits or registration.">
+  <link rel="canonical" href="https://dinesh2199.github.io/smarthub/text-to-speech.html">
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Text to Speech – Free Online Tool | SmartHub">
+  <meta property="og:description" content="Convert written text into natural spoken voice using your browser's speech synthesis engine. 100% free, private browser-based tool on SmartHub with zero file upload limits or registration.">
+  <meta property="og:url" content="https://dinesh2199.github.io/smarthub/text-to-speech.html">
+  <meta property="og:site_name" content="SmartHub">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Text to Speech – Free Online Tool | SmartHub">
+  <meta name="twitter:description" content="Convert written text into natural spoken voice using your browser's speech synthesis engine. 100% free, private browser-based tool on SmartHub with zero file upload limits or registration.">
+  
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://dinesh2199.github.io/smarthub/text-to-speech.html#webapp",
+      "url": "https://dinesh2199.github.io/smarthub/text-to-speech.html",
+      "name": "Text to Speech – Free Online Tool",
+      "description": "Convert written text into natural spoken voice using your browser's speech synthesis engine.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires modern browser with JavaScript enabled",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://dinesh2199.github.io/smarthub/text-to-speech.html#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://dinesh2199.github.io/smarthub/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Text Tools",
+          "item": "https://dinesh2199.github.io/smarthub/tools.html?category=text"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Text to Speech",
+          "item": "https://dinesh2199.github.io/smarthub/text-to-speech.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://dinesh2199.github.io/smarthub/text-to-speech.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is my text copied or stored on any server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All text processing and manipulation occurs strictly within your browser's local sandbox memory."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I process long articles or essays?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, you can paste or type lengthy documents, essays, code snippets, or articles with instant real-time output."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Text to Speech support one-click copy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Click the 'Copy Result' button to instantly copy your output directly to your device clipboard."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this tool work on mobile devices?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, the layout adjusts automatically to mobile screens with touch-friendly action buttons."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
   
   <style>
     /* ===================================================================
@@ -1812,6 +1910,82 @@ ul, ol {
   line-height: 1.6;
 }
 
+/* ===================================================================
+   SEO Features Grid & Mobile Speed Optimizations
+=================================================================== */
+.seo-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.seo-feature-box {
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  transition: transform var(--transition-fast);
+}
+
+.seo-feature-box:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+.seo-feature-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.seo-feature-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+.seo-feature-desc {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .btn, .form-control, .range-slider {
+    min-height: 44px;
+    font-size: 16px;
+  }
+  .tool-header-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .tool-header-left {
+    width: 100%;
+  }
+  .tool-header-actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .workspace-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem;
+  }
+  .dropzone {
+    padding: 2rem 1rem;
+  }
+  .seo-features-grid {
+    grid-template-columns: 1fr;
+  }
+  .seo-card {
+    padding: 1.25rem;
+  }
+}
+
+
   </style>
   
   
@@ -2050,6 +2224,31 @@ ul, ol {
       <p>SmartHub's <strong>Text to Speech</strong> is an intuitive, fast, and free online utility designed to simplify your digital workflow. Whether you are a professional, student, developer, or creator, this tool eliminates tedious tasks with zero installation and instant client-side execution.</p>
       <p>Convert written text into natural spoken voice using your browser's speech synthesis engine. It delivers premium precision while keeping your sensitive documents, images, and calculations completely private on your local device.</p>
       
+      <!-- Key Features & Highlights -->
+      <h3 style="font-size:1.15rem; font-weight:700; margin:1.5rem 0 0.75rem;">Key Features &amp; Benefits</h3>
+      <div class="seo-features-grid">
+        <div class="seo-feature-box">
+          <div class="seo-feature-icon">⚡</div>
+          <div class="seo-feature-title">Instant Speed</div>
+          <p class="seo-feature-desc">All calculations and processing execute in milliseconds right in your browser with zero server latency.</p>
+        </div>
+        <div class="seo-feature-box">
+          <div class="seo-feature-icon">🔒</div>
+          <div class="seo-feature-title">100% Client-Side Privacy</div>
+          <p class="seo-feature-desc">Your files and data never leave your computer or phone. Guaranteed zero server storage or transmission.</p>
+        </div>
+        <div class="seo-feature-box">
+          <div class="seo-feature-icon">📱</div>
+          <div class="seo-feature-title">Mobile &amp; Touch Friendly</div>
+          <p class="seo-feature-desc">Fully responsive touch-friendly controls designed for smooth operation on Android, iPhone, and desktop.</p>
+        </div>
+        <div class="seo-feature-box">
+          <div class="seo-feature-icon">🆓</div>
+          <div class="seo-feature-title">100% Free Forever</div>
+          <p class="seo-feature-desc">Unlimited usage, zero subscription fees, no account registration, and no hidden watermarks.</p>
+        </div>
+      </div>
+
       <h3 style="font-size:1.15rem; font-weight:700; margin:1.5rem 0 0.75rem;">How to use Text to Speech</h3>
       <div class="steps-list">
         
@@ -2057,23 +2256,23 @@ ul, ol {
             <div class="step-number">1</div>
             <div class="step-text">
               <h4>Select or Enter Input</h4>
-              <p>Upload your files or input your text/parameters directly into the Text to Speech interface above.</p>
+              <p>Upload your files or enter your numbers, text, or parameters directly into the Text to Speech interface above.</p>
             </div>
           </div>
         
           <div class="step-item">
             <div class="step-number">2</div>
             <div class="step-text">
-              <h4>Customize Settings</h4>
-              <p>Configure compression, dimensions, rate, or conversion options according to your requirements.</p>
+              <h4>Configure Settings</h4>
+              <p>Adjust real-time sliders, conversion units, formats, or options according to your requirements.</p>
             </div>
           </div>
         
           <div class="step-item">
             <div class="step-number">3</div>
             <div class="step-text">
-              <h4>Process & Download</h4>
-              <p>Get instant results processed securely in your browser and click Download or Copy to save your output.</p>
+              <h4>Instant Result & Download</h4>
+              <p>View instant results calculated securely on your device. Click Download or Copy to save your output.</p>
             </div>
           </div>
         
@@ -2085,23 +2284,23 @@ ul, ol {
       <div class="faq-accordion">
         
           <details class="faq-item">
-            <summary>Is Text to Speech completely free to use?</summary>
-            <div class="faq-answer">Yes, 100%! SmartHub's Text to Speech is completely free with no registration, no watermarks, and no usage limitations.</div>
+            <summary>Is my text copied or stored on any server?</summary>
+            <div class="faq-answer">No. All text processing and manipulation occurs strictly within your browser's local sandbox memory.</div>
           </details>
         
           <details class="faq-item">
-            <summary>Are my files and data private and secure?</summary>
-            <div class="faq-answer">Absolutely. SmartHub processes your data locally right inside your web browser using modern client-side APIs. Your files never get uploaded to external servers, guaranteeing total privacy.</div>
+            <summary>Can I process long articles or essays?</summary>
+            <div class="faq-answer">Yes, you can paste or type lengthy documents, essays, code snippets, or articles with instant real-time output.</div>
+          </details>
+        
+          <details class="faq-item">
+            <summary>Does Text to Speech support one-click copy?</summary>
+            <div class="faq-answer">Yes! Click the 'Copy Result' button to instantly copy your output directly to your device clipboard.</div>
           </details>
         
           <details class="faq-item">
             <summary>Does this tool work on mobile devices?</summary>
-            <div class="faq-answer">Yes! Text to Speech is fully responsive and optimized to run seamlessly on iPhones, Android smartphones, tablets, and desktop computers.</div>
-          </details>
-        
-          <details class="faq-item">
-            <summary>Do I need to install any software or extensions?</summary>
-            <div class="faq-answer">No installation required. You only need a standard modern web browser like Google Chrome, Mozilla Firefox, Microsoft Edge, or Safari.</div>
+            <div class="faq-answer">Yes, the layout adjusts automatically to mobile screens with touch-friendly action buttons.</div>
           </details>
         
       </div>
