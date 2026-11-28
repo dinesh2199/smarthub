@@ -339,14 +339,14 @@ module.exports = {
         <!-- Printable Invoice Container -->
         <div id="invoice-printable" style="background:#ffffff; color:#0f172a; border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:2rem; box-shadow:var(--shadow-md);">
           <!-- Header: Business & Invoice Details -->
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:2rem; border-bottom:2px solid #2563eb; padding-bottom:1.5rem; margin-bottom:1.5rem;">
+          <div class="inv-header-grid" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1.5rem; border-bottom:2px solid #2563eb; padding-bottom:1.5rem; margin-bottom:1.5rem;">
             <div style="flex:1; min-width:260px;">
               <input type="text" id="inv-company-name" value="SmartHub Digital Technologies" style="font-size:1.5rem; font-weight:800; border:none; outline:none; width:100%; color:#1e293b; background:transparent; margin-bottom:0.25rem;">
               <input type="text" id="inv-company-gst" value="GSTIN: 07AAAAA0000A1Z5" placeholder="GSTIN / Tax ID" style="font-size:0.875rem; border:none; outline:none; width:100%; color:#64748b; background:transparent; margin-bottom:0.25rem;">
               <textarea id="inv-company-address" rows="2" style="font-size:0.875rem; border:none; outline:none; width:100%; resize:none; color:#64748b; background:transparent;" placeholder="Address, City, State, PIN">123 Business Hub, Connaught Place, New Delhi, 110001</textarea>
               <input type="text" id="inv-company-email" value="billing@smarthub.online | +91 98765 43210" style="font-size:0.875rem; border:none; outline:none; width:100%; color:#64748b; background:transparent;">
             </div>
-            <div style="text-align:right; min-width:220px;">
+            <div class="inv-dates-col" style="text-align:right; min-width:220px;">
               <h2 style="font-size:1.75rem; font-weight:900; color:#2563eb; margin:0 0 0.5rem; text-transform:uppercase; letter-spacing:1px;">TAX INVOICE</h2>
               <div style="display:flex; justify-content:flex-end; gap:0.5rem; align-items:center; margin-bottom:0.25rem;">
                 <span style="font-size:0.875rem; font-weight:600; color:#64748b;">Invoice #:</span>
@@ -366,7 +366,7 @@ module.exports = {
           <!-- Billed To Details -->
           <div style="margin-bottom:1.5rem; background:#f8fafc; padding:1rem; border-radius:8px; border:1px solid #e2e8f0;">
             <span style="font-size:0.75rem; font-weight:700; color:#2563eb; text-transform:uppercase; letter-spacing:0.5px;">Billed To / Customer Details</span>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.5rem;">
+            <div class="inv-billed-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.5rem;">
               <div>
                 <input type="text" id="inv-client-name" value="Acme Global Solutions Pvt Ltd" placeholder="Client / Business Name" style="font-size:1rem; font-weight:700; width:100%; border:none; outline:none; background:transparent; margin-bottom:0.25rem;">
                 <input type="text" id="inv-client-gst" value="GSTIN: 29BBBBB1111B1Z2" placeholder="Client GSTIN / Tax ID" style="font-size:0.8125rem; width:100%; border:none; outline:none; background:transparent; color:#64748b;">
@@ -379,8 +379,8 @@ module.exports = {
           </div>
 
           <!-- Items Table -->
-          <div style="overflow-x:auto; margin-bottom:1rem;">
-            <table style="width:100%; border-collapse:collapse;" id="inv-table">
+          <div style="overflow-x:auto; -webkit-overflow-scrolling:touch; margin-bottom:1rem; max-width:100%;">
+            <table style="width:100%; min-width:540px; border-collapse:collapse;" id="inv-table">
               <thead>
                 <tr style="background:#f1f5f9; color:#475569; font-size:0.8125rem; text-transform:uppercase;">
                   <th style="padding:0.75rem; text-align:left; border:1px solid #cbd5e1;">Description</th>
@@ -400,7 +400,7 @@ module.exports = {
           </button>
 
           <!-- Totals & Notes Section -->
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:2rem;">
+          <div class="inv-totals-wrap" style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1.5rem;">
             <div style="flex:1; min-width:250px;">
               <label style="font-size:0.75rem; font-weight:700; color:#475569; text-transform:uppercase; display:block; margin-bottom:0.35rem;">Bank / Payment Details</label>
               <textarea id="inv-bank-notes" rows="3" style="width:100%; font-size:0.8125rem; border:1px solid #cbd5e1; border-radius:6px; padding:0.5rem; color:#475569;">Bank: HDFC Bank | A/C: 50200012345678 | IFSC: HDFC0001234 | UPI: billing@upi</textarea>
@@ -409,7 +409,7 @@ module.exports = {
               <textarea id="inv-terms" rows="2" style="width:100%; font-size:0.8125rem; border:1px solid #cbd5e1; border-radius:6px; padding:0.5rem; color:#475569;">1. Payment due within 15 days. 2. Thank you for your business!</textarea>
             </div>
 
-            <div style="width:280px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:1rem;">
+            <div class="inv-totals-box" style="width:280px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:1rem;">
               <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom:0.5rem; color:#475569;">
                 <span>Subtotal:</span>
                 <span id="inv-subtotal" style="font-weight:700;">₹ 0.00</span>
