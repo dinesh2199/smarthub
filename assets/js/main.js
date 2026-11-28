@@ -74,12 +74,20 @@ function initMobileMenu() {
 
   if (!toggleBtn || !navMenu) return;
 
-  toggleBtn.addEventListener('click', () => {
-    const isOpen = navMenu.classList.toggle('open');
+  const toggleMenu = (open) => {
+    const isOpen = open !== undefined ? open : !navMenu.classList.contains('open');
+    navMenu.classList.toggle('open', isOpen);
+    document.body.classList.toggle('mobile-menu-open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
     toggleBtn.setAttribute('aria-expanded', isOpen);
     toggleBtn.innerHTML = isOpen
       ? `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`
       : `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
+  };
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu();
   });
 
   // Mobile dropdown toggles
@@ -90,9 +98,33 @@ function initMobileMenu() {
       trigger.addEventListener('click', (e) => {
         if (window.innerWidth <= 768) {
           e.preventDefault();
+          e.stopPropagation();
           dropdown.classList.toggle('active');
         }
       });
+    }
+  });
+
+  // Close menu when clicking any nav link (except category dropdown toggle)
+  navMenu.querySelectorAll('a:not(.nav-dropdown > .nav-link)').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        toggleMenu(false);
+      }
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 768 && navMenu.classList.contains('open')) {
+      if (!navMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+        toggleMenu(false);
+      }
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && navMenu.classList.contains('open')) {
+      toggleMenu(false);
     }
   });
 }
