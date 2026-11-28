@@ -4,7 +4,7 @@ const path = require('path');
 const { SMARTHUB_CATEGORIES, SMARTHUB_TOOLS } = require('./assets/js/tools-data.js');
 
 console.log('====================================================');
-console.log('   SMARTHUB 39-TOOLS DEEP AUDIT & HEALTH CHECK      ');
+console.log('   SMARTHUB 40-TOOLS DEEP AUDIT & HEALTH CHECK      ');
 console.log('====================================================\n');
 
 const toolDefs = {
@@ -89,11 +89,11 @@ SMARTHUB_TOOLS.forEach((tool, index) => {
 });
 
 console.log('--- AUDIT SUMMARY ---');
-console.log(`1. Functional Logic: ${results.functional.pass}/39 Passed, ${results.functional.fail} Failed`);
+console.log(`1. Functional Logic: ${results.functional.pass}/${SMARTHUB_TOOLS.length} Passed, ${results.functional.fail} Failed`);
 if (results.functional.issues.length) console.log('   Issues:', results.functional.issues);
 
-console.log(`2. SEO & Google Ranking: ${results.seo.pass}/39 Passed, ${results.seo.fail} Failed`);
+console.log(`2. SEO & Google Ranking: ${results.seo.pass}/${SMARTHUB_TOOLS.length} Passed, ${results.seo.fail} Failed`);
 if (results.seo.issues.length) console.log('   Issues:', results.seo.issues);
 
-console.log(`3. Mobile & Form Usability: ${results.mobileAndForms.pass}/39 Passed, ${results.mobileAndForms.fail} Failed`);
+console.log(`3. Mobile & Form Usability: ${results.mobileAndForms.pass}/${SMARTHUB_TOOLS.length} Passed, ${results.mobileAndForms.fail} Failed`);
 if (results.mobileAndForms.issues.length) console.log('   Issues:', results.mobileAndForms.issues);

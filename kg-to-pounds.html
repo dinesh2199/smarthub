@@ -2518,9 +2518,9 @@ const SMARTHUB_CATEGORIES = [
   {
     id: "calculators",
     name: "Calculators",
-    desc: "Instant financial, age, percentage, EMI and business calculators.",
+    desc: "Instant financial, age, percentage, EMI, GST and invoice calculators.",
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg>`,
-    badge: "6 Tools"
+    badge: "7 Tools"
   },
   {
     id: "qr",
@@ -2577,10 +2577,10 @@ const SMARTHUB_TOOLS = [
     name: "Image Resizer",
     category: "image",
     categoryName: "Image Tools",
-    desc: "Resize pictures by pixel dimensions or percentage while maintaining exact aspect ratio.",
+    desc: "Resize pictures by pixel dimensions or percentage with quick presets for Passport photo, Instagram, YouTube, and PAN card.",
     popular: true,
     recent: false,
-    keywords: ["image resizer", "resize image", "change picture dimensions", "scale photo", "aspect ratio"],
+    keywords: ["image resizer", "resize image", "passport size photo", "instagram photo resizer", "youtube thumbnail resizer", "pan card photo resize", "scale photo"],
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 3H3v18h18V3z"/><path d="M21 9h-6V3"/><path d="M9 21v-6H3"/></svg>`
   },
   {
@@ -2710,14 +2710,25 @@ const SMARTHUB_TOOLS = [
   },
   {
     id: "gst-calculator",
-    name: "GST Calculator",
+    name: "GST Calculator India",
     category: "calculators",
     categoryName: "Calculators",
-    desc: "Calculate inclusive or exclusive Goods and Services Tax (GST) with CGST, SGST & IGST breakdown.",
+    desc: "Calculate Indian Goods and Services Tax (GST) with 5%, 12%, 18%, 28% slabs, CGST, SGST & IGST breakdown.",
     popular: true,
     recent: false,
-    keywords: ["gst calculator", "tax calculator", "inclusive gst", "exclusive gst", "sales tax"],
+    keywords: ["gst calculator india", "gst calculator", "cgst sgst igst", "gst tax rates", "gst online calculator", "reverse gst", "inclusive gst", "exclusive gst"],
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`
+  },
+  {
+    id: "invoice-generator",
+    name: "Invoice Generator",
+    category: "calculators",
+    categoryName: "Calculators",
+    desc: "Create and download professional PDF invoices online with GST calculation, customizable items, and company branding.",
+    popular: true,
+    recent: true,
+    keywords: ["invoice generator", "free invoice maker", "gst invoice generator", "bill generator", "pdf invoice", "online invoice maker", "business invoice template"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`
   },
   {
     id: "emi-calculator",

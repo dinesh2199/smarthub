@@ -289,6 +289,17 @@ module.exports = {
           </div>
 
           <div class="form-group">
+            <label class="form-label">Social &amp; Document Presets</label>
+            <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.75rem;">
+              <button type="button" class="btn btn-sm btn-secondary doc-preset" data-w="350" data-h="450">📸 Passport Photo (350x450)</button>
+              <button type="button" class="btn btn-sm btn-secondary doc-preset" data-w="200" data-h="200">🆔 PAN / Signature (200x200)</button>
+              <button type="button" class="btn btn-sm btn-secondary doc-preset" data-w="1080" data-h="1080">📱 Instagram (1080x1080)</button>
+              <button type="button" class="btn btn-sm btn-secondary doc-preset" data-w="1280" data-h="720">🎥 YouTube Thumbnail (1280x720)</button>
+              <button type="button" class="btn btn-sm btn-secondary doc-preset" data-w="1920" data-h="1080">🖥️ Full HD (1920x1080)</button>
+            </div>
+          </div>
+
+          <div class="form-group">
             <label class="form-label">Quick Scale Presets</label>
             <div class="quick-tags">
               <button class="btn btn-sm btn-secondary scale-preset" data-pct="25">25%</button>
@@ -409,6 +420,15 @@ module.exports = {
           const h = parseFloat(inputH.value);
           if (h > 0) inputW.value = Math.round(h * naturalAspect);
         }
+      });
+
+      document.querySelectorAll('.doc-preset').forEach(btn => {
+        btn.addEventListener('click', () => {
+          inputW.value = btn.dataset.w;
+          inputH.value = btn.dataset.h;
+          lockAspect.checked = false;
+          if (origImg) applyResize();
+        });
       });
 
       document.querySelectorAll('.scale-preset').forEach(btn => {

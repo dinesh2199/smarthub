@@ -710,7 +710,7 @@ function buildStandaloneToolsDirectory() {
           Explore All <span class="text-gradient">Smart Tools</span>
         </h1>
         <p class="lead-text">
-          Browse through our full library of 39+ professional online tools. Search instantly or filter by category below.
+          Browse through our full library of ${SMARTHUB_TOOLS.length}+ professional online tools. Search instantly or filter by category below.
         </p>
 
         <div class="search-box" style="margin-top:1.5rem;">
@@ -721,19 +721,15 @@ function buildStandaloneToolsDirectory() {
       </div>
 
       <div style="display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:center; margin-bottom:2rem;" id="category-pills">
-        <button class="btn btn-sm btn-primary cat-filter-btn" data-cat="all">All Tools (39)</button>
-        <button class="btn btn-sm btn-secondary cat-filter-btn" data-cat="image">Image Tools (6)</button>
-        <button class="btn btn-sm btn-secondary cat-filter-btn" data-cat="pdf">PDF Tools (6)</button>
-        <button class="btn btn-sm btn-secondary cat-filter-btn" data-cat="calculators">Calculators (6)</button>
-        <button class="btn btn-sm btn-secondary cat-filter-btn" data-cat="qr">QR Code Tools (4)</button>
-        <button class="btn btn-sm btn-secondary cat-filter-btn" data-cat="text">Text Tools (5)</button>
-        <button class="btn btn-sm btn-secondary cat-filter-btn" data-cat="developer">Developer Tools (4)</button>
-        <button class="btn btn-sm btn-secondary cat-filter-btn" data-cat="converters">Unit Converters (4)</button>
-        <button class="btn btn-sm btn-secondary cat-filter-btn" data-cat="other">Other Tools (4)</button>
+        <button class="btn btn-sm btn-primary cat-filter-btn" data-cat="all">All Tools (${SMARTHUB_TOOLS.length})</button>
+        ${SMARTHUB_CATEGORIES.map(cat => {
+          const count = SMARTHUB_TOOLS.filter(t => t.category === cat.id).length;
+          return `<button class="btn btn-sm btn-secondary cat-filter-btn" data-cat="${cat.id}">${cat.name} (${count})</button>`;
+        }).join('')}
       </div>
 
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; border-bottom:1px solid var(--border-color); padding-bottom:0.75rem;">
-        <span style="font-size:0.9375rem; font-weight:600; color:var(--text-muted);" id="showing-count">Showing 39 of 39 Tools</span>
+        <span style="font-size:0.9375rem; font-weight:600; color:var(--text-muted);" id="showing-count">Showing ${SMARTHUB_TOOLS.length} of ${SMARTHUB_TOOLS.length} Tools</span>
       </div>
 
       <div class="tools-grid" id="directory-tools-grid"></div>

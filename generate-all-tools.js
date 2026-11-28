@@ -187,6 +187,30 @@ function getRelatedTools(currentTool) {
 }
 
 function getCategoryFAQs(tool) {
+  if (tool.id === 'invoice-generator') {
+    return [
+      { q: `Is this invoice generator free for commercial business use?`, a: `Yes, 100% free with no watermarks, subscriptions, or hidden charges. Freelancers, shopkeepers, and agencies can generate unlimited professional invoices.` },
+      { q: `Can I add GST / Tax and discounts to the invoice?`, a: `Yes! You can specify 0%, 5%, 12%, 18%, or 28% GST per item line, and add flat or percentage discounts with automatic tax breakdown.` },
+      { q: `How do I download the invoice as a PDF?`, a: `Click the 'Print / Save as PDF' button at the top. In your browser's print dialog, select 'Save as PDF' to instantly save a clean, professional PDF.` },
+      { q: `Are my client and billing details stored on your server?`, a: `No. All invoice details remain strictly inside your browser. No client information or financial data is ever stored or transmitted to external servers.` }
+    ];
+  }
+  if (tool.id === 'gst-calculator') {
+    return [
+      { q: `What are the current GST tax slabs in India?`, a: `India currently levies GST under 5 major slabs: 0% (Nil / Exempt for basic food & grains), 5% (Essentials & transport), 12% (Standard goods/processed food), 18% (Most services & capital goods), and 28% (Luxury items, cars & aerated drinks).` },
+      { q: `What is the difference between CGST, SGST, and IGST?`, a: `CGST (Central GST) and SGST (State GST) apply to intra-state sales within the same state (split 50:50). IGST (Integrated GST) applies to inter-state sales and imports, collected directly by the Central Government.` },
+      { q: `How does GST Inclusive vs Exclusive calculation work?`, a: `GST Exclusive means GST is added on top of the base amount: Total = Base + (Base × Rate%). GST Inclusive means the entered price already includes tax: Base = Total / (1 + Rate%), and GST = Total - Base.` },
+      { q: `Can I copy or print the GST calculation summary?`, a: `Yes, click the 'Copy Calculation Summary' button to copy the breakdown or use browser print to save a record.` }
+    ];
+  }
+  if (tool.id === 'image-resizer') {
+    return [
+      { q: `What are the standard dimensions for an Indian Passport photo?`, a: `Indian passport photos require 3.5 cm × 4.5 cm (approximately 350 × 450 pixels or 413 × 531 pixels at 300 DPI) with white background.` },
+      { q: `What dimensions should I use for Instagram and YouTube?`, a: `Use 1080 × 1080 px for standard square Instagram posts, 1080 × 1920 px for Stories/Reels, and 1280 × 720 px for YouTube video thumbnails.` },
+      { q: `Does resizing reduce image sharpness or quality?`, a: `SmartHub uses high-performance HTML5 Canvas bicubic interpolation to maintain clean, crisp edges when scaling down or adjusting dimensions.` },
+      { q: `Can I convert the format while resizing?`, a: `Yes! You can choose to export your resized picture as JPG, lossless PNG, or modern lightweight WEBP.` }
+    ];
+  }
   const cat = tool.category || '';
   if (cat === 'image') {
     return [

@@ -300,7 +300,263 @@ module.exports = {
     `
   },
 
-  // 15. EMI Calculator
+  // 15. Invoice Generator
+  "invoice-generator": {
+    extraHead: `
+      <style>
+        @media print {
+          body * { visibility: hidden !important; }
+          .site-header, .site-footer, .breadcrumbs, .tool-header-section, .ad-slot-wrapper, .tool-seo-content, .section, #invoice-actions-bar, .invoice-btn-row { display: none !important; }
+          #invoice-printable, #invoice-printable * { visibility: visible !important; }
+          #invoice-printable { position: absolute !important; left: 0 !important; top: 0 !important; width: 100% !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; }
+        }
+      </style>
+    `,
+    renderWorkspace: () => `
+      <div style="display:flex; flex-direction:column; gap:1.5rem;">
+        <!-- Top Action Bar -->
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; background:var(--bg-surface); padding:1rem 1.25rem; border:1px solid var(--border-color); border-radius:var(--radius-md);" id="invoice-actions-bar">
+          <div style="display:flex; gap:0.5rem; align-items:center;">
+            <span style="font-weight:700; font-size:0.875rem; color:var(--text-main);">Currency:</span>
+            <select class="form-control" id="inv-currency" style="width:auto; min-height:38px; padding:0.25rem 0.75rem;">
+              <option value="₹">₹ INR (Indian Rupee)</option>
+              <option value="$">$ USD (US Dollar)</option>
+              <option value="€">€ EUR (Euro)</option>
+              <option value="£">£ GBP (British Pound)</option>
+              <option value="AED">AED (UAE Dirham)</option>
+            </select>
+          </div>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-load-sample">Load Sample</button>
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-clear-invoice">Reset</button>
+            <button type="button" class="btn btn-primary btn-sm" id="btn-print-invoice" style="display:flex; align-items:center; gap:0.5rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+              Print / Save as PDF
+            </button>
+          </div>
+        </div>
+
+        <!-- Printable Invoice Container -->
+        <div id="invoice-printable" style="background:#ffffff; color:#0f172a; border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:2rem; box-shadow:var(--shadow-md);">
+          <!-- Header: Business & Invoice Details -->
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:2rem; border-bottom:2px solid #2563eb; padding-bottom:1.5rem; margin-bottom:1.5rem;">
+            <div style="flex:1; min-width:260px;">
+              <input type="text" id="inv-company-name" value="SmartHub Digital Technologies" style="font-size:1.5rem; font-weight:800; border:none; outline:none; width:100%; color:#1e293b; background:transparent; margin-bottom:0.25rem;">
+              <input type="text" id="inv-company-gst" value="GSTIN: 07AAAAA0000A1Z5" placeholder="GSTIN / Tax ID" style="font-size:0.875rem; border:none; outline:none; width:100%; color:#64748b; background:transparent; margin-bottom:0.25rem;">
+              <textarea id="inv-company-address" rows="2" style="font-size:0.875rem; border:none; outline:none; width:100%; resize:none; color:#64748b; background:transparent;" placeholder="Address, City, State, PIN">123 Business Hub, Connaught Place, New Delhi, 110001</textarea>
+              <input type="text" id="inv-company-email" value="billing@smarthub.online | +91 98765 43210" style="font-size:0.875rem; border:none; outline:none; width:100%; color:#64748b; background:transparent;">
+            </div>
+            <div style="text-align:right; min-width:220px;">
+              <h2 style="font-size:1.75rem; font-weight:900; color:#2563eb; margin:0 0 0.5rem; text-transform:uppercase; letter-spacing:1px;">TAX INVOICE</h2>
+              <div style="display:flex; justify-content:flex-end; gap:0.5rem; align-items:center; margin-bottom:0.25rem;">
+                <span style="font-size:0.875rem; font-weight:600; color:#64748b;">Invoice #:</span>
+                <input type="text" id="inv-number" value="INV-2026-001" style="font-size:0.875rem; font-weight:700; width:120px; text-align:right; border:1px solid #cbd5e1; border-radius:4px; padding:2px 6px;">
+              </div>
+              <div style="display:flex; justify-content:flex-end; gap:0.5rem; align-items:center; margin-bottom:0.25rem;">
+                <span style="font-size:0.875rem; font-weight:600; color:#64748b;">Date:</span>
+                <input type="date" id="inv-date" style="font-size:0.875rem; width:130px; text-align:right; border:1px solid #cbd5e1; border-radius:4px; padding:2px 6px;">
+              </div>
+              <div style="display:flex; justify-content:flex-end; gap:0.5rem; align-items:center;">
+                <span style="font-size:0.875rem; font-weight:600; color:#64748b;">Due Date:</span>
+                <input type="date" id="inv-due-date" style="font-size:0.875rem; width:130px; text-align:right; border:1px solid #cbd5e1; border-radius:4px; padding:2px 6px;">
+              </div>
+            </div>
+          </div>
+
+          <!-- Billed To Details -->
+          <div style="margin-bottom:1.5rem; background:#f8fafc; padding:1rem; border-radius:8px; border:1px solid #e2e8f0;">
+            <span style="font-size:0.75rem; font-weight:700; color:#2563eb; text-transform:uppercase; letter-spacing:0.5px;">Billed To / Customer Details</span>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.5rem;">
+              <div>
+                <input type="text" id="inv-client-name" value="Acme Global Solutions Pvt Ltd" placeholder="Client / Business Name" style="font-size:1rem; font-weight:700; width:100%; border:none; outline:none; background:transparent; margin-bottom:0.25rem;">
+                <input type="text" id="inv-client-gst" value="GSTIN: 29BBBBB1111B1Z2" placeholder="Client GSTIN / Tax ID" style="font-size:0.8125rem; width:100%; border:none; outline:none; background:transparent; color:#64748b;">
+              </div>
+              <div>
+                <input type="text" id="inv-client-email" value="contact@acme.com" placeholder="Client Email / Phone" style="font-size:0.8125rem; width:100%; border:none; outline:none; background:transparent; color:#64748b; margin-bottom:0.25rem;">
+                <input type="text" id="inv-client-address" value="456 MG Road, Bengaluru, Karnataka, 560001" placeholder="Client Address" style="font-size:0.8125rem; width:100%; border:none; outline:none; background:transparent; color:#64748b;">
+              </div>
+            </div>
+          </div>
+
+          <!-- Items Table -->
+          <div style="overflow-x:auto; margin-bottom:1rem;">
+            <table style="width:100%; border-collapse:collapse;" id="inv-table">
+              <thead>
+                <tr style="background:#f1f5f9; color:#475569; font-size:0.8125rem; text-transform:uppercase;">
+                  <th style="padding:0.75rem; text-align:left; border:1px solid #cbd5e1;">Description</th>
+                  <th style="padding:0.75rem; text-align:center; width:75px; border:1px solid #cbd5e1;">Qty</th>
+                  <th style="padding:0.75rem; text-align:right; width:120px; border:1px solid #cbd5e1;">Rate</th>
+                  <th style="padding:0.75rem; text-align:right; width:95px; border:1px solid #cbd5e1;">GST %</th>
+                  <th style="padding:0.75rem; text-align:right; width:130px; border:1px solid #cbd5e1;">Total</th>
+                  <th style="padding:0.75rem; text-align:center; width:45px; border:1px solid #cbd5e1;" class="invoice-btn-row">✕</th>
+                </tr>
+              </thead>
+              <tbody id="inv-items-body"></tbody>
+            </table>
+          </div>
+
+          <button type="button" class="btn btn-secondary btn-sm invoice-btn-row" id="btn-add-item" style="margin-bottom:1.5rem;">
+            + Add Line Item
+          </button>
+
+          <!-- Totals & Notes Section -->
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:2rem;">
+            <div style="flex:1; min-width:250px;">
+              <label style="font-size:0.75rem; font-weight:700; color:#475569; text-transform:uppercase; display:block; margin-bottom:0.35rem;">Bank / Payment Details</label>
+              <textarea id="inv-bank-notes" rows="3" style="width:100%; font-size:0.8125rem; border:1px solid #cbd5e1; border-radius:6px; padding:0.5rem; color:#475569;">Bank: HDFC Bank | A/C: 50200012345678 | IFSC: HDFC0001234 | UPI: billing@upi</textarea>
+              
+              <label style="font-size:0.75rem; font-weight:700; color:#475569; text-transform:uppercase; display:block; margin-top:0.75rem; margin-bottom:0.35rem;">Terms & Conditions</label>
+              <textarea id="inv-terms" rows="2" style="width:100%; font-size:0.8125rem; border:1px solid #cbd5e1; border-radius:6px; padding:0.5rem; color:#475569;">1. Payment due within 15 days. 2. Thank you for your business!</textarea>
+            </div>
+
+            <div style="width:280px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:1rem;">
+              <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom:0.5rem; color:#475569;">
+                <span>Subtotal:</span>
+                <span id="inv-subtotal" style="font-weight:700;">₹ 0.00</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; font-size:0.875rem; margin-bottom:0.5rem; color:#475569;">
+                <span>Total Tax (GST):</span>
+                <span id="inv-tax-total" style="font-weight:700;">₹ 0.00</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.875rem; margin-bottom:0.75rem; color:#475569;">
+                <span>Discount:</span>
+                <input type="number" id="inv-discount" value="0" min="0" style="width:80px; text-align:right; font-size:0.875rem; border:1px solid #cbd5e1; border-radius:4px; padding:2px 4px;">
+              </div>
+              <div style="display:flex; justify-content:space-between; font-size:1.15rem; font-weight:800; color:#2563eb; border-top:2px solid #2563eb; padding-top:0.75rem;">
+                <span>Grand Total:</span>
+                <span id="inv-grand-total">₹ 0.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `,
+    script: `
+      let items = [
+        { desc: 'Professional Web Design & Development', qty: 1, rate: 25000, tax: 18 },
+        { desc: 'SEO Setup & Performance Optimization', qty: 1, rate: 8000, tax: 18 }
+      ];
+
+      const todayStr = new Date().toISOString().split('T')[0];
+      const dueStr = new Date(Date.now() + 15 * 86400000).toISOString().split('T')[0];
+      document.getElementById('inv-date').value = todayStr;
+      document.getElementById('inv-due-date').value = dueStr;
+
+      const currencySelect = document.getElementById('inv-currency');
+      const discountInput = document.getElementById('inv-discount');
+      const tbody = document.getElementById('inv-items-body');
+
+      currencySelect.addEventListener('change', renderInvoice);
+      discountInput.addEventListener('input', renderInvoice);
+
+      document.getElementById('btn-add-item').addEventListener('click', () => {
+        items.push({ desc: 'New Item or Service', qty: 1, rate: 1000, tax: 18 });
+        renderInvoice();
+      });
+
+      document.getElementById('btn-print-invoice').addEventListener('click', () => {
+        window.print();
+      });
+
+      document.getElementById('btn-load-sample').addEventListener('click', () => {
+        items = [
+          { desc: 'Website Redesign & Frontend Development', qty: 1, rate: 35000, tax: 18 },
+          { desc: 'Speed Optimization & Core Web Vitals', qty: 1, rate: 7500, tax: 18 },
+          { desc: 'Annual Cloud Maintenance', qty: 12, rate: 1000, tax: 18 }
+        ];
+        renderInvoice();
+        showToast('Sample invoice data loaded!', 'success');
+      });
+
+      document.getElementById('btn-clear-invoice').addEventListener('click', () => {
+        items = [{ desc: '', qty: 1, rate: 0, tax: 0 }];
+        discountInput.value = 0;
+        renderInvoice();
+        showToast('Invoice reset.', 'info');
+      });
+
+      function renderInvoice() {
+        const cur = currencySelect.value;
+        tbody.innerHTML = '';
+        let subtotal = 0;
+        let totalTax = 0;
+
+        items.forEach((item, index) => {
+          const itemBase = (item.qty || 0) * (item.rate || 0);
+          const itemTax = (itemBase * (item.tax || 0)) / 100;
+          const itemTotal = itemBase + itemTax;
+
+          subtotal += itemBase;
+          totalTax += itemTax;
+
+          const tr = document.createElement('tr');
+          tr.style.borderBottom = '1px solid #e2e8f0';
+          tr.innerHTML = \`
+            <td style="padding:0.5rem; border:1px solid #cbd5e1;">
+              <input type="text" class="item-desc" data-idx="\${index}" value="\${item.desc}" placeholder="Item description" style="width:100%; border:none; outline:none; background:transparent; font-size:0.875rem;">
+            </td>
+            <td style="padding:0.5rem; text-align:center; border:1px solid #cbd5e1;">
+              <input type="number" class="item-qty" data-idx="\${index}" value="\${item.qty}" min="1" style="width:50px; text-align:center; border:1px solid #cbd5e1; border-radius:4px; font-size:0.875rem; padding:2px;">
+            </td>
+            <td style="padding:0.5rem; text-align:right; border:1px solid #cbd5e1;">
+              <input type="number" class="item-rate" data-idx="\${index}" value="\${item.rate}" min="0" step="any" style="width:90px; text-align:right; border:1px solid #cbd5e1; border-radius:4px; font-size:0.875rem; padding:2px;">
+            </td>
+            <td style="padding:0.5rem; text-align:right; border:1px solid #cbd5e1;">
+              <select class="item-tax" data-idx="\${index}" style="border:1px solid #cbd5e1; border-radius:4px; font-size:0.8125rem; padding:2px;">
+                <option value="0" \${item.tax === 0 ? 'selected' : ''}>0%</option>
+                <option value="5" \${item.tax === 5 ? 'selected' : ''}>5%</option>
+                <option value="12" \${item.tax === 12 ? 'selected' : ''}>12%</option>
+                <option value="18" \${item.tax === 18 ? 'selected' : ''}>18%</option>
+                <option value="28" \${item.tax === 28 ? 'selected' : ''}>28%</option>
+              </select>
+            </td>
+            <td style="padding:0.5rem; text-align:right; font-weight:700; border:1px solid #cbd5e1; font-size:0.875rem;">
+              \${cur} \${itemTotal.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            </td>
+            <td style="padding:0.5rem; text-align:center; border:1px solid #cbd5e1;" class="invoice-btn-row">
+              <button type="button" class="btn-remove-item" data-idx="\${index}" style="background:none; border:none; color:#ef4444; font-weight:700; cursor:pointer;">✕</button>
+            </td>
+          \`;
+          tbody.appendChild(tr);
+        });
+
+        document.querySelectorAll('.item-desc').forEach(el => el.addEventListener('input', e => {
+          items[e.target.dataset.idx].desc = e.target.value;
+        }));
+        document.querySelectorAll('.item-qty').forEach(el => el.addEventListener('input', e => {
+          items[e.target.dataset.idx].qty = parseFloat(e.target.value) || 0;
+          renderInvoice();
+        }));
+        document.querySelectorAll('.item-rate').forEach(el => el.addEventListener('input', e => {
+          items[e.target.dataset.idx].rate = parseFloat(e.target.value) || 0;
+          renderInvoice();
+        }));
+        document.querySelectorAll('.item-tax').forEach(el => el.addEventListener('change', e => {
+          items[e.target.dataset.idx].tax = parseFloat(e.target.value) || 0;
+          renderInvoice();
+        }));
+        document.querySelectorAll('.btn-remove-item').forEach(el => el.addEventListener('click', e => {
+          if (items.length > 1) {
+            items.splice(e.target.dataset.idx, 1);
+            renderInvoice();
+          } else {
+            showToast('Invoice must have at least one line item.', 'info');
+          }
+        }));
+
+        const discount = parseFloat(discountInput.value) || 0;
+        const grandTotal = Math.max(0, subtotal + totalTax - discount);
+
+        document.getElementById('inv-subtotal').textContent = cur + ' ' + subtotal.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        document.getElementById('inv-tax-total').textContent = cur + ' ' + totalTax.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        document.getElementById('inv-grand-total').textContent = cur + ' ' + grandTotal.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+
+      renderInvoice();
+    `
+  },
+
+  // 16. EMI Calculator
   "emi-calculator": {
     extraHead: ``,
     renderWorkspace: () => `
