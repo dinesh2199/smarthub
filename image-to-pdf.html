@@ -2133,9 +2133,13 @@ ul, ol {
               <h1 class="tool-header-title">Image to PDF Converter</h1>
             </div>
           </div>
-          <div class="tool-header-actions">
-            <button class="btn btn-sm btn-secondary" onclick="copyToClipboard(window.location.href, this)" title="Share Tool">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          <div class="tool-header-actions" style="display:flex; gap:0.5rem; align-items:center;">
+            <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20free%20tool%3A%20Image%20to%20PDF%20Converter%20%E2%80%93%20https%3A%2F%2Fdinesh2199.github.io%2Fsmarthub%2Fimage-to-pdf.html" target="_blank" rel="noopener" class="btn btn-sm btn-success" style="background:#25D366; color:#ffffff; border:none; display:flex; align-items:center; gap:0.35rem; text-decoration:none;" title="Share on WhatsApp">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+              WhatsApp
+            </a>
+            <button class="btn btn-sm btn-secondary" onclick="copyToClipboard(window.location.href, this)" title="Copy Link">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
               Share
             </button>
           </div>
@@ -2511,6 +2515,15 @@ ul, ol {
       </div>
     </div>
   </footer>
+  
+  <!-- Sticky Bottom Ad Container (Highest Mobile RPM) -->
+  <div class="ad-slot-sticky" id="sticky-bottom-ad" style="position:fixed; bottom:0; left:0; right:0; z-index:9999; background:var(--bg-surface); border-top:1px solid var(--border-color); box-shadow:0 -4px 12px rgba(0,0,0,0.08); padding:4px 0.5rem; text-align:center;">
+    <button type="button" onclick="document.getElementById('sticky-bottom-ad').style.display='none'" style="position:absolute; right:10px; top:2px; background:none; border:none; color:var(--text-muted); font-size:14px; cursor:pointer;" title="Close Ad">✕</button>
+    <div style="font-size:0.65rem; color:var(--text-light); text-transform:uppercase; letter-spacing:0.5px;">Advertisement</div>
+    <div style="min-height:50px; display:flex; align-items:center; justify-content:center; font-size:0.75rem; color:var(--text-muted);">
+      <span>Google AdSense Anchor Display (320x50 / 728x90) • Ready for Publisher ID</span>
+    </div>
+  </div>
 
   <script>
     /**
