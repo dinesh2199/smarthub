@@ -2568,6 +2568,33 @@ body {
   </style>
   
   
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+      <style>
+        @media print {
+          body * {
+            visibility: hidden !important;
+          }
+          #resume-preview, #resume-preview * {
+            visibility: visible !important;
+          }
+          #resume-preview {
+            position: absolute !important;
+            left: 0 !important;
+            top: 0 !important;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 20px !important;
+            border: none !important;
+            box-shadow: none !important;
+            background: #ffffff !important;
+            color: #000000 !important;
+          }
+          .site-header, .site-footer, .tool-header-section, .workspace-col:first-child, .tool-rating-box, .tool-seo-content, .newsletter-card, .ad-slot-wrapper, .ad-slot-sticky, .breadcrumbs {
+            display: none !important;
+          }
+        }
+      </style>
+    
 </head>
 <body>
   
@@ -2807,12 +2834,22 @@ body {
           </div>
 
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-top:1rem;">
-            <button class="btn btn-primary" id="btn-print-resume">
+            <button class="btn btn-primary" id="btn-download-pdf-resume">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>📥 Download PDF</span>
+            </button>
+            <button class="btn btn-secondary" id="btn-download-doc-resume" style="border-color:var(--primary); color:var(--primary);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              <span>📄 Download Word (.doc)</span>
+            </button>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-top:0.75rem;">
+            <button class="btn btn-secondary" id="btn-print-resume">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-              <span>Download / Print PDF</span>
+              <span>🖨️ Print / Save PDF</span>
             </button>
             <button class="btn btn-secondary" id="btn-copy-resume-txt">
-              <span>Copy as Text</span>
+              <span>📋 Copy as Text</span>
             </button>
           </div>
         </div>
@@ -4337,6 +4374,62 @@ window.getToolUrl = getToolUrl;
         updateResume();
         showToast('Sample resume loaded! ⚡', 'success');
       });
+
+      // Direct PDF Download via html2pdf
+      const btnPdf = document.getElementById('btn-download-pdf-resume');
+      if (btnPdf) {
+        btnPdf.addEventListener('click', () => {
+          const rawName = document.getElementById('res-name').value || 'Dinesh_Kumar';
+          const filename = rawName.trim().replace(/s+/g, '_') + '_Resume.pdf';
+          const element = document.getElementById('resume-preview');
+          
+          if (typeof showToast === 'function') showToast('Generating your PDF resume... ⏳', 'info');
+
+          if (typeof html2pdf !== 'undefined') {
+            const opt = {
+              margin: [10, 10, 10, 10],
+              filename: filename,
+              image: { type: 'jpeg', quality: 0.98 },
+              html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+              jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(element).save().then(() => {
+              if (typeof showToast === 'function') showToast('PDF downloaded successfully! 🎉', 'success');
+            }).catch(err => {
+              window.print();
+            });
+          } else {
+            window.print();
+          }
+        });
+      }
+
+      // Direct Word .doc Download
+      const btnDoc = document.getElementById('btn-download-doc-resume');
+      if (btnDoc) {
+        btnDoc.addEventListener('click', () => {
+          const rawName = document.getElementById('res-name').value || 'Dinesh_Kumar';
+          const filename = rawName.trim().replace(/s+/g, '_') + '_Resume.doc';
+          const previewHtml = document.getElementById('resume-preview').innerHTML;
+
+          const docContent = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">' +
+            '<head><meta charset="utf-8"><title>' + rawName + ' Resume</title>' +
+            '<style>' +
+            'body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.5; color: #1e293b; }' +
+            'h1 { font-size: 20pt; color: #0f172a; margin-bottom: 4pt; }' +
+            'h3 { font-size: 11pt; text-transform: uppercase; border-bottom: 1pt solid #cbd5e1; padding-bottom: 2pt; margin-top: 14pt; color: #0f172a; font-weight: bold; }' +
+            'p, div { font-size: 10.5pt; color: #334155; }' +
+            'span { font-size: 9.5pt; }' +
+            '</style></head><body>' + previewHtml + '</body></html>';
+
+          const blob = new Blob(['﻿', docContent], { type: 'application/msword' });
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = filename;
+          a.click();
+          if (typeof showToast === 'function') showToast('Word document (.doc) downloaded! 🎉', 'success');
+        });
+      }
 
       document.getElementById('btn-print-resume').addEventListener('click', () => {
         window.print();
