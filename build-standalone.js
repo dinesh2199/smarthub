@@ -788,9 +788,25 @@ ${JSON.stringify(schemaData, null, 2)}
 </body>
 </html>`;
 
-    // Save in root as well as in tools/ folder!
+    // Save in root
     fs.writeFileSync(path.join(__dirname, `${tool.id}.html`), html, 'utf8');
-    fs.writeFileSync(path.join(__dirname, 'tools', `${tool.id}.html`), html, 'utf8');
+
+    // In tools/ folder, save instant canonical redirect to root tool
+    const redirectHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="0; url=../${tool.id}.html">
+  <link rel="canonical" href="https://dinesh2199.github.io/smarthub/${tool.id}.html">
+  <title>Redirecting to ${tool.name} | SmartHub</title>
+  <script>window.location.replace('../${tool.id}.html');</script>
+</head>
+<body>
+  <p>Redirecting to <a href="../${tool.id}.html">${tool.name}</a>...</p>
+</body>
+</html>`;
+    fs.writeFileSync(path.join(__dirname, 'tools', `${tool.id}.html`), redirectHtml, 'utf8');
   });
 }
 
