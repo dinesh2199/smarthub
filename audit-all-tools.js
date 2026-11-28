@@ -4,7 +4,7 @@ const path = require('path');
 const { SMARTHUB_CATEGORIES, SMARTHUB_TOOLS } = require('./assets/js/tools-data.js');
 
 console.log('====================================================');
-console.log('   SMARTHUB 40-TOOLS DEEP AUDIT & HEALTH CHECK      ');
+console.log('   SMARTHUB 48-TOOLS DEEP AUDIT & HEALTH CHECK      ');
 console.log('====================================================\n');
 
 const toolDefs = {
@@ -15,7 +15,8 @@ const toolDefs = {
   ...require('./tools-definitions-text.js'),
   ...require('./tools-definitions-dev.js'),
   ...require('./tools-definitions-conv.js'),
-  ...require('./tools-definitions-other.js')
+  ...require('./tools-definitions-other.js'),
+  ...require('./tools-definitions-ai.js')
 };
 
 let results = {

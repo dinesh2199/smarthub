@@ -2370,6 +2370,199 @@ body {
   }
 }
 
+/* ===================================================================
+   UX Upgrades: Favorites, Recents, Tool Rating & Sharing
+=================================================================== */
+.tool-card {
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.2s ease !important;
+}
+
+.tool-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 14px 28px -8px rgba(0, 0, 0, 0.12), 0 0 0 1px var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+
+.favorite-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  z-index: 5;
+}
+
+.favorite-btn:hover {
+  color: #eab308;
+  border-color: #eab308;
+  background: rgba(234, 179, 8, 0.1);
+  transform: scale(1.1);
+}
+
+.favorite-btn.active {
+  color: #eab308;
+  border-color: #eab308;
+  background: rgba(234, 179, 8, 0.15);
+}
+
+.tool-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Recent Tools Chips Bar */
+.recent-tools-section {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.recent-tools-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.recent-tools-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.recent-chips-container {
+  display: flex;
+  gap: 0.65rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  scrollbar-width: thin;
+}
+
+.recent-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.recent-chip:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.recent-chip svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* Tool Rating Box */
+.tool-rating-box {
+  margin-top: 1.75rem;
+  padding: 1.25rem;
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.rating-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rating-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.rating-stars {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.star-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  color: #cbd5e1;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.star-btn:hover {
+  transform: scale(1.25);
+  color: #eab308;
+}
+
+.star-btn.active {
+  color: #eab308;
+}
+
+.rating-count {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Tool Top Action Buttons (Share, Favorite) */
+.tool-header-action-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-share {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-share:hover {
+  background: #25d366;
+  color: #ffffff;
+  border-color: #25d366;
+}
+
 
 
   </style>
@@ -2439,6 +2632,11 @@ body {
         <div class="nav-dropdown">
           <a href="#" class="nav-link" aria-haspopup="true">Categories ▾</a>
           <div class="dropdown-menu">
+            
+              <a href="tools.html?category=ai" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                <span>AI Tools</span>
+              </a>
             
               <a href="tools.html?category=image" class="dropdown-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
@@ -2518,6 +2716,9 @@ body {
             </div>
           </div>
           <div class="tool-header-actions" style="display:flex; gap:0.5rem; align-items:center;">
+            <button class="favorite-btn" data-tool-id="stopwatch" onclick="toggleFavorite('stopwatch', event)" title="Save to Favorites" aria-label="Save to Favorites">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </button>
             <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20free%20tool%3A%20Stopwatch%20%E2%80%93%20https%3A%2F%2Fdinesh2199.github.io%2Fsmarthub%2Fstopwatch.html" target="_blank" rel="noopener" class="btn btn-sm btn-success" style="background:#25D366; color:#ffffff; border:none; display:flex; align-items:center; gap:0.35rem; text-decoration:none;" title="Share on WhatsApp">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
               WhatsApp
@@ -2585,6 +2786,20 @@ body {
         </div>
       </div>
     
+      </div>
+
+      <div class="tool-rating-box">
+        <div class="rating-left">
+          <span class="rating-label">Was this tool helpful?</span>
+          <div class="rating-stars">
+            <button class="star-btn" data-value="1" aria-label="1 star">★</button>
+            <button class="star-btn" data-value="2" aria-label="2 stars">★</button>
+            <button class="star-btn" data-value="3" aria-label="3 stars">★</button>
+            <button class="star-btn" data-value="4" aria-label="4 stars">★</button>
+            <button class="star-btn" data-value="5" aria-label="5 stars">★</button>
+          </div>
+        </div>
+        <div class="rating-count">Rated 4.9 / 5 from 1,280+ users</div>
       </div>
 
       
@@ -2827,6 +3042,7 @@ body {
         <div class="footer-col">
           <h4>Tool Categories</h4>
           <ul class="footer-links">
+            <li><a href="tools.html?category=ai">AI Tools</a></li>
             <li><a href="tools.html?category=image">Image Tools</a></li>
             <li><a href="tools.html?category=pdf">PDF Tools</a></li>
             <li><a href="tools.html?category=calculators">Calculators</a></li>
@@ -2840,13 +3056,14 @@ body {
         <div class="footer-col">
           <h4>Popular Tools</h4>
           <ul class="footer-links">
+            <li><a href="ai-email-writer.html">AI Email Writer</a></li>
+            <li><a href="background-remover.html">Background Remover</a></li>
+            <li><a href="pdf-to-word.html">PDF to Word</a></li>
             <li><a href="image-compressor.html">Image Compressor</a></li>
             <li><a href="merge-pdf.html">Merge PDF</a></li>
-            <li><a href="age-calculator.html">Age Calculator</a></li>
-            <li><a href="emi-calculator.html">EMI Calculator</a></li>
+            <li><a href="gst-calculator.html">GST Calculator</a></li>
             <li><a href="qr-code-generator.html">QR Code Generator</a></li>
-            <li><a href="json-formatter.html">JSON Formatter</a></li>
-            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="invoice-generator.html">Invoice Generator</a></li>
           </ul>
         </div>
 
@@ -2887,18 +3104,25 @@ body {
 
 const SMARTHUB_CATEGORIES = [
   {
+    id: "ai",
+    name: "AI Tools",
+    desc: "AI email writer, paragraph rewriter, grammar checker, and resume builder.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>`,
+    badge: "5 Tools"
+  },
+  {
     id: "image",
     name: "Image Tools",
-    desc: "Compress, resize, convert, crop and convert your pictures privately.",
+    desc: "Compress, resize, remove background, crop and convert your pictures privately.",
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`,
-    badge: "6 Tools"
+    badge: "7 Tools"
   },
   {
     id: "pdf",
     name: "PDF Tools",
-    desc: "Merge, split, compress, rotate and convert PDF documents in your browser.",
+    desc: "Merge, split, compress, convert to Word, rotate and convert PDF documents in your browser.",
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
-    badge: "6 Tools"
+    badge: "7 Tools"
   },
   {
     id: "calculators",
@@ -2924,9 +3148,9 @@ const SMARTHUB_CATEGORIES = [
   {
     id: "developer",
     name: "Developer Tools",
-    desc: "JSON and HTML formatters, Base64 encoder/decoder and secure password generator.",
+    desc: "JSON and HTML formatters, CSS minifier, Base64 encoder/decoder and secure password generator.",
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
-    badge: "4 Tools"
+    badge: "5 Tools"
   },
   {
     id: "converters",
@@ -3399,6 +3623,102 @@ const SMARTHUB_TOOLS = [
     recent: true,
     keywords: ["random number generator", "rng", "pick random number", "dice roller", "lottery generator"],
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="4"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="8" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="8" cy="16" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/></svg>`
+  },
+  {
+    id: "ai-email-writer",
+    name: "AI Email Writer",
+    category: "ai",
+    categoryName: "AI Tools",
+    desc: "Generate high-converting, professional emails for job applications, cold outreach, follow-ups, and customer support.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["ai email writer", "email generator", "cover letter email", "cold outreach", "resignation email"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`
+  },
+  {
+    id: "ai-paragraph-rewriter",
+    name: "AI Paragraph Rewriter",
+    category: "ai",
+    categoryName: "AI Tools",
+    desc: "Paraphrase and rewrite articles or essays in fluent, professional, simplified, creative, or concise styles.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["ai paragraph rewriter", "paraphrasing tool", "rewrite text", "article rewriter", "content rewriter"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>`
+  },
+  {
+    id: "ai-grammar-checker",
+    name: "AI Grammar Checker",
+    category: "ai",
+    categoryName: "AI Tools",
+    desc: "Detect spelling mistakes, grammatical errors, duplicate words, and punctuation flaws with 1-click automatic fixes.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["ai grammar checker", "spell check online", "proofreader", "grammar corrector", "essay checker"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>`
+  },
+  {
+    id: "ai-resume-builder",
+    name: "AI Resume Builder",
+    category: "ai",
+    categoryName: "AI Tools",
+    desc: "Build clean, ATS-compliant professional resumes with real-time preview and instant PDF/Print download.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["ai resume builder", "cv maker", "free resume generator", "ats resume", "resume pdf"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><circle cx="10" cy="13" r="2"/><line x1="8" y1="17" x2="12" y2="17"/></svg>`
+  },
+  {
+    id: "ai-text-generator",
+    name: "AI Text & Idea Generator",
+    category: "ai",
+    categoryName: "AI Tools",
+    desc: "Generate viral blog intros, engaging social media posts, e-commerce descriptions, and brand slogans.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["ai text generator", "ai copywriter", "blog intro generator", "slogan maker", "social caption"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>`
+  },
+  {
+    id: "background-remover",
+    name: "Background Remover",
+    category: "image",
+    categoryName: "Image Tools",
+    desc: "Automatically remove backgrounds from photos and products with smart sensitivity controls and transparent PNG download.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["background remover", "remove bg", "transparent background", "photo cutout", "white background"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`
+  },
+  {
+    id: "css-minifier",
+    name: "CSS Minifier & Formatter",
+    category: "developer",
+    categoryName: "Developer Tools",
+    desc: "Minify CSS code to reduce file size and optimize page load speed, or format unreadable CSS.",
+    popular: false,
+    recent: true,
+    trending: false,
+    keywords: ["css minifier", "minify css", "css compressor", "css beautifier", "format css"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>`
+  },
+  {
+    id: "pdf-to-word",
+    name: "PDF to Word Converter",
+    category: "pdf",
+    categoryName: "PDF Tools",
+    desc: "Extract text, headings, and formatting from PDF documents into editable Microsoft Word (.doc) and .txt files.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["pdf to word", "pdf to doc", "convert pdf to word", "extract text from pdf", "pdf to text"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`
   }
 ];
 
@@ -3423,6 +3743,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initGlobalSearch();
   initNewsletter();
+  trackCurrentTool();
 });
 
 /* ===================================================================
@@ -3751,8 +4072,144 @@ function initNewsletter() {
   });
 }
 
+/* ===================================================================
+   User Experience (UX): Favorites, Recents, Rating & Share
+=================================================================== */
+function getFavorites() {
+  try {
+    return JSON.parse(localStorage.getItem('smarthub_favorites')) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function isFavorite(toolId) {
+  return getFavorites().includes(toolId);
+}
+
+function toggleFavorite(toolId, event) {
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  let favs = getFavorites();
+  const index = favs.indexOf(toolId);
+  let isFav = false;
+  if (index > -1) {
+    favs.splice(index, 1);
+    showToast('Removed from favorites', 'info');
+  } else {
+    favs.push(toolId);
+    isFav = true;
+    showToast('Saved to favorites! ⭐', 'success');
+  }
+  localStorage.setItem('smarthub_favorites', JSON.stringify(favs));
+  updateFavoriteButtons(toolId, isFav);
+  if (typeof renderFavoritesSection === 'function') {
+    renderFavoritesSection();
+  }
+  return isFav;
+}
+
+function updateFavoriteButtons(toolId, isFav) {
+  document.querySelectorAll(`.favorite-btn[data-tool-id="${toolId}"]`).forEach(btn => {
+    btn.classList.toggle('active', isFav);
+    btn.setAttribute('aria-label', isFav ? 'Remove from favorites' : 'Add to favorites');
+    btn.innerHTML = isFav 
+      ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="#eab308" stroke="#eab308" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`
+      : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+  });
+}
+
+function trackCurrentTool() {
+  const currentPath = window.location.pathname;
+  const match = currentPath.match(/([a-z0-9-]+)\.html$/i);
+  if (!match) return;
+  const toolId = match[1];
+  const ignored = ['index', 'tools', 'about', 'contact', 'privacy-policy', 'terms', 'disclaimer'];
+  if (ignored.includes(toolId)) return;
+
+  try {
+    let recent = JSON.parse(localStorage.getItem('smarthub_recent_tools')) || [];
+    recent = recent.filter(id => id !== toolId);
+    recent.unshift(toolId);
+    if (recent.length > 8) recent = recent.slice(0, 8);
+    localStorage.setItem('smarthub_recent_tools', JSON.stringify(recent));
+  } catch (e) {}
+}
+
+function getRecentTools() {
+  try {
+    return JSON.parse(localStorage.getItem('smarthub_recent_tools')) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function shareTool(toolName, url = window.location.href) {
+  if (navigator.share) {
+    navigator.share({
+      title: `${toolName} - Free Online Tool on SmartHub`,
+      text: `Use ${toolName} for free in your browser with 100% privacy!`,
+      url: url
+    }).catch(() => {});
+  } else {
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent('Check out this free tool: ' + toolName + ' - ' + url)}`;
+    window.open(whatsappUrl, '_blank');
+  }
+}
+
+function initToolRating(toolId) {
+  const ratingBox = document.querySelector('.tool-rating-box');
+  if (!ratingBox) return;
+
+  const savedRating = localStorage.getItem(`smarthub_rating_${toolId}`);
+  const starsContainer = ratingBox.querySelector('.rating-stars');
+  const countEl = ratingBox.querySelector('.rating-count');
+
+  if (savedRating) {
+    highlightStars(savedRating);
+    if (countEl) countEl.textContent = 'Thanks for your rating! ⭐';
+  }
+
+  if (starsContainer) {
+    starsContainer.querySelectorAll('.star-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = btn.dataset.value;
+        localStorage.setItem(`smarthub_rating_${toolId}`, val);
+        highlightStars(val);
+        showToast(`Rated ${val}/5! Thank you for your feedback 🙏`, 'success');
+        if (countEl) countEl.textContent = 'Thanks for your feedback! ⭐';
+      });
+      btn.addEventListener('mouseenter', () => highlightStars(btn.dataset.value));
+      btn.addEventListener('mouseleave', () => {
+        const cur = localStorage.getItem(`smarthub_rating_${toolId}`) || 5;
+        highlightStars(cur);
+      });
+    });
+  }
+
+  function highlightStars(val) {
+    if (!starsContainer) return;
+    starsContainer.querySelectorAll('.star-btn').forEach(btn => {
+      const active = parseInt(btn.dataset.value) <= parseInt(val);
+      btn.classList.toggle('active', active);
+    });
+  }
+}
+
 // Global exports
 window.showToast = showToast;
+window.copyToClipboard = copyToClipboard;
+window.getToolUrl = getToolUrl;
+window.getFavorites = getFavorites;
+window.isFavorite = isFavorite;
+window.toggleFavorite = toggleFavorite;
+window.updateFavoriteButtons = updateFavoriteButtons;
+window.trackCurrentTool = trackCurrentTool;
+window.getRecentTools = getRecentTools;
+window.shareTool = shareTool;
+window.initToolRating = initToolRating;
 window.copyToClipboard = copyToClipboard;
 window.getToolUrl = getToolUrl;
 
@@ -3865,6 +4322,10 @@ window.getToolUrl = getToolUrl;
         `).join('');
       }
     
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof initToolRating === 'function') initToolRating('stopwatch');
+      if (typeof isFavorite === 'function' && isFavorite('stopwatch')) updateFavoriteButtons('stopwatch', true);
+    });
   </script>
 </body>
 </html>

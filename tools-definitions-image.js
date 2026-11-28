@@ -1154,5 +1154,201 @@ module.exports = {
         });
       }
     `
+  },
+
+  // 7. Smart Background Remover
+  "background-remover": {
+    extraHead: ``,
+    renderWorkspace: () => `
+      <div class="workspace-grid">
+        <div class="workspace-col">
+          <div class="dropzone" id="bg-dropzone">
+            <input type="file" id="bg-file" accept="image/jpeg,image/png,image/webp">
+            <div class="dropzone-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+            <div class="dropzone-title">Upload Image to Remove Background</div>
+            <div class="dropzone-subtitle">Supports JPG, PNG, WEBP (Max 20MB)</div>
+          </div>
+
+          <div id="bg-controls" style="display:none; margin-top:1.25rem;">
+            <div class="form-group">
+              <label class="form-label" style="display:flex; justify-content:space-between;">
+                <span>Color Detection Sensitivity / Tolerance</span>
+                <span id="tol-val" style="font-weight:700; color:var(--primary);">35%</span>
+              </label>
+              <input type="range" class="form-range" id="bg-tolerance" min="5" max="85" value="35">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="bg-replace-mode">Replacement Background</label>
+              <select class="form-control" id="bg-replace-mode">
+                <option value="transparent">Transparent (PNG)</option>
+                <option value="#ffffff">Solid Pure White</option>
+                <option value="#111827">Dark Studio (#111827)</option>
+                <option value="#f3f4f6">Soft Light Gray (#F3F4F6)</option>
+                <option value="#3b82f6">Vibrant Blue (#3B82F6)</option>
+              </select>
+            </div>
+
+            <button class="btn btn-primary btn-block" id="btn-reprocess-bg" style="margin-top:0.75rem;">
+              <span>✨ Re-process Background</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="workspace-col">
+          <div style="background: repeating-conic-gradient(#e2e8f0 0% 25%, #ffffff 0% 50%) 50% / 16px 16px; border:2px dashed var(--border-color); border-radius:var(--radius-md); min-height:360px; display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative;" id="canvas-wrap">
+            <div id="bg-placeholder" style="color:var(--text-muted); text-align:center; padding:2rem;">
+              Upload an image to see the transparent cutout preview here.
+            </div>
+            <canvas id="bg-canvas" style="display:none; max-width:100%; max-height:480px; object-fit:contain;"></canvas>
+          </div>
+
+          <div id="bg-download-wrap" style="display:none; margin-top:1rem;">
+            <button class="btn btn-primary btn-block" id="btn-download-bg">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Download Cutout PNG</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    `,
+    script: `
+      const dropzone = document.getElementById('bg-dropzone');
+      const fileInput = document.getElementById('bg-file');
+      const controls = document.getElementById('bg-controls');
+      const tolSlider = document.getElementById('bg-tolerance');
+      const tolVal = document.getElementById('tol-val');
+      const replaceMode = document.getElementById('bg-replace-mode');
+      const btnReprocess = document.getElementById('btn-reprocess-bg');
+      const placeholder = document.getElementById('bg-placeholder');
+      const canvas = document.getElementById('bg-canvas');
+      const ctx = canvas.getContext('2d');
+      const dlWrap = document.getElementById('bg-download-wrap');
+      const btnDownload = document.getElementById('btn-download-bg');
+
+      let originalImg = null;
+      let rawPixels = null;
+
+      dropzone.addEventListener('click', () => fileInput.click());
+      fileInput.addEventListener('change', (e) => {
+        if (e.target.files.length) handleImage(e.target.files[0]);
+      });
+
+      dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('dragover'); });
+      dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+      dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('dragover');
+        if (e.dataTransfer.files.length) handleImage(e.dataTransfer.files[0]);
+      });
+
+      tolSlider.addEventListener('input', () => {
+        tolVal.textContent = tolSlider.value + '%';
+      });
+
+      function handleImage(file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            originalImg = img;
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            ctx.drawImage(img, 0, 0);
+            rawPixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            controls.style.display = 'block';
+            placeholder.style.display = 'none';
+            canvas.style.display = 'block';
+            dlWrap.style.display = 'block';
+            removeBackground();
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+
+      function removeBackground() {
+        if (!originalImg || !rawPixels) return;
+        const w = canvas.width;
+        const h = canvas.height;
+        const src = rawPixels.data;
+        const imgData = ctx.createImageData(w, h);
+        const dst = imgData.data;
+
+        // Sample corner pixels to determine background reference color
+        const corners = [
+          0, // top-left
+          (w - 1) * 4, // top-right
+          ((h - 1) * w) * 4, // bottom-left
+          ((h - 1) * w + (w - 1)) * 4 // bottom-right
+        ];
+
+        let bgR = 0, bgG = 0, bgB = 0;
+        corners.forEach(idx => {
+          bgR += src[idx];
+          bgG += src[idx + 1];
+          bgB += src[idx + 2];
+        });
+        bgR /= 4; bgG /= 4; bgB /= 4;
+
+        const tolerance = (parseInt(tolSlider.value) / 100) * 441; // Max RGB distance is sqrt(255^2*3) ~ 441.67
+        const bgChoice = replaceMode.value;
+
+        let fillR = 0, fillG = 0, fillB = 0, fillA = 0;
+        if (bgChoice !== 'transparent') {
+          if (bgChoice.startsWith('#')) {
+            fillR = parseInt(bgChoice.slice(1, 3), 16);
+            fillG = parseInt(bgChoice.slice(3, 5), 16);
+            fillB = parseInt(bgChoice.slice(5, 7), 16);
+            fillA = 255;
+          }
+        }
+
+        for (let i = 0; i < src.length; i += 4) {
+          const r = src[i];
+          const g = src[i + 1];
+          const b = src[i + 2];
+          const a = src[i + 3];
+
+          // Euclidean color distance from background sample
+          const dist = Math.sqrt((r - bgR) ** 2 + (g - bgG) ** 2 + (b - bgB) ** 2);
+
+          if (dist < tolerance) {
+            // Match background
+            if (bgChoice === 'transparent') {
+              dst[i] = r;
+              dst[i + 1] = g;
+              dst[i + 2] = b;
+              dst[i + 3] = 0; // Transparent
+            } else {
+              dst[i] = fillR;
+              dst[i + 1] = fillG;
+              dst[i + 2] = fillB;
+              dst[i + 3] = fillA;
+            }
+          } else {
+            dst[i] = r;
+            dst[i + 1] = g;
+            dst[i + 2] = b;
+            dst[i + 3] = a;
+          }
+        }
+
+        ctx.putImageData(imgData, 0, 0);
+        showToast('Background processed successfully! ✨', 'success');
+      }
+
+      btnReprocess.addEventListener('click', removeBackground);
+      replaceMode.addEventListener('change', removeBackground);
+
+      btnDownload.addEventListener('click', () => {
+        const link = document.createElement('a');
+        link.download = 'cutout-image.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    `
   }
 };

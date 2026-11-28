@@ -512,5 +512,154 @@ module.exports = {
         }
       }
     `
+  },
+
+  // 5. CSS Minifier & Beautifier
+  "css-minifier": {
+    extraHead: ``,
+    renderWorkspace: () => `
+      <div class="workspace-grid">
+        <div class="workspace-col">
+          <div class="form-group">
+            <label class="form-label" style="display:flex; justify-content:space-between; align-items:center;">
+              <span>Source CSS</span>
+              <button class="btn btn-sm btn-secondary" id="btn-load-css-sample" style="padding:0.2rem 0.5rem; font-size:0.75rem;">Load Sample</button>
+            </label>
+            <textarea class="form-control" id="css-input" rows="12" style="font-family:monospace; font-size:0.875rem;" placeholder="/* Paste raw CSS code here */&#10;.site-header {&#10;  position: sticky;&#10;  top: 0;&#10;  background: #ffffff;&#10;}"></textarea>
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.75rem;">
+            <button class="btn btn-primary" id="btn-minify-css">
+              <span>⚡ Minify CSS</span>
+            </button>
+            <button class="btn btn-secondary" id="btn-beautify-css">
+              <span>🎨 Format / Beautify</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="workspace-col">
+          <div class="stats-grid" style="margin-bottom:1rem;">
+            <div class="stat-card">
+              <div class="stat-value" id="css-orig-size">0 B</div>
+              <div class="stat-label">Original Size</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="css-min-size">0 B</div>
+              <div class="stat-label">Minified Size</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="css-savings" style="color:var(--success, #10b981);">0%</div>
+              <div class="stat-label">Saved</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Processed Output</label>
+            <textarea class="form-control" id="css-output" rows="9" style="font-family:monospace; font-size:0.875rem;" readonly placeholder="Optimized CSS will display here..."></textarea>
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.75rem;">
+            <button class="btn btn-secondary" id="btn-copy-css">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy CSS</span>
+            </button>
+            <button class="btn btn-primary" id="btn-download-css">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Download .min.css</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    `,
+    script: `
+      const inEl = document.getElementById('css-input');
+      const outEl = document.getElementById('css-output');
+      const origSizeEl = document.getElementById('css-orig-size');
+      const minSizeEl = document.getElementById('css-min-size');
+      const savingsEl = document.getElementById('css-savings');
+      const btnMinify = document.getElementById('btn-minify-css');
+      const btnBeautify = document.getElementById('btn-beautify-css');
+      const btnSample = document.getElementById('btn-load-css-sample');
+      const btnCopy = document.getElementById('btn-copy-css');
+      const btnDownload = document.getElementById('btn-download-css');
+
+      btnSample.addEventListener('click', () => {
+        inEl.value = '/* Global Reset & Utility */\\n* {\\n  box-sizing: border-box;\\n  margin: 0px;\\n  padding: 0px;\\n}\\n\\n.site-header {\\n  position: sticky;\\n  top: 0px;\\n  z-index: 100;\\n  background-color: #ffffff;\\n  border-bottom: 1px solid #e2e8f0;\\n}\\n\\n.hero-badge {\\n  display: inline-flex;\\n  padding: 8px 16px;\\n  border-radius: 9999px;\\n}';
+        btnMinify.click();
+      });
+
+      function formatBytes(bytes) {
+        if (bytes === 0) return '0 B';
+        if (bytes < 1024) return bytes + ' B';
+        return (bytes / 1024).toFixed(1) + ' KB';
+      }
+
+      function minifyCSS(css) {
+        return css
+          .replace(/\\/\\*[\\s\\S]*?\\*\\//g, '') // remove comments
+          .replace(/\\s*([{}|:;,>+~])\\s*/g, '$1') // remove spaces around symbols
+          .replace(/\\b0px\\b/g, '0') // 0px to 0
+          .replace(/;}/g, '}') // remove trailing semicolons
+          .replace(/\\s+/g, ' ') // collapse remaining spaces
+          .trim();
+      }
+
+      function beautifyCSS(css) {
+        let min = minifyCSS(css);
+        return min
+          .replace(/\\{/g, ' {\\n  ')
+          .replace(/;/g, ';\\n  ')
+          .replace(/\\}/g, '\\n}\\n\\n')
+          .replace(/\\n  \\n/g, '\\n')
+          .trim();
+      }
+
+      btnMinify.addEventListener('click', () => {
+        const raw = inEl.value;
+        if (!raw.trim()) {
+          showToast('Please enter CSS code to minify', 'error');
+          return;
+        }
+
+        const min = minifyCSS(raw);
+        outEl.value = min;
+
+        const origBytes = new Blob([raw]).size;
+        const minBytes = new Blob([min]).size;
+        const saved = origBytes > 0 ? Math.round(((origBytes - minBytes) / origBytes) * 100) : 0;
+
+        origSizeEl.textContent = formatBytes(origBytes);
+        minSizeEl.textContent = formatBytes(minBytes);
+        savingsEl.textContent = Math.max(0, saved) + '%';
+        showToast('CSS minified successfully! ⚡', 'success');
+      });
+
+      btnBeautify.addEventListener('click', () => {
+        const raw = inEl.value;
+        if (!raw.trim()) {
+          showToast('Please enter CSS code to format', 'error');
+          return;
+        }
+
+        const formatted = beautifyCSS(raw);
+        outEl.value = formatted;
+        showToast('CSS formatted cleanly! 🎨', 'success');
+      });
+
+      btnCopy.addEventListener('click', () => {
+        if (!outEl.value) return;
+        copyToClipboard(outEl.value, btnCopy);
+      });
+
+      btnDownload.addEventListener('click', () => {
+        if (!outEl.value) return;
+        const blob = new Blob([outEl.value], { type: 'text/css;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'styles.min.css';
+        a.click();
+      });
+    `
   }
 };

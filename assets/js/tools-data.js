@@ -5,18 +5,25 @@
 
 const SMARTHUB_CATEGORIES = [
   {
+    id: "ai",
+    name: "AI Tools",
+    desc: "AI email writer, paragraph rewriter, grammar checker, and resume builder.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>`,
+    badge: "5 Tools"
+  },
+  {
     id: "image",
     name: "Image Tools",
-    desc: "Compress, resize, convert, crop and convert your pictures privately.",
+    desc: "Compress, resize, remove background, crop and convert your pictures privately.",
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`,
-    badge: "6 Tools"
+    badge: "7 Tools"
   },
   {
     id: "pdf",
     name: "PDF Tools",
-    desc: "Merge, split, compress, rotate and convert PDF documents in your browser.",
+    desc: "Merge, split, compress, convert to Word, rotate and convert PDF documents in your browser.",
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
-    badge: "6 Tools"
+    badge: "7 Tools"
   },
   {
     id: "calculators",
@@ -42,9 +49,9 @@ const SMARTHUB_CATEGORIES = [
   {
     id: "developer",
     name: "Developer Tools",
-    desc: "JSON and HTML formatters, Base64 encoder/decoder and secure password generator.",
+    desc: "JSON and HTML formatters, CSS minifier, Base64 encoder/decoder and secure password generator.",
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
-    badge: "4 Tools"
+    badge: "5 Tools"
   },
   {
     id: "converters",
@@ -517,6 +524,102 @@ const SMARTHUB_TOOLS = [
     recent: true,
     keywords: ["random number generator", "rng", "pick random number", "dice roller", "lottery generator"],
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="4"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="8" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="8" cy="16" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/></svg>`
+  },
+  {
+    id: "ai-email-writer",
+    name: "AI Email Writer",
+    category: "ai",
+    categoryName: "AI Tools",
+    desc: "Generate high-converting, professional emails for job applications, cold outreach, follow-ups, and customer support.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["ai email writer", "email generator", "cover letter email", "cold outreach", "resignation email"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`
+  },
+  {
+    id: "ai-paragraph-rewriter",
+    name: "AI Paragraph Rewriter",
+    category: "ai",
+    categoryName: "AI Tools",
+    desc: "Paraphrase and rewrite articles or essays in fluent, professional, simplified, creative, or concise styles.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["ai paragraph rewriter", "paraphrasing tool", "rewrite text", "article rewriter", "content rewriter"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>`
+  },
+  {
+    id: "ai-grammar-checker",
+    name: "AI Grammar Checker",
+    category: "ai",
+    categoryName: "AI Tools",
+    desc: "Detect spelling mistakes, grammatical errors, duplicate words, and punctuation flaws with 1-click automatic fixes.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["ai grammar checker", "spell check online", "proofreader", "grammar corrector", "essay checker"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>`
+  },
+  {
+    id: "ai-resume-builder",
+    name: "AI Resume Builder",
+    category: "ai",
+    categoryName: "AI Tools",
+    desc: "Build clean, ATS-compliant professional resumes with real-time preview and instant PDF/Print download.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["ai resume builder", "cv maker", "free resume generator", "ats resume", "resume pdf"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><circle cx="10" cy="13" r="2"/><line x1="8" y1="17" x2="12" y2="17"/></svg>`
+  },
+  {
+    id: "ai-text-generator",
+    name: "AI Text & Idea Generator",
+    category: "ai",
+    categoryName: "AI Tools",
+    desc: "Generate viral blog intros, engaging social media posts, e-commerce descriptions, and brand slogans.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["ai text generator", "ai copywriter", "blog intro generator", "slogan maker", "social caption"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>`
+  },
+  {
+    id: "background-remover",
+    name: "Background Remover",
+    category: "image",
+    categoryName: "Image Tools",
+    desc: "Automatically remove backgrounds from photos and products with smart sensitivity controls and transparent PNG download.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["background remover", "remove bg", "transparent background", "photo cutout", "white background"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`
+  },
+  {
+    id: "css-minifier",
+    name: "CSS Minifier & Formatter",
+    category: "developer",
+    categoryName: "Developer Tools",
+    desc: "Minify CSS code to reduce file size and optimize page load speed, or format unreadable CSS.",
+    popular: false,
+    recent: true,
+    trending: false,
+    keywords: ["css minifier", "minify css", "css compressor", "css beautifier", "format css"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>`
+  },
+  {
+    id: "pdf-to-word",
+    name: "PDF to Word Converter",
+    category: "pdf",
+    categoryName: "PDF Tools",
+    desc: "Extract text, headings, and formatting from PDF documents into editable Microsoft Word (.doc) and .txt files.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["pdf to word", "pdf to doc", "convert pdf to word", "extract text from pdf", "pdf to text"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`
   }
 ];
 

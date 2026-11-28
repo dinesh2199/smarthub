@@ -29,7 +29,8 @@ const toolDefs = {
   ...require('./tools-definitions-text.js'),
   ...require('./tools-definitions-dev.js'),
   ...require('./tools-definitions-conv.js'),
-  ...require('./tools-definitions-other.js')
+  ...require('./tools-definitions-other.js'),
+  ...require('./tools-definitions-ai.js')
 };
 
 // Standalone Header
@@ -94,6 +95,7 @@ function getStandaloneFooter() {
         <div class="footer-col">
           <h4>Tool Categories</h4>
           <ul class="footer-links">
+            <li><a href="tools.html?category=ai">AI Tools</a></li>
             <li><a href="tools.html?category=image">Image Tools</a></li>
             <li><a href="tools.html?category=pdf">PDF Tools</a></li>
             <li><a href="tools.html?category=calculators">Calculators</a></li>
@@ -107,13 +109,14 @@ function getStandaloneFooter() {
         <div class="footer-col">
           <h4>Popular Tools</h4>
           <ul class="footer-links">
+            <li><a href="ai-email-writer.html">AI Email Writer</a></li>
+            <li><a href="background-remover.html">Background Remover</a></li>
+            <li><a href="pdf-to-word.html">PDF to Word</a></li>
             <li><a href="image-compressor.html">Image Compressor</a></li>
             <li><a href="merge-pdf.html">Merge PDF</a></li>
-            <li><a href="age-calculator.html">Age Calculator</a></li>
-            <li><a href="emi-calculator.html">EMI Calculator</a></li>
+            <li><a href="gst-calculator.html">GST Calculator</a></li>
             <li><a href="qr-code-generator.html">QR Code Generator</a></li>
-            <li><a href="json-formatter.html">JSON Formatter</a></li>
-            <li><a href="word-counter.html">Word Counter</a></li>
+            <li><a href="invoice-generator.html">Invoice Generator</a></li>
           </ul>
         </div>
 
@@ -186,6 +189,7 @@ function buildStandaloneIndex() {
   
   <style>
     ${cssStyle}
+    ${cssTools}
   </style>
 </head>
 <body>
@@ -218,13 +222,25 @@ function buildStandaloneIndex() {
         <!-- Quick Search Tags -->
         <div class="quick-tags">
           <span style="font-size:0.8125rem; color:var(--text-muted); align-self:center;">Popular Searches:</span>
+          <a href="ai-email-writer.html" class="quick-tag">AI Email Writer</a>
+          <a href="background-remover.html" class="quick-tag">Remove Background</a>
+          <a href="pdf-to-word.html" class="quick-tag">PDF to Word</a>
           <a href="image-compressor.html" class="quick-tag">Compress Image</a>
-          <a href="merge-pdf.html" class="quick-tag">Merge PDF</a>
-          <a href="age-calculator.html" class="quick-tag">Age Calculator</a>
-          <a href="emi-calculator.html" class="quick-tag">EMI Calculator</a>
+          <a href="gst-calculator.html" class="quick-tag">GST Calculator</a>
+          <a href="invoice-generator.html" class="quick-tag">Invoice Generator</a>
           <a href="qr-code-generator.html" class="quick-tag">QR Code</a>
-          <a href="word-counter.html" class="quick-tag">Word Counter</a>
-          <a href="json-formatter.html" class="quick-tag">JSON Formatter</a>
+        </div>
+
+        <!-- Recently Used Tools Chips Bar (Appears when user has used tools) -->
+        <div id="recent-chips-bar" class="recent-tools-section" style="display:none; text-align:left;">
+          <div class="recent-tools-header">
+            <div class="recent-tools-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>Recently Used Tools</span>
+            </div>
+            <span style="font-size:0.75rem; color:var(--text-muted);">Saved on this device</span>
+          </div>
+          <div class="recent-chips-container" id="recent-chips-list"></div>
         </div>
       </div>
     </div>
@@ -243,18 +259,45 @@ function buildStandaloneIndex() {
     </div>
   </div>
 
-  <!-- Popular Tools Section -->
-  <section class="section">
+  <!-- My Favorite Tools Section (Appears when tools are starred) -->
+  <section class="section" id="favorites-section" style="display:none; padding-bottom:1rem;">
     <div class="container">
       <div class="section-header">
         <div class="section-title-group">
-          <h2 class="heading-lg">🔥 Popular Tools</h2>
-          <p>The most used utilities by millions of creators, developers, and students.</p>
+          <h2 class="heading-lg">⭐ My Favorite Tools</h2>
+          <p>Quick access to your starred and pinned utilities.</p>
+        </div>
+      </div>
+      <div class="tools-grid" id="favorites-grid"></div>
+    </div>
+  </section>
+
+  <!-- Trending & AI Tools Section -->
+  <section class="section" style="padding-top:1.5rem;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title-group">
+          <h2 class="heading-lg">🔥 Trending &amp; AI Tools</h2>
+          <p>The most popular AI generators, background removers, and smart utilities.</p>
         </div>
         <a href="tools.html" class="btn btn-secondary">
-          <span>View All 39 Tools</span>
+          <span>View All ${SMARTHUB_TOOLS.length} Tools</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
+      </div>
+
+      <div class="tools-grid" id="trending-tools-grid"></div>
+    </div>
+  </section>
+
+  <!-- Popular Tools Section -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title-group">
+          <h2 class="heading-lg">⚡ Essential Everyday Utilities</h2>
+          <p>High-efficiency tools used daily by creators, developers, and professionals.</p>
+        </div>
       </div>
 
       <div class="tools-grid" id="popular-tools-grid"></div>
@@ -393,15 +436,21 @@ function buildStandaloneIndex() {
   </script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Render Popular Tools
-      const popularGrid = document.getElementById('popular-tools-grid');
-      if (popularGrid && typeof SMARTHUB_TOOLS !== 'undefined') {
-        const popular = SMARTHUB_TOOLS.filter(t => t.popular).slice(0, 8);
-        popularGrid.innerHTML = popular.map(tool => \`
+      // Helper to render interactive tool card with Favorite button
+      function renderToolCard(tool, badgeText = null, badgeClass = 'badge-primary') {
+        const isFav = typeof isFavorite === 'function' && isFavorite(tool.id);
+        return \`
           <a href="\${tool.id}.html" class="tool-card">
             <div class="tool-card-header">
               <div class="tool-icon-wrapper">\${tool.icon}</div>
-              <span class="badge badge-primary">\${tool.categoryName}</span>
+              <div class="tool-card-actions">
+                <span class="badge \${badgeClass}">\${badgeText || tool.categoryName}</span>
+                <button class="favorite-btn \${isFav ? 'active' : ''}" data-tool-id="\${tool.id}" onclick="toggleFavorite('\${tool.id}', event)" title="Save to Favorites" aria-label="Save to Favorites">
+                  \${isFav 
+                    ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="#eab308" stroke="#eab308" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>' 
+                    : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>'}
+                </button>
+              </div>
             </div>
             <h3 class="tool-card-title">\${tool.name}</h3>
             <p class="tool-card-desc">\${tool.desc}</p>
@@ -410,7 +459,58 @@ function buildStandaloneIndex() {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
             </div>
           </a>
-        \`).join('');
+        \`;
+      }
+
+      // Render Favorites Section
+      window.renderFavoritesSection = function() {
+        const favSection = document.getElementById('favorites-section');
+        const favGrid = document.getElementById('favorites-grid');
+        if (!favSection || !favGrid) return;
+        const favIds = typeof getFavorites === 'function' ? getFavorites() : [];
+        const favTools = SMARTHUB_TOOLS.filter(t => favIds.includes(t.id));
+        if (favTools.length > 0) {
+          favSection.style.display = 'block';
+          favGrid.innerHTML = favTools.map(t => renderToolCard(t, 'Starred', 'badge-warning')).join('');
+        } else {
+          favSection.style.display = 'none';
+        }
+      };
+      renderFavoritesSection();
+
+      // Render Recently Used Tools Chips
+      function renderRecentChips() {
+        const bar = document.getElementById('recent-chips-bar');
+        const list = document.getElementById('recent-chips-list');
+        if (!bar || !list) return;
+        const recentIds = typeof getRecentTools === 'function' ? getRecentTools() : [];
+        const recentTools = recentIds.map(id => SMARTHUB_TOOLS.find(t => t.id === id)).filter(Boolean);
+        if (recentTools.length > 0) {
+          bar.style.display = 'block';
+          list.innerHTML = recentTools.map(t => \`
+            <a href="\${t.id}.html" class="recent-chip">
+              \${t.icon}
+              <span>\${t.name}</span>
+            </a>
+          \`).join('');
+        } else {
+          bar.style.display = 'none';
+        }
+      }
+      renderRecentChips();
+
+      // Render Trending Tools
+      const trendingGrid = document.getElementById('trending-tools-grid');
+      if (trendingGrid && typeof SMARTHUB_TOOLS !== 'undefined') {
+        const trending = SMARTHUB_TOOLS.filter(t => t.trending).slice(0, 8);
+        trendingGrid.innerHTML = trending.map(tool => renderToolCard(tool, '🔥 Trending', 'badge-warning')).join('');
+      }
+
+      // Render Popular Tools
+      const popularGrid = document.getElementById('popular-tools-grid');
+      if (popularGrid && typeof SMARTHUB_TOOLS !== 'undefined') {
+        const popular = SMARTHUB_TOOLS.filter(t => t.popular).slice(0, 8);
+        popularGrid.innerHTML = popular.map(tool => renderToolCard(tool)).join('');
       }
 
       // Render Categories Grid
@@ -432,20 +532,7 @@ function buildStandaloneIndex() {
       const recentGrid = document.getElementById('recent-tools-grid');
       if (recentGrid && typeof SMARTHUB_TOOLS !== 'undefined') {
         const recent = SMARTHUB_TOOLS.filter(t => t.recent).slice(0, 6);
-        recentGrid.innerHTML = recent.map(tool => \`
-          <a href="\${tool.id}.html" class="tool-card">
-            <div class="tool-card-header">
-              <div class="tool-icon-wrapper">\${tool.icon}</div>
-              <span class="badge badge-success">New</span>
-            </div>
-            <h3 class="tool-card-title">\${tool.name}</h3>
-            <p class="tool-card-desc">\${tool.desc}</p>
-            <div class="tool-card-footer">
-              <span>Open Tool</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </div>
-          </a>
-        \`).join('');
+        recentGrid.innerHTML = recent.map(tool => renderToolCard(tool, '✨ New', 'badge-success')).join('');
       }
     });
   </script>
@@ -579,6 +666,9 @@ ${JSON.stringify(schemaData, null, 2)}
             </div>
           </div>
           <div class="tool-header-actions" style="display:flex; gap:0.5rem; align-items:center;">
+            <button class="favorite-btn" data-tool-id="${tool.id}" onclick="toggleFavorite('${tool.id}', event)" title="Save to Favorites" aria-label="Save to Favorites">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </button>
             <a href="https://api.whatsapp.com/send?text=${encodeURIComponent('Check out this free tool: ' + tool.name + ' – ' + canonicalUrl)}" target="_blank" rel="noopener" class="btn btn-sm btn-success" style="background:#25D366; color:#ffffff; border:none; display:flex; align-items:center; gap:0.35rem; text-decoration:none;" title="Share on WhatsApp">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
               WhatsApp
@@ -596,6 +686,20 @@ ${JSON.stringify(schemaData, null, 2)}
 
       <div class="tool-workspace">
         ${def.renderWorkspace()}
+      </div>
+
+      <div class="tool-rating-box">
+        <div class="rating-left">
+          <span class="rating-label">Was this tool helpful?</span>
+          <div class="rating-stars">
+            <button class="star-btn" data-value="1" aria-label="1 star">★</button>
+            <button class="star-btn" data-value="2" aria-label="2 stars">★</button>
+            <button class="star-btn" data-value="3" aria-label="3 stars">★</button>
+            <button class="star-btn" data-value="4" aria-label="4 stars">★</button>
+            <button class="star-btn" data-value="5" aria-label="5 stars">★</button>
+          </div>
+        </div>
+        <div class="rating-count">Rated 4.9 / 5 from 1,280+ users</div>
       </div>
 
       ${getAdSlot('responsive')}
@@ -659,7 +763,11 @@ ${JSON.stringify(schemaData, null, 2)}
     ${mainJs}
   </script>
   <script>
-    ${def.script}
+    ${typeof def.renderScript === 'function' ? def.renderScript() : (def.script || '')}
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof initToolRating === 'function') initToolRating('${tool.id}');
+      if (typeof isFavorite === 'function' && isFavorite('${tool.id}')) updateFavoriteButtons('${tool.id}', true);
+    });
   </script>
 </body>
 </html>`;
@@ -735,6 +843,7 @@ function buildStandaloneToolsDirectory() {
 
       <div style="display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:center; margin-bottom:2rem;" id="category-pills">
         <button class="btn btn-sm btn-primary cat-filter-btn" data-cat="all">All Tools (${SMARTHUB_TOOLS.length})</button>
+        <button class="btn btn-sm btn-secondary cat-filter-btn" data-cat="favorites">⭐ Favorites</button>
         ${SMARTHUB_CATEGORIES.map(cat => {
           const count = SMARTHUB_TOOLS.filter(t => t.category === cat.id).length;
           return `<button class="btn btn-sm btn-secondary cat-filter-btn" data-cat="${cat.id}">${cat.name} (${count})</button>`;
@@ -838,7 +947,16 @@ function buildStandaloneToolsDirectory() {
         const query = searchInput.value.trim().toLowerCase();
 
         const filtered = SMARTHUB_TOOLS.filter(t => {
-          const matchesCat = (currentCategory === 'all' || t.category === currentCategory);
+          let matchesCat = false;
+          if (currentCategory === 'all') {
+            matchesCat = true;
+          } else if (currentCategory === 'favorites') {
+            const favs = typeof getFavorites === 'function' ? getFavorites() : [];
+            matchesCat = favs.includes(t.id);
+          } else {
+            matchesCat = t.category === currentCategory;
+          }
+
           const matchesQuery = !query || 
             t.name.toLowerCase().includes(query) ||
             t.desc.toLowerCase().includes(query) ||
@@ -858,20 +976,30 @@ function buildStandaloneToolsDirectory() {
         grid.style.display = 'grid';
         noResults.style.display = 'none';
 
-        grid.innerHTML = filtered.map(tool => \`
-          <a href="\${tool.id}.html" class="tool-card">
-            <div class="tool-card-header">
-              <div class="tool-icon-wrapper">\${tool.icon}</div>
-              <span class="badge badge-primary">\${tool.categoryName}</span>
-            </div>
-            <h3 class="tool-card-title">\${tool.name}</h3>
-            <p class="tool-card-desc">\${tool.desc}</p>
-            <div class="tool-card-footer">
-              <span>Open Tool</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </div>
-          </a>
-        \`).join('');
+        grid.innerHTML = filtered.map(tool => {
+          const isFav = typeof isFavorite === 'function' && isFavorite(tool.id);
+          return \`
+            <a href="\${tool.id}.html" class="tool-card">
+              <div class="tool-card-header">
+                <div class="tool-icon-wrapper">\${tool.icon}</div>
+                <div class="tool-card-actions">
+                  <span class="badge \${tool.trending ? 'badge-warning' : 'badge-primary'}">\${tool.trending ? '🔥 Trending' : tool.categoryName}</span>
+                  <button class="favorite-btn \${isFav ? 'active' : ''}" data-tool-id="\${tool.id}" onclick="toggleFavorite('\${tool.id}', event)" title="Save to Favorites" aria-label="Save to Favorites">
+                    \${isFav 
+                      ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="#eab308" stroke="#eab308" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>' 
+                      : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>'}
+                  </button>
+                </div>
+              </div>
+              <h3 class="tool-card-title">\${tool.name}</h3>
+              <p class="tool-card-desc">\${tool.desc}</p>
+              <div class="tool-card-footer">
+                <span>Open Tool</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </div>
+            </a>
+          \`;
+        }).join('');
       }
 
       renderFilteredTools();

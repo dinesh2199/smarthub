@@ -1022,5 +1022,160 @@ module.exports = {
         link.click();
       });
     `
+  },
+
+  // 7. PDF to Word / Text Extractor
+  "pdf-to-word": {
+    extraHead: `
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+      <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+    `,
+    renderWorkspace: () => `
+      <div class="workspace-grid">
+        <div class="workspace-col">
+          <div class="dropzone" id="p2w-dropzone">
+            <input type="file" id="p2w-file" accept="application/pdf">
+            <div class="dropzone-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div class="dropzone-title">Upload PDF to Convert to Word</div>
+            <div class="dropzone-subtitle">Extract text, paragraphs, and content into .doc document</div>
+          </div>
+
+          <div id="p2w-stats-card" style="display:none; margin-top:1.25rem;">
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-value" id="p2w-pages">0</div>
+                <div class="stat-label">Pages Extracted</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-value" id="p2w-words">0</div>
+                <div class="stat-label">Total Words</div>
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.75rem; margin-top:1rem;">
+              <button class="btn btn-primary" id="btn-download-doc">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download .doc (Word)</span>
+              </button>
+              <button class="btn btn-secondary" id="btn-download-txt-p2w">
+                <span>Download .txt</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="workspace-col">
+          <div class="form-group">
+            <label class="form-label" style="display:flex; justify-content:space-between; align-items:center;">
+              <span>Extracted Document Preview</span>
+              <button class="btn btn-sm btn-secondary" id="btn-copy-p2w">Copy Text</button>
+            </label>
+            <div id="p2w-preview" style="min-height:360px; max-height:480px; overflow-y:auto; padding:1.25rem; background:var(--bg-surface); border:1px solid var(--border-color); border-radius:var(--radius-md); font-size:0.9rem; line-height:1.7; color:var(--text-main); white-space:pre-wrap;">
+              Upload a PDF to view and download extracted Word content.
+            </div>
+          </div>
+        </div>
+      </div>
+    `,
+    script: `
+      const dropzone = document.getElementById('p2w-dropzone');
+      const fileInput = document.getElementById('p2w-file');
+      const statsCard = document.getElementById('p2w-stats-card');
+      const pagesEl = document.getElementById('p2w-pages');
+      const wordsEl = document.getElementById('p2w-words');
+      const previewEl = document.getElementById('p2w-preview');
+      const btnDoc = document.getElementById('btn-download-doc');
+      const btnTxt = document.getElementById('btn-download-txt-p2w');
+      const btnCopy = document.getElementById('btn-copy-p2w');
+
+      let extractedText = '';
+      let extractedDocHtml = '';
+      let pdfFilename = 'document';
+
+      dropzone.addEventListener('click', () => fileInput.click());
+      fileInput.addEventListener('change', (e) => {
+        if (e.target.files.length) processPdf(e.target.files[0]);
+      });
+
+      dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('dragover'); });
+      dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+      dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('dragover');
+        if (e.dataTransfer.files.length) processPdf(e.dataTransfer.files[0]);
+      });
+
+      async function processPdf(file) {
+        pdfFilename = file.name.replace(/\\.pdf$/i, '');
+        const arrayBuffer = await file.arrayBuffer();
+        previewEl.innerHTML = '<div style="color:var(--text-muted); text-align:center; padding:2rem;">Reading and extracting PDF content...</div>';
+
+        try {
+          const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+          const pdf = await loadingTask.promise;
+          const numPages = pdf.numPages;
+
+          pagesEl.textContent = numPages;
+          let fullText = '';
+          let docHtml = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>' + pdfFilename + '</title><style>body{font-family:Calibri,Arial,sans-serif; font-size:11pt; line-height:1.5;} h2{color:#2563eb; border-bottom:1px solid #ccc; margin-top:20pt;}</style></head><body>';
+
+          for (let i = 1; i <= numPages; i++) {
+            const page = await pdf.getPage(i);
+            const textContent = await page.getTextContent();
+            let pageText = '';
+            let lastY = null;
+
+            textContent.items.forEach(item => {
+              if (lastY !== null && Math.abs(item.transform[5] - lastY) > 8) {
+                pageText += '\\n';
+              }
+              pageText += item.str + ' ';
+              lastY = item.transform[5];
+            });
+
+            fullText += '--- Page ' + i + ' ---\\n' + pageText.trim() + '\\n\\n';
+            docHtml += '<h2>Page ' + i + '</h2><p>' + pageText.trim().replace(/\\n/g, '<br>') + '</p><br clear="all" style="mso-special-character:line-break;page-break-before:always">';
+          }
+
+          docHtml += '</body></html>';
+          extractedText = fullText;
+          extractedDocHtml = docHtml;
+
+          const words = fullText.trim().split(/\\s+/).filter(Boolean).length;
+          wordsEl.textContent = words;
+          previewEl.textContent = fullText;
+          statsCard.style.display = 'block';
+          showToast('Converted PDF successfully! (' + numPages + ' pages, ' + words + ' words)', 'success');
+        } catch (err) {
+          previewEl.textContent = 'Error parsing PDF: ' + err.message;
+          showToast('Failed to parse PDF', 'error');
+        }
+      }
+
+      btnDoc.addEventListener('click', () => {
+        if (!extractedDocHtml) return;
+        const blob = new Blob(['\\ufeff', extractedDocHtml], { type: 'application/msword' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = pdfFilename + '.doc';
+        a.click();
+      });
+
+      btnTxt.addEventListener('click', () => {
+        if (!extractedText) return;
+        const blob = new Blob([extractedText], { type: 'text/plain;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = pdfFilename + '.txt';
+        a.click();
+      });
+
+      btnCopy.addEventListener('click', () => {
+        if (!extractedText) return;
+        copyToClipboard(extractedText, btnCopy);
+      });
+    `
   }
 };

@@ -212,7 +212,14 @@ function getCategoryFAQs(tool) {
     ];
   }
   const cat = tool.category || '';
-  if (cat === 'image') {
+  if (cat === 'ai') {
+    return [
+      { q: `Does ${tool.name} require an API key or subscription?`, a: `No! SmartHub's ${tool.name} runs 100% free right in your browser with zero subscription fees, no credit card, and no API keys required.` },
+      { q: `Is my generated content private and secure?`, a: `Yes, completely private. None of your entered prompts, essays, emails, or personal details are sent to external cloud servers or used for model training.` },
+      { q: `Can I copy and use the generated content commercially?`, a: `Yes! You have 100% ownership of all emails, articles, summaries, and resumes you generate with SmartHub for personal and commercial use.` },
+      { q: `Can I use ${tool.name} on my mobile phone?`, a: `Yes, the interface is fully responsive and touch-optimized for Android smartphones, iPhones, iPads, and tablets.` }
+    ];
+  } else if (cat === 'image') {
     return [
       { q: `Does using ${tool.name} reduce visible picture quality?`, a: `No. SmartHub uses high-performance HTML5 Canvas and bicubic scaling algorithms to preserve crisp details and sharp colors while optimizing file size efficiently.` },
       { q: `What image formats are supported?`, a: `This tool supports all popular modern formats including JPG, JPEG, PNG, and WEBP.` },

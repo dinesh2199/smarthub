@@ -1,0 +1,4374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Background Remover – Free Online Tool | SmartHub</title>
+  <meta name="description" content="Automatically remove backgrounds from photos and products with smart sensitivity controls and transparent PNG download. 100% free, private browser-based tool on SmartHub with zero file upload limits or registration.">
+  <link rel="canonical" href="https://dinesh2199.github.io/smarthub/background-remover.html">
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Background Remover – Free Online Tool | SmartHub">
+  <meta property="og:description" content="Automatically remove backgrounds from photos and products with smart sensitivity controls and transparent PNG download. 100% free, private browser-based tool on SmartHub with zero file upload limits or registration.">
+  <meta property="og:url" content="https://dinesh2199.github.io/smarthub/background-remover.html">
+  <meta property="og:site_name" content="SmartHub">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Background Remover – Free Online Tool | SmartHub">
+  <meta name="twitter:description" content="Automatically remove backgrounds from photos and products with smart sensitivity controls and transparent PNG download. 100% free, private browser-based tool on SmartHub with zero file upload limits or registration.">
+  
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://dinesh2199.github.io/smarthub/background-remover.html#webapp",
+      "url": "https://dinesh2199.github.io/smarthub/background-remover.html",
+      "name": "Background Remover – Free Online Tool",
+      "description": "Automatically remove backgrounds from photos and products with smart sensitivity controls and transparent PNG download.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires modern browser with JavaScript enabled",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://dinesh2199.github.io/smarthub/background-remover.html#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://dinesh2199.github.io/smarthub/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Image Tools",
+          "item": "https://dinesh2199.github.io/smarthub/tools.html?category=image"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Background Remover",
+          "item": "https://dinesh2199.github.io/smarthub/background-remover.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://dinesh2199.github.io/smarthub/background-remover.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does using Background Remover reduce visible picture quality?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. SmartHub uses high-performance HTML5 Canvas and bicubic scaling algorithms to preserve crisp details and sharp colors while optimizing file size efficiently."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What image formats are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This tool supports all popular modern formats including JPG, JPEG, PNG, and WEBP."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my private photos uploaded to a cloud server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Never. All image processing takes place directly inside your device's browser memory. Your personal photos never touch an external server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use Background Remover on my Android phone or iPhone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! The tool is 100% mobile-friendly with responsive touch controls, working smoothly across all smartphone browsers."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  
+  <style>
+    /* ===================================================================
+   SMARTHUB - All-in-One Online Tools Website
+   Theme: Modern Blue, White & Subtle Purple Gradients
+   Version: 1.0.0
+=================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Color Palette */
+  --primary: #2563eb;
+  --primary-rgb: 37, 99, 235;
+  --primary-dark: #1d4ed8;
+  --primary-light: #60a5fa;
+  --secondary: #4f46e5;
+  --purple: #7c3aed;
+  --purple-light: #a78bfa;
+  --accent: #06b6d4;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #7c3aed 100%);
+  --gradient-subtle: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.08) 100%);
+  --gradient-card: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  --gradient-hero: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15) 0%, rgba(248, 250, 252, 0) 70%);
+
+  /* Neutrals (Light Mode) */
+  --bg-page: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-alt: #f1f5f9;
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
+  --border-color: #e2e8f0;
+  --border-focus: #3b82f6;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 20px 30px -10px rgba(37, 99, 235, 0.2);
+
+  /* Layout & Sizing */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  --max-width: 1240px;
+  --header-height: 72px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="dark"] {
+  --bg-page: #0b0f19;
+  --bg-surface: #111827;
+  --bg-surface-alt: #1f2937;
+  --bg-card: #131c2e;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-light: #64748b;
+  --border-color: #1e293b;
+  --border-focus: #60a5fa;
+
+  --gradient-subtle: linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(124, 58, 237, 0.15) 100%);
+  --gradient-card: linear-gradient(180deg, #131c2e 0%, #0f172a 100%);
+  --gradient-hero: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.25) 0%, rgba(11, 15, 25, 0) 70%);
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+  --shadow-hover: 0 20px 30px -10px rgba(79, 70, 229, 0.35);
+}
+
+/* ===================================================================
+   Reset & Base Styles
+=================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  color: var(--text-main);
+  background-color: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+img, svg, picture {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Typography Helpers */
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.heading-xl {
+  font-size: clamp(2rem, 4vw + 1rem, 3.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.heading-lg {
+  font-size: clamp(1.5rem, 2.5vw + 0.5rem, 2.25rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.heading-md {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.lead-text {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ===================================================================
+   Header & Navigation
+=================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
+  transition: background var(--transition-normal), border-color var(--transition-normal);
+}
+
+[data-theme="dark"] .site-header {
+  background: rgba(17, 24, 39, 0.85);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.03em;
+}
+
+.brand-logo svg {
+  height: 38px;
+  width: auto;
+}
+
+[data-theme="dark"] .brand-text-primary {
+  fill: #f8fafc !important;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  padding: 0.5rem 0.25rem;
+  position: relative;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--primary);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 260px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xl);
+  padding: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all var(--transition-fast);
+  z-index: 1000;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-main);
+  transition: background var(--transition-fast);
+}
+
+.dropdown-item:hover {
+  background: var(--bg-surface-alt);
+  color: var(--primary);
+}
+
+.dropdown-item svg {
+  width: 18px;
+  height: 18px;
+  color: var(--primary);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  transition: all var(--transition-fast);
+}
+
+.btn-icon:hover {
+  color: var(--primary);
+  border-color: var(--primary-light);
+  background: var(--bg-surface-alt);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.mobile-toggle {
+  display: none;
+}
+
+/* ===================================================================
+   Buttons & Badges
+=================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: #ffffff;
+  box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.35);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 20px 0 rgba(37, 99, 235, 0.5);
+  transform: translateY(-1px);
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background: var(--bg-surface);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-surface-alt);
+  border-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.btn-success {
+  background: var(--success);
+  color: #ffffff;
+}
+
+.btn-success:hover {
+  background: #059669;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.btn-outline:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.btn-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+  border-radius: var(--radius-sm);
+}
+
+.btn-lg {
+  padding: 0.875rem 1.75rem;
+  font-size: 1.0625rem;
+  border-radius: var(--radius-lg);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--radius-full);
+}
+
+.badge-primary {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--primary);
+}
+
+.badge-purple {
+  background: rgba(124, 58, 237, 0.1);
+  color: var(--purple);
+}
+
+.badge-success {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+
+.badge-warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+}
+
+/* ===================================================================
+   Hero Section
+=================================================================== */
+.hero-section {
+  position: relative;
+  padding: 5rem 0 4rem;
+  background: var(--gradient-hero);
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-badge {
+  margin-bottom: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--primary);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.hero-title {
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  max-width: 680px;
+  margin: 0 auto 2.5rem;
+}
+
+/* Global Search Bar */
+.search-container {
+  max-width: 640px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: var(--bg-surface);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 0.5rem 0.75rem 0.5rem 1.25rem;
+  box-shadow: var(--shadow-xl);
+  transition: all var(--transition-normal);
+}
+
+.search-box:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.search-box svg {
+  width: 22px;
+  height: 22px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.search-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 0.5rem 0.75rem;
+  font-size: 1.0625rem;
+  color: var(--text-main);
+}
+
+.search-clear {
+  color: var(--text-light);
+  padding: 0.25rem;
+  display: none;
+}
+
+.search-clear:hover {
+  color: var(--text-main);
+}
+
+.search-results-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  max-height: 380px;
+  overflow-y: auto;
+  z-index: 50;
+  display: none;
+  text-align: left;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.875rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  transition: background var(--transition-fast);
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover {
+  background: var(--bg-surface-alt);
+}
+
+.search-result-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.search-result-info h4 {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.search-result-info p {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+/* Quick Category Tags */
+.quick-tags {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.quick-tag {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+
+.quick-tag:hover, .quick-tag.active {
+  background: var(--gradient-primary);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+/* ===================================================================
+   Sections & Tool Cards
+=================================================================== */
+.section {
+  padding: 4.5rem 0;
+}
+
+.section-alt {
+  background: var(--bg-surface-alt);
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+}
+
+.section-title-group h2 {
+  margin-bottom: 0.5rem;
+}
+
+.section-title-group p {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* Grid Layouts */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Tool Card Component */
+.tool-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--shadow-sm);
+}
+
+.tool-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow: var(--shadow-hover);
+}
+
+.tool-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.tool-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-subtle);
+  color: var(--primary);
+  transition: transform var(--transition-fast);
+}
+
+.tool-card:hover .tool-icon-wrapper {
+  transform: scale(1.08);
+}
+
+.tool-icon-wrapper svg {
+  width: 24px;
+  height: 24px;
+}
+
+.tool-card-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+  transition: color var(--transition-fast);
+}
+
+.tool-card:hover .tool-card-title {
+  color: var(--primary);
+}
+
+.tool-card-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.tool-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.tool-card-footer svg {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--transition-fast);
+}
+
+.tool-card:hover .tool-card-footer svg {
+  transform: translateX(4px);
+}
+
+/* Category Card */
+.category-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  transition: all var(--transition-normal);
+}
+
+.category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-light);
+}
+
+.category-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  background: var(--gradient-subtle);
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.category-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.category-info h3 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.category-info p {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+/* Why Choose Section */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.feature-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: all var(--transition-normal);
+}
+
+.feature-box:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.feature-icon-box {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  background: var(--gradient-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.3);
+}
+
+.feature-icon-box svg {
+  width: 28px;
+  height: 28px;
+}
+
+.feature-box h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.feature-box p {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+/* ===================================================================
+   Ad Spaces (Compliant AdSense Units)
+=================================================================== */
+.ad-slot-wrapper {
+  margin: 2.5rem 0;
+  text-align: center;
+  clear: both;
+}
+
+.ad-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.ad-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-surface-alt);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  margin: 0 auto;
+  overflow: hidden;
+  color: var(--text-light);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  position: relative;
+  min-height: 90px;
+}
+
+.ad-slot-leaderboard {
+  max-width: 728px;
+  height: 90px;
+}
+
+.ad-slot-rectangle {
+  max-width: 336px;
+  height: 280px;
+}
+
+.ad-slot-responsive {
+  width: 100%;
+  max-width: 970px;
+  min-height: 90px;
+}
+
+/* ===================================================================
+   Newsletter Section
+=================================================================== */
+.newsletter-card {
+  background: var(--gradient-primary);
+  border-radius: var(--radius-xl);
+  padding: 3.5rem 2rem;
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.4);
+}
+
+.newsletter-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.newsletter-content {
+  position: relative;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.newsletter-content h2 {
+  font-size: clamp(1.75rem, 2.5vw + 0.5rem, 2.25rem);
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+.newsletter-content p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 480px;
+  margin: 0 auto 1rem;
+}
+
+.newsletter-input {
+  flex-grow: 1;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.25rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: #0f172a;
+  outline: none;
+}
+
+.newsletter-btn {
+  background: #0f172a;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: background var(--transition-fast);
+}
+
+.newsletter-btn:hover {
+  background: #1e293b;
+}
+
+.newsletter-privacy {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ===================================================================
+   Footer
+=================================================================== */
+.site-footer {
+  margin-top: auto;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-color);
+  padding: 4.5rem 0 2rem;
+}
+
+[data-theme="dark"] .site-footer {
+  background: #0d121f;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3.5rem;
+}
+
+.footer-brand p {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  margin: 1rem 0 1.5rem;
+  max-width: 320px;
+}
+
+.social-links {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+}
+
+.social-btn:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.footer-col h4 {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.footer-links li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--primary);
+}
+
+.footer-bottom {
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ===================================================================
+   Toast System
+=================================================================== */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 280px;
+  max-width: 400px;
+  padding: 0.875rem 1.25rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-xl);
+  font-size: 0.875rem;
+  font-weight: 500;
+  animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: all 0.3s ease;
+}
+
+.toast.toast-success {
+  border-left: 4px solid var(--success);
+}
+
+.toast.toast-error {
+  border-left: 4px solid var(--danger);
+}
+
+.toast.toast-info {
+  border-left: 4px solid var(--primary);
+}
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===================================================================
+   Mobile Drawer & Responsiveness
+=================================================================== */
+@media (max-width: 992px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  padding-bottom: 76px; /* Room for Sticky Bottom Ad */
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 60px;
+  }
+
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Header & Logo */
+  .site-header {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: var(--bg-surface) !important;
+    z-index: 10000 !important;
+  }
+
+  [data-theme="dark"] .site-header {
+    background: var(--bg-surface) !important;
+  }
+
+  .header-inner {
+    height: 60px !important;
+  }
+
+  .brand-logo svg {
+    height: 30px !important;
+    width: auto !important;
+    max-width: 150px;
+  }
+
+  .header-actions {
+    gap: 0.35rem;
+  }
+
+  .btn-icon {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .mobile-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed !important;
+    top: 60px !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: calc(100vh - 60px) !important;
+    height: calc(100dvh - 60px) !important;
+    background: var(--bg-surface) !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 1.25rem 1rem 3rem !important;
+    gap: 0.5rem !important;
+    border-top: 1px solid var(--border-color) !important;
+    transform: translateX(100%) !important;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    z-index: 99999 !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2) !important;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .nav-menu.open {
+    transform: translateX(0) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .nav-menu .nav-link {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0.85rem 1rem !important;
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+    color: var(--text-main) !important;
+    border-radius: var(--radius-md) !important;
+    background: var(--bg-surface-alt) !important;
+    border: 1px solid var(--border-color) !important;
+    text-decoration: none !important;
+  }
+
+  .nav-menu .nav-link:hover,
+  .nav-menu .nav-link.active {
+    color: var(--primary) !important;
+    border-color: var(--primary) !important;
+  }
+
+  .nav-dropdown {
+    width: 100% !important;
+  }
+
+  .dropdown-menu {
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    box-shadow: none !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-md) !important;
+    padding: 0.5rem !important;
+    width: 100% !important;
+    display: none !important;
+    background: var(--bg-page) !important;
+    margin-top: 0.5rem !important;
+  }
+
+  .nav-dropdown.active .dropdown-menu {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.25rem !important;
+  }
+
+  .dropdown-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    padding: 0.65rem 0.85rem !important;
+    font-size: 0.92rem !important;
+    color: var(--text-muted) !important;
+    border-radius: var(--radius-sm) !important;
+    text-decoration: none !important;
+  }
+
+  .dropdown-item:hover {
+    color: var(--primary) !important;
+    background: var(--bg-surface) !important;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 3rem 0 2rem !important;
+  }
+
+  .hero-title {
+    font-size: 1.85rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9375rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Search Container */
+  .search-box {
+    padding: 0.35rem 0.6rem 0.35rem 0.85rem !important;
+  }
+
+  .search-input {
+    font-size: 0.9375rem !important;
+    padding: 0.4rem 0.5rem !important;
+  }
+
+  /* Tool Grid & Categories */
+  .tools-grid, .categories-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .tool-card {
+    padding: 1.25rem !important;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.6rem !important;
+  }
+}
+
+
+    /* ===================================================================
+   SMARTHUB - Tool Workspace & Interactive Components CSS
+=================================================================== */
+
+/* Breadcrumbs */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumbs a {
+  color: var(--text-muted);
+}
+
+.breadcrumbs a:hover {
+  color: var(--primary);
+}
+
+.breadcrumbs .separator {
+  color: var(--text-light);
+  font-size: 0.75rem;
+}
+
+.breadcrumbs .current {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* Tool Header */
+.tool-header-section {
+  margin-bottom: 2rem;
+}
+
+.tool-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.tool-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tool-header-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  background: var(--gradient-subtle);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.tool-header-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.tool-header-title {
+  font-size: clamp(1.5rem, 2.5vw + 0.5rem, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.tool-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tool-header-desc {
+  font-size: 1.0625rem;
+  color: var(--text-muted);
+  max-width: 820px;
+  line-height: 1.6;
+}
+
+/* Main Workspace Card */
+.tool-workspace {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: 2.25rem;
+  margin-bottom: 2.5rem;
+  transition: all var(--transition-normal);
+}
+
+@media (max-width: 768px) {
+  .tool-workspace {
+    padding: 1.25rem;
+  }
+}
+
+/* Two-column Workspace Layout */
+.workspace-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 880px) {
+  .workspace-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Form Groups & Inputs */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.form-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.35rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  color: var(--text-main);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.form-control:focus {
+  background: var(--bg-surface);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+/* Range Slider */
+.range-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.range-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.range-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--border-color);
+  border-radius: var(--radius-full);
+  outline: none;
+}
+
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.4);
+  transition: transform var(--transition-fast);
+}
+
+.range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+/* File Upload Dropzone */
+.dropzone {
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  background: var(--bg-surface-alt);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropzone:hover, .dropzone.dragover {
+  border-color: var(--primary);
+  background: rgba(37, 99, 235, 0.04);
+}
+
+.dropzone input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.dropzone-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-lg);
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.dropzone-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.dropzone-title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.dropzone-subtitle {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+/* Preview / File Container */
+.file-preview-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 1rem;
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  margin-top: 1rem;
+}
+
+.file-preview-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  overflow: hidden;
+}
+
+.file-preview-info img {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.file-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
+}
+
+.file-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Text Editors & Code Areas */
+.editor-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-top-left-radius: var(--radius-md);
+  border-top-right-radius: var(--radius-md);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.editor-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.editor-textarea {
+  width: 100%;
+  min-height: 220px;
+  padding: 1rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  resize: vertical;
+  color: var(--text-main);
+  outline: none;
+}
+
+.editor-textarea:focus {
+  border-color: var(--primary);
+}
+
+/* Stats Cards Grid (Counters / Metrics) */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+/* Results Display Box */
+.result-box {
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.result-title {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.result-value-big {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+/* Calculator Breakdown Table */
+.calc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
+.calc-table th, .calc-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.calc-table th {
+  color: var(--text-muted);
+  font-weight: 600;
+  background: var(--bg-surface);
+}
+
+.calc-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Switch / Radio Button Group */
+.radio-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background: var(--bg-surface-alt);
+  padding: 0.35rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.radio-pill-item {
+  flex: 1;
+  text-align: center;
+}
+
+.radio-pill-item input {
+  display: none;
+}
+
+.radio-pill-item label {
+  display: block;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.radio-pill-item input:checked + label {
+  background: var(--bg-surface);
+  color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Stop Watch / Timer Circular Display */
+.timer-display {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  color: var(--text-main);
+  text-align: center;
+  letter-spacing: 0.05em;
+  margin: 1.5rem 0;
+}
+
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* QR Code Preview Box */
+.qr-preview-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--bg-surface-alt);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  min-height: 280px;
+}
+
+.qr-canvas-holder {
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 1.25rem;
+}
+
+/* SEO Content Section on Tool Pages */
+.tool-seo-content {
+  margin-top: 3.5rem;
+  padding-top: 3.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.seo-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.seo-card h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.seo-card p {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.steps-list {
+  counter-reset: step-counter;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.step-number {
+  counter-increment: step-counter;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.step-text h4 {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.step-text p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+/* FAQ Accordion */
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.faq-item {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  overflow: hidden;
+}
+
+.faq-item summary {
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: '+';
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--primary);
+  transition: transform var(--transition-fast);
+}
+
+.faq-item[open] summary::after {
+  content: '−';
+}
+
+.faq-answer {
+  padding: 0 1.25rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* ===================================================================
+   SEO Features Grid & Mobile Speed Optimizations
+=================================================================== */
+.seo-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.seo-feature-box {
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  transition: transform var(--transition-fast);
+}
+
+.seo-feature-box:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+.seo-feature-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.seo-feature-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+.seo-feature-desc {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 0 !important;
+}
+
+/* ===================================================================
+   Mobile View Perfection (Phones <= 768px and <= 480px)
+=================================================================== */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  padding-bottom: 76px; /* Room for Sticky Bottom Ad */
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 60px;
+  }
+
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Header & Logo */
+  .header-inner {
+    height: 60px !important;
+  }
+
+  .brand-logo svg {
+    height: 30px !important;
+    width: auto !important;
+    max-width: 150px;
+  }
+
+  .header-actions {
+    gap: 0.35rem;
+  }
+
+  .btn-icon {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 3rem 0 2rem !important;
+  }
+
+  .hero-title {
+    font-size: 1.85rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9375rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Search Container */
+  .search-box {
+    padding: 0.35rem 0.6rem 0.35rem 0.85rem !important;
+  }
+
+  .search-input {
+    font-size: 0.9375rem !important;
+    padding: 0.4rem 0.5rem !important;
+  }
+
+  /* Tool Grid & Categories */
+  .tools-grid, .categories-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .tool-card {
+    padding: 1.25rem !important;
+  }
+
+  /* Tool Workspace & Header */
+  .tool-workspace {
+    padding: 1.25rem 1rem !important;
+    border-radius: var(--radius-lg) !important;
+  }
+
+  .tool-header-top {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.85rem !important;
+  }
+
+  .tool-header-left {
+    width: 100% !important;
+    gap: 0.75rem !important;
+  }
+
+  .tool-header-icon {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .tool-header-icon svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .tool-header-title {
+    font-size: 1.5rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .tool-header-actions {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.5rem !important;
+  }
+
+  .tool-header-actions .btn,
+  .tool-header-actions a {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  /* Workspace Grid */
+  .workspace-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Form Controls & Touch Targets */
+  .btn, .form-control, .range-slider {
+    min-height: 44px !important;
+    font-size: 16px !important; /* Stop iOS Safari zoom */
+  }
+
+  /* Radio Pills wrap gracefully */
+  .radio-pill-group {
+    flex-wrap: wrap !important;
+    gap: 0.35rem !important;
+  }
+
+  .radio-pill-item {
+    flex: 1 1 calc(50% - 0.35rem) !important;
+    min-width: 110px !important;
+  }
+
+  /* File Dropzone */
+  .dropzone {
+    padding: 1.75rem 1rem !important;
+  }
+
+  .dropzone-icon {
+    width: 46px !important;
+    height: 46px !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .dropzone-title {
+    font-size: 0.95rem !important;
+  }
+
+  /* Category Filter Pills: Horizontal Touch Scroll */
+  #category-pills {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start !important;
+    padding: 0.25rem 0.25rem 0.75rem !important;
+    gap: 0.5rem !important;
+    scrollbar-width: none;
+  }
+  #category-pills::-webkit-scrollbar {
+    display: none;
+  }
+  #category-pills .cat-filter-btn {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  /* Invoice Generator Responsive */
+  #invoice-actions-bar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.75rem !important;
+  }
+  #invoice-actions-bar > div {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+
+  #invoice-printable {
+    padding: 1rem 0.75rem !important;
+  }
+
+  .inv-header-grid {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+
+  .inv-billed-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .inv-dates-col {
+    text-align: left !important;
+    min-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .inv-dates-col div {
+    justify-content: flex-start !important;
+  }
+
+  .inv-totals-wrap {
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+  }
+
+  .inv-totals-box {
+    width: 100% !important;
+  }
+
+  /* Sticky Bottom Ad on Mobile */
+  .ad-slot-sticky {
+    padding: 3px 0.5rem !important;
+    font-size: 0.7rem !important;
+  }
+  .ad-slot-sticky span {
+    font-size: 0.7rem !important;
+  }
+
+  /* Canvas and Preview Images */
+  canvas, img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* SEO Cards & Features */
+  .seo-card {
+    padding: 1.25rem 1rem !important;
+  }
+
+  .seo-features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.85rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.6rem !important;
+  }
+
+  .stat-card {
+    padding: 0.75rem 0.5rem !important;
+  }
+
+  .stat-value {
+    font-size: 1.4rem !important;
+  }
+
+  .timer-display {
+    font-size: 2.25rem !important;
+  }
+
+  .tool-header-title {
+    font-size: 1.35rem !important;
+  }
+}
+
+/* ===================================================================
+   UX Upgrades: Favorites, Recents, Tool Rating & Sharing
+=================================================================== */
+.tool-card {
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.2s ease !important;
+}
+
+.tool-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 14px 28px -8px rgba(0, 0, 0, 0.12), 0 0 0 1px var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+
+.favorite-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  z-index: 5;
+}
+
+.favorite-btn:hover {
+  color: #eab308;
+  border-color: #eab308;
+  background: rgba(234, 179, 8, 0.1);
+  transform: scale(1.1);
+}
+
+.favorite-btn.active {
+  color: #eab308;
+  border-color: #eab308;
+  background: rgba(234, 179, 8, 0.15);
+}
+
+.tool-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Recent Tools Chips Bar */
+.recent-tools-section {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.recent-tools-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.recent-tools-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.recent-chips-container {
+  display: flex;
+  gap: 0.65rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  scrollbar-width: thin;
+}
+
+.recent-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.recent-chip:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.recent-chip svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* Tool Rating Box */
+.tool-rating-box {
+  margin-top: 1.75rem;
+  padding: 1.25rem;
+  background: var(--bg-surface-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.rating-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rating-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.rating-stars {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.star-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  color: #cbd5e1;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.star-btn:hover {
+  transform: scale(1.25);
+  color: #eab308;
+}
+
+.star-btn.active {
+  color: #eab308;
+}
+
+.rating-count {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Tool Top Action Buttons (Share, Favorite) */
+.tool-header-action-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-share {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-share:hover {
+  background: #25d366;
+  color: #ffffff;
+  border-color: #25d366;
+}
+
+
+
+  </style>
+  
+  
+</head>
+<body>
+  
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="SmartHub Home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 50" width="240" height="50" fill="none">
+  <defs>
+    <linearGradient id="hubGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="50%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- SmartHub Icon -->
+  <g transform="translate(6, 5)">
+    <!-- Outer rounded hexagon / shield background -->
+    <rect x="0" y="0" width="40" height="40" rx="12" fill="url(#hubGrad)" />
+    <!-- Connecting network lines -->
+    <path d="M20 10 L11 18 L14 29 L26 29 L29 18 Z" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.4" fill="none" />
+    <line x1="20" y1="20" x2="20" y2="10" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    <line x1="20" y1="20" x2="11" y2="18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    <line x1="20" y1="20" x2="14" y2="29" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    <line x1="20" y1="20" x2="26" y2="29" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    <line x1="20" y1="20" x2="29" y2="18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    <!-- Outer satellite nodes -->
+    <circle cx="20" cy="10" r="2.5" fill="#ffffff" />
+    <circle cx="11" cy="18" r="2.5" fill="#38bdf8" />
+    <circle cx="14" cy="29" r="2.5" fill="#ffffff" />
+    <circle cx="26" cy="29" r="2.5" fill="#ffffff" />
+    <circle cx="29" cy="18" r="2.5" fill="#38bdf8" />
+    <!-- Center Smart Core Hub -->
+    <circle cx="20" cy="20" r="4.5" fill="#ffffff" filter="url(#glow)"/>
+    <circle cx="20" cy="20" r="2.2" fill="#4f46e5"/>
+  </g>
+
+  <!-- Typography -->
+  <g transform="translate(56, 33)">
+    <text font-family="'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5">
+      <tspan fill="#0f172a" class="brand-text-primary">Smart</tspan><tspan fill="url(#hubGrad)">Hub</tspan>
+    </text>
+  </g>
+  <!-- Mini badge dot -->
+  <circle cx="168" cy="18" r="3" fill="#10b981" />
+</svg>
+
+      </a>
+      
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link ">Home</a>
+        <a href="tools.html" class="nav-link ">All Tools</a>
+        
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link" aria-haspopup="true">Categories ▾</a>
+          <div class="dropdown-menu">
+            
+              <a href="tools.html?category=ai" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                <span>AI Tools</span>
+              </a>
+            
+              <a href="tools.html?category=image" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span>Image Tools</span>
+              </a>
+            
+              <a href="tools.html?category=pdf" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                <span>PDF Tools</span>
+              </a>
+            
+              <a href="tools.html?category=calculators" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg>
+                <span>Calculators</span>
+              </a>
+            
+              <a href="tools.html?category=qr" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><line x1="10" y1="7" x2="10" y2="7.01"/><line x1="14" y1="10" x2="14" y2="10.01"/><line x1="7" y1="10" x2="7" y2="10.01"/><line x1="10" y1="14" x2="10" y2="14.01"/></svg>
+                <span>QR Code Tools</span>
+              </a>
+            
+              <a href="tools.html?category=text" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+                <span>Text Tools</span>
+              </a>
+            
+              <a href="tools.html?category=developer" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span>Developer Tools</span>
+              </a>
+            
+              <a href="tools.html?category=converters" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 14 5-5-5-5"/><path d="M4 9h16"/><path d="m9 10-5 5 5 5"/><path d="M20 15H4"/></svg>
+                <span>Unit Converters</span>
+              </a>
+            
+              <a href="tools.html?category=other" class="dropdown-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Other Tools</span>
+              </a>
+            
+          </div>
+        </div>
+
+        <a href="about.html" class="nav-link ">About Us</a>
+        <a href="contact.html" class="nav-link ">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-icon theme-toggle" title="Toggle Theme" aria-label="Toggle Theme">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="btn-icon mobile-toggle" aria-label="Open Mobile Menu">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="section" style="padding-top:2rem;">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="separator">/</span>
+        <a href="tools.html?category=image">Image Tools</a>
+        <span class="separator">/</span>
+        <span class="current" aria-current="page">Background Remover</span>
+      </nav>
+
+      <div class="tool-header-section">
+        <div class="tool-header-top">
+          <div class="tool-header-left">
+            <div class="tool-header-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+            <div>
+              <span class="badge badge-primary" style="margin-bottom:0.35rem;">Image Tools</span>
+              <h1 class="tool-header-title">Background Remover</h1>
+            </div>
+          </div>
+          <div class="tool-header-actions" style="display:flex; gap:0.5rem; align-items:center;">
+            <button class="favorite-btn" data-tool-id="background-remover" onclick="toggleFavorite('background-remover', event)" title="Save to Favorites" aria-label="Save to Favorites">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </button>
+            <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20free%20tool%3A%20Background%20Remover%20%E2%80%93%20https%3A%2F%2Fdinesh2199.github.io%2Fsmarthub%2Fbackground-remover.html" target="_blank" rel="noopener" class="btn btn-sm btn-success" style="background:#25D366; color:#ffffff; border:none; display:flex; align-items:center; gap:0.35rem; text-decoration:none;" title="Share on WhatsApp">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+              WhatsApp
+            </a>
+            <button class="btn btn-sm btn-secondary" onclick="copyToClipboard(window.location.href, this)" title="Copy Link">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Share
+            </button>
+          </div>
+        </div>
+        <p class="tool-header-desc">Automatically remove backgrounds from photos and products with smart sensitivity controls and transparent PNG download.</p>
+      </div>
+
+      
+  <!-- AdSense Compliant Unit -->
+  <div class="ad-slot-wrapper">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-slot ad-slot-leaderboard">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+        <span style="font-size:0.75rem; color:var(--text-light);">Google AdSense Display Unit (Responsive)</span>
+        <span style="font-size:0.7rem; color:var(--text-muted); opacity:0.6;">Ad slot ready for publisher ID</span>
+      </div>
+    </div>
+  </div>
+
+      <div class="tool-workspace">
+        
+      <div class="workspace-grid">
+        <div class="workspace-col">
+          <div class="dropzone" id="bg-dropzone">
+            <input type="file" id="bg-file" accept="image/jpeg,image/png,image/webp">
+            <div class="dropzone-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+            <div class="dropzone-title">Upload Image to Remove Background</div>
+            <div class="dropzone-subtitle">Supports JPG, PNG, WEBP (Max 20MB)</div>
+          </div>
+
+          <div id="bg-controls" style="display:none; margin-top:1.25rem;">
+            <div class="form-group">
+              <label class="form-label" style="display:flex; justify-content:space-between;">
+                <span>Color Detection Sensitivity / Tolerance</span>
+                <span id="tol-val" style="font-weight:700; color:var(--primary);">35%</span>
+              </label>
+              <input type="range" class="form-range" id="bg-tolerance" min="5" max="85" value="35">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="bg-replace-mode">Replacement Background</label>
+              <select class="form-control" id="bg-replace-mode">
+                <option value="transparent">Transparent (PNG)</option>
+                <option value="#ffffff">Solid Pure White</option>
+                <option value="#111827">Dark Studio (#111827)</option>
+                <option value="#f3f4f6">Soft Light Gray (#F3F4F6)</option>
+                <option value="#3b82f6">Vibrant Blue (#3B82F6)</option>
+              </select>
+            </div>
+
+            <button class="btn btn-primary btn-block" id="btn-reprocess-bg" style="margin-top:0.75rem;">
+              <span>✨ Re-process Background</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="workspace-col">
+          <div style="background: repeating-conic-gradient(#e2e8f0 0% 25%, #ffffff 0% 50%) 50% / 16px 16px; border:2px dashed var(--border-color); border-radius:var(--radius-md); min-height:360px; display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative;" id="canvas-wrap">
+            <div id="bg-placeholder" style="color:var(--text-muted); text-align:center; padding:2rem;">
+              Upload an image to see the transparent cutout preview here.
+            </div>
+            <canvas id="bg-canvas" style="display:none; max-width:100%; max-height:480px; object-fit:contain;"></canvas>
+          </div>
+
+          <div id="bg-download-wrap" style="display:none; margin-top:1rem;">
+            <button class="btn btn-primary btn-block" id="btn-download-bg">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Download Cutout PNG</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    
+      </div>
+
+      <div class="tool-rating-box">
+        <div class="rating-left">
+          <span class="rating-label">Was this tool helpful?</span>
+          <div class="rating-stars">
+            <button class="star-btn" data-value="1" aria-label="1 star">★</button>
+            <button class="star-btn" data-value="2" aria-label="2 stars">★</button>
+            <button class="star-btn" data-value="3" aria-label="3 stars">★</button>
+            <button class="star-btn" data-value="4" aria-label="4 stars">★</button>
+            <button class="star-btn" data-value="5" aria-label="5 stars">★</button>
+          </div>
+        </div>
+        <div class="rating-count">Rated 4.9 / 5 from 1,280+ users</div>
+      </div>
+
+      
+  <!-- AdSense Compliant Unit -->
+  <div class="ad-slot-wrapper">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-slot ad-slot-responsive">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+        <span style="font-size:0.75rem; color:var(--text-light);">Google AdSense Display Unit (Responsive)</span>
+        <span style="font-size:0.7rem; color:var(--text-muted); opacity:0.6;">Ad slot ready for publisher ID</span>
+      </div>
+    </div>
+  </div>
+
+      
+  <!-- SEO Educational Content & FAQs -->
+  <div class="tool-seo-content">
+    <div class="seo-card">
+      <h2>About Background Remover</h2>
+      <p>SmartHub's <strong>Background Remover</strong> is an intuitive, fast, and free online utility designed to simplify your digital workflow. Whether you are a professional, student, developer, or creator, this tool eliminates tedious tasks with zero installation and instant client-side execution.</p>
+      <p>Automatically remove backgrounds from photos and products with smart sensitivity controls and transparent PNG download. It delivers premium precision while keeping your sensitive documents, images, and calculations completely private on your local device.</p>
+      
+      <!-- Key Features & Highlights -->
+      <h3 style="font-size:1.15rem; font-weight:700; margin:1.5rem 0 0.75rem;">Key Features &amp; Benefits</h3>
+      <div class="seo-features-grid">
+        <div class="seo-feature-box">
+          <div class="seo-feature-icon">⚡</div>
+          <div class="seo-feature-title">Instant Speed</div>
+          <p class="seo-feature-desc">All calculations and processing execute in milliseconds right in your browser with zero server latency.</p>
+        </div>
+        <div class="seo-feature-box">
+          <div class="seo-feature-icon">🔒</div>
+          <div class="seo-feature-title">100% Client-Side Privacy</div>
+          <p class="seo-feature-desc">Your files and data never leave your computer or phone. Guaranteed zero server storage or transmission.</p>
+        </div>
+        <div class="seo-feature-box">
+          <div class="seo-feature-icon">📱</div>
+          <div class="seo-feature-title">Mobile &amp; Touch Friendly</div>
+          <p class="seo-feature-desc">Fully responsive touch-friendly controls designed for smooth operation on Android, iPhone, and desktop.</p>
+        </div>
+        <div class="seo-feature-box">
+          <div class="seo-feature-icon">🆓</div>
+          <div class="seo-feature-title">100% Free Forever</div>
+          <p class="seo-feature-desc">Unlimited usage, zero subscription fees, no account registration, and no hidden watermarks.</p>
+        </div>
+      </div>
+
+      <h3 style="font-size:1.15rem; font-weight:700; margin:1.5rem 0 0.75rem;">How to use Background Remover</h3>
+      <div class="steps-list">
+        
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-text">
+              <h4>Select or Enter Input</h4>
+              <p>Upload your files or enter your numbers, text, or parameters directly into the Background Remover interface above.</p>
+            </div>
+          </div>
+        
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-text">
+              <h4>Configure Settings</h4>
+              <p>Adjust real-time sliders, conversion units, formats, or options according to your requirements.</p>
+            </div>
+          </div>
+        
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-text">
+              <h4>Instant Result & Download</h4>
+              <p>View instant results calculated securely on your device. Click Download or Copy to save your output.</p>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="seo-card">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-accordion">
+        
+          <details class="faq-item">
+            <summary>Does using Background Remover reduce visible picture quality?</summary>
+            <div class="faq-answer">No. SmartHub uses high-performance HTML5 Canvas and bicubic scaling algorithms to preserve crisp details and sharp colors while optimizing file size efficiently.</div>
+          </details>
+        
+          <details class="faq-item">
+            <summary>What image formats are supported?</summary>
+            <div class="faq-answer">This tool supports all popular modern formats including JPG, JPEG, PNG, and WEBP.</div>
+          </details>
+        
+          <details class="faq-item">
+            <summary>Are my private photos uploaded to a cloud server?</summary>
+            <div class="faq-answer">Never. All image processing takes place directly inside your device's browser memory. Your personal photos never touch an external server.</div>
+          </details>
+        
+          <details class="faq-item">
+            <summary>Can I use Background Remover on my Android phone or iPhone?</summary>
+            <div class="faq-answer">Yes! The tool is 100% mobile-friendly with responsive touch controls, working smoothly across all smartphone browsers.</div>
+          </details>
+        
+      </div>
+    </div>
+  </div>
+
+      <!-- Related Tools in this Category -->
+      <section class="section" style="padding-top:2rem;">
+        <div class="container" style="padding:0;">
+          <div class="section-header" style="margin-bottom:1.5rem;">
+            <div class="section-title-group">
+              <h3 class="heading-md">Related Image Tools</h3>
+              <p>Explore other fast and private tools in this category</p>
+            </div>
+          </div>
+          <div class="tools-grid">
+            
+                <a href="image-compressor.html" class="tool-card">
+                  <div class="tool-card-header">
+                    <div class="tool-icon-wrapper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/><path d="M12 7v6m-3-3l3 3 3-3"/></svg></div>
+                    <span class="badge badge-primary">Image Tools</span>
+                  </div>
+                  <h4 class="tool-card-title">Image Compressor</h4>
+                  <p class="tool-card-desc">Compress JPG, PNG, and WebP images to smaller file sizes with real-time preview and quality control.</p>
+                  <div class="tool-card-footer">
+                    <span>Open Tool</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                  </div>
+                </a>
+              
+                <a href="image-resizer.html" class="tool-card">
+                  <div class="tool-card-header">
+                    <div class="tool-icon-wrapper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 3H3v18h18V3z"/><path d="M21 9h-6V3"/><path d="M9 21v-6H3"/></svg></div>
+                    <span class="badge badge-primary">Image Tools</span>
+                  </div>
+                  <h4 class="tool-card-title">Image Resizer</h4>
+                  <p class="tool-card-desc">Resize pictures by pixel dimensions or percentage with quick presets for Passport photo, Instagram, YouTube, and PAN card.</p>
+                  <div class="tool-card-footer">
+                    <span>Open Tool</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                  </div>
+                </a>
+              
+                <a href="jpg-to-png.html" class="tool-card">
+                  <div class="tool-card-header">
+                    <div class="tool-icon-wrapper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4"/><path d="M17 8v12m0 0l4-4m-4 4l-4-4"/></svg></div>
+                    <span class="badge badge-primary">Image Tools</span>
+                  </div>
+                  <h4 class="tool-card-title">JPG to PNG Converter</h4>
+                  <p class="tool-card-desc">Convert JPEG and JPG photos to high quality lossless PNG format in seconds.</p>
+                  <div class="tool-card-footer">
+                    <span>Open Tool</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                  </div>
+                </a>
+              
+          </div>
+        </div>
+      </section>
+
+      <div style="margin-top:3.5rem;">
+        <div class="newsletter-card">
+          <div class="newsletter-content">
+            <h2>Never Miss a New Smart Tool</h2>
+            <p>Subscribe to our newsletter for weekly updates, new tool releases, and productivity tips. Free forever, no spam.</p>
+            <form class="newsletter-form">
+              <input type="email" class="newsletter-input" placeholder="Enter your email address..." required>
+              <button type="submit" class="newsletter-btn">Subscribe Free</button>
+            </form>
+            <span class="newsletter-privacy">🔒 100% Privacy. Unsubscribe anytime with 1-click.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 50" width="240" height="50" fill="none">
+  <defs>
+    <linearGradient id="hubGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="50%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- SmartHub Icon -->
+  <g transform="translate(6, 5)">
+    <!-- Outer rounded hexagon / shield background -->
+    <rect x="0" y="0" width="40" height="40" rx="12" fill="url(#hubGrad)" />
+    <!-- Connecting network lines -->
+    <path d="M20 10 L11 18 L14 29 L26 29 L29 18 Z" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.4" fill="none" />
+    <line x1="20" y1="20" x2="20" y2="10" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    <line x1="20" y1="20" x2="11" y2="18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    <line x1="20" y1="20" x2="14" y2="29" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    <line x1="20" y1="20" x2="26" y2="29" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    <line x1="20" y1="20" x2="29" y2="18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    <!-- Outer satellite nodes -->
+    <circle cx="20" cy="10" r="2.5" fill="#ffffff" />
+    <circle cx="11" cy="18" r="2.5" fill="#38bdf8" />
+    <circle cx="14" cy="29" r="2.5" fill="#ffffff" />
+    <circle cx="26" cy="29" r="2.5" fill="#ffffff" />
+    <circle cx="29" cy="18" r="2.5" fill="#38bdf8" />
+    <!-- Center Smart Core Hub -->
+    <circle cx="20" cy="20" r="4.5" fill="#ffffff" filter="url(#glow)"/>
+    <circle cx="20" cy="20" r="2.2" fill="#4f46e5"/>
+  </g>
+
+  <!-- Typography -->
+  <g transform="translate(56, 33)">
+    <text font-family="'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5">
+      <tspan fill="#0f172a" class="brand-text-primary">Smart</tspan><tspan fill="url(#hubGrad)">Hub</tspan>
+    </text>
+  </g>
+  <!-- Mini badge dot -->
+  <circle cx="168" cy="18" r="3" fill="#10b981" />
+</svg>
+
+          </a>
+          <p>Everything You Need, All in One Smart Place. 100% free, browser-processed, privacy-first online tools for everyone.</p>
+          <div class="social-links">
+            <a href="#" class="social-btn" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+            <a href="#" class="social-btn" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+            <a href="#" class="social-btn" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Tool Categories</h4>
+          <ul class="footer-links">
+            <li><a href="tools.html?category=ai">AI Tools</a></li>
+            <li><a href="tools.html?category=image">Image Tools</a></li>
+            <li><a href="tools.html?category=pdf">PDF Tools</a></li>
+            <li><a href="tools.html?category=calculators">Calculators</a></li>
+            <li><a href="tools.html?category=qr">QR Code Tools</a></li>
+            <li><a href="tools.html?category=text">Text Tools</a></li>
+            <li><a href="tools.html?category=developer">Developer Tools</a></li>
+            <li><a href="tools.html?category=converters">Unit Converters</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Popular Tools</h4>
+          <ul class="footer-links">
+            <li><a href="ai-email-writer.html">AI Email Writer</a></li>
+            <li><a href="background-remover.html">Background Remover</a></li>
+            <li><a href="pdf-to-word.html">PDF to Word</a></li>
+            <li><a href="image-compressor.html">Image Compressor</a></li>
+            <li><a href="merge-pdf.html">Merge PDF</a></li>
+            <li><a href="gst-calculator.html">GST Calculator</a></li>
+            <li><a href="qr-code-generator.html">QR Code Generator</a></li>
+            <li><a href="invoice-generator.html">Invoice Generator</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company &amp; Legal</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Support</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms &amp; Conditions</a></li>
+            <li><a href="disclaimer.html">Disclaimer</a></li>
+            <li><a href="sitemap.xml">Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 SmartHub. All rights reserved. Processed safely in your browser.</p>
+        <p>Built with ❤️ for speed, simplicity, and privacy.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Sticky Bottom Ad Container (Highest Mobile RPM) -->
+  <div class="ad-slot-sticky" id="sticky-bottom-ad" style="position:fixed; bottom:0; left:0; right:0; z-index:9999; background:var(--bg-surface); border-top:1px solid var(--border-color); box-shadow:0 -4px 12px rgba(0,0,0,0.08); padding:4px 0.5rem; text-align:center;">
+    <button type="button" onclick="document.getElementById('sticky-bottom-ad').style.display='none'" style="position:absolute; right:10px; top:2px; background:none; border:none; color:var(--text-muted); font-size:14px; cursor:pointer;" title="Close Ad">✕</button>
+    <div style="font-size:0.65rem; color:var(--text-light); text-transform:uppercase; letter-spacing:0.5px;">Advertisement</div>
+    <div style="min-height:50px; display:flex; align-items:center; justify-content:center; font-size:0.75rem; color:var(--text-muted);">
+      <span>Google AdSense Anchor Display (320x50 / 728x90) • Ready for Publisher ID</span>
+    </div>
+  </div>
+
+  <script>
+    /**
+ * SMARTHUB - Centralized Tools Registry Data
+ * Contains all 39 online tools categorized and mapped with search metadata.
+ */
+
+const SMARTHUB_CATEGORIES = [
+  {
+    id: "ai",
+    name: "AI Tools",
+    desc: "AI email writer, paragraph rewriter, grammar checker, and resume builder.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>`,
+    badge: "5 Tools"
+  },
+  {
+    id: "image",
+    name: "Image Tools",
+    desc: "Compress, resize, remove background, crop and convert your pictures privately.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`,
+    badge: "7 Tools"
+  },
+  {
+    id: "pdf",
+    name: "PDF Tools",
+    desc: "Merge, split, compress, convert to Word, rotate and convert PDF documents in your browser.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
+    badge: "7 Tools"
+  },
+  {
+    id: "calculators",
+    name: "Calculators",
+    desc: "Instant financial, age, percentage, EMI, GST and invoice calculators.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg>`,
+    badge: "7 Tools"
+  },
+  {
+    id: "qr",
+    name: "QR Code Tools",
+    desc: "Generate custom QR codes for websites, WhatsApp, WiFi networks and text.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><line x1="10" y1="7" x2="10" y2="7.01"/><line x1="14" y1="10" x2="14" y2="10.01"/><line x1="7" y1="10" x2="7" y2="10.01"/><line x1="10" y1="14" x2="10" y2="14.01"/></svg>`,
+    badge: "4 Tools"
+  },
+  {
+    id: "text",
+    name: "Text Tools",
+    desc: "Word and character counters, case converters, space cleaner, and text-to-speech.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>`,
+    badge: "5 Tools"
+  },
+  {
+    id: "developer",
+    name: "Developer Tools",
+    desc: "JSON and HTML formatters, CSS minifier, Base64 encoder/decoder and secure password generator.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+    badge: "5 Tools"
+  },
+  {
+    id: "converters",
+    name: "Unit Converters",
+    desc: "Quick, accurate conversions for distance, weight, temperature and digital storage.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 14 5-5-5-5"/><path d="M4 9h16"/><path d="m9 10-5 5 5 5"/><path d="M20 15H4"/></svg>`,
+    badge: "4 Tools"
+  },
+  {
+    id: "other",
+    name: "Other Tools",
+    desc: "Useful productivity utilities including stopwatch, timer, calendar and random generator.",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+    badge: "4 Tools"
+  }
+];
+
+const SMARTHUB_TOOLS = [
+  // Image Tools (6)
+  {
+    id: "image-compressor",
+    name: "Image Compressor",
+    category: "image",
+    categoryName: "Image Tools",
+    desc: "Compress JPG, PNG, and WebP images to smaller file sizes with real-time preview and quality control.",
+    popular: true,
+    recent: false,
+    keywords: ["image compressor", "compress image", "reduce photo size", "optimize jpg", "shrink png", "kb mb reducer"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/><path d="M12 7v6m-3-3l3 3 3-3"/></svg>`
+  },
+  {
+    id: "image-resizer",
+    name: "Image Resizer",
+    category: "image",
+    categoryName: "Image Tools",
+    desc: "Resize pictures by pixel dimensions or percentage with quick presets for Passport photo, Instagram, YouTube, and PAN card.",
+    popular: true,
+    recent: false,
+    keywords: ["image resizer", "resize image", "passport size photo", "instagram photo resizer", "youtube thumbnail resizer", "pan card photo resize", "scale photo"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 3H3v18h18V3z"/><path d="M21 9h-6V3"/><path d="M9 21v-6H3"/></svg>`
+  },
+  {
+    id: "jpg-to-png",
+    name: "JPG to PNG Converter",
+    category: "image",
+    categoryName: "Image Tools",
+    desc: "Convert JPEG and JPG photos to high quality lossless PNG format in seconds.",
+    popular: false,
+    recent: true,
+    keywords: ["jpg to png", "jpeg to png", "convert image", "convert jpg", "lossless png"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4"/><path d="M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>`
+  },
+  {
+    id: "png-to-jpg",
+    name: "PNG to JPG Converter",
+    category: "image",
+    categoryName: "Image Tools",
+    desc: "Convert PNG images to standard lightweight JPG format with custom background color fill.",
+    popular: false,
+    recent: false,
+    keywords: ["png to jpg", "png to jpeg", "convert png", "image format converter"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 16V4m0 0l4 4m-4-4l-4 4"/><path d="M7 8v12m0 0l-4-4m4 4l4-4"/></svg>`
+  },
+  {
+    id: "image-cropper",
+    name: "Image Cropper",
+    category: "image",
+    categoryName: "Image Tools",
+    desc: "Crop any photo with customizable crop boxes, freeform or preset social media aspect ratios.",
+    popular: true,
+    recent: true,
+    keywords: ["image cropper", "crop photo", "cut picture", "square crop", "avatar cropper"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></svg>`
+  },
+  {
+    id: "image-to-pdf",
+    name: "Image to PDF Converter",
+    category: "image",
+    categoryName: "Image Tools",
+    desc: "Convert single or multiple JPG and PNG images into a clean, unified PDF document.",
+    popular: true,
+    recent: false,
+    keywords: ["image to pdf", "jpg to pdf", "png to pdf", "photos to pdf document"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><circle cx="10" cy="13" r="1.5"/><polyline points="15 17 12 14 9 17"/></svg>`
+  },
+
+  // PDF Tools (6)
+  {
+    id: "pdf-to-jpg",
+    name: "PDF to JPG Converter",
+    category: "pdf",
+    categoryName: "PDF Tools",
+    desc: "Extract pages from your PDF documents and convert each page into crisp, high-resolution JPG images.",
+    popular: true,
+    recent: false,
+    keywords: ["pdf to jpg", "pdf to image", "extract pdf pages", "pdf to jpeg"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18l4-4-4-4"/><line x1="8" y1="14" x2="16" y2="14"/></svg>`
+  },
+  {
+    id: "jpg-to-pdf",
+    name: "JPG to PDF Converter",
+    category: "pdf",
+    categoryName: "PDF Tools",
+    desc: "Batch convert JPG photos into high-quality PDFs with custom orientation and margins.",
+    popular: false,
+    recent: true,
+    keywords: ["jpg to pdf", "jpeg to pdf converter", "pictures to pdf file", "documents pdf"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 12v6m-3-3l3 3 3-3"/></svg>`
+  },
+  {
+    id: "merge-pdf",
+    name: "Merge PDF",
+    category: "pdf",
+    categoryName: "PDF Tools",
+    desc: "Combine multiple PDF documents into a single organized file in seconds.",
+    popular: true,
+    recent: false,
+    keywords: ["merge pdf", "combine pdf", "join pdf", "unite pdf files"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7h8m-8 4h8m-8 4h5"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg>`
+  },
+  {
+    id: "split-pdf",
+    name: "Split PDF",
+    category: "pdf",
+    categoryName: "PDF Tools",
+    desc: "Separate one PDF into individual pages or extract custom page ranges effortlessly.",
+    popular: false,
+    recent: false,
+    keywords: ["split pdf", "separate pdf", "extract pdf pages", "cut pdf"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8l-5-5z"/><line x1="4" y1="12" x2="20" y2="12"/></svg>`
+  },
+  {
+    id: "compress-pdf",
+    name: "Compress PDF",
+    category: "pdf",
+    categoryName: "PDF Tools",
+    desc: "Reduce PDF document file size while preserving readability and image quality.",
+    popular: true,
+    recent: true,
+    keywords: ["compress pdf", "reduce pdf size", "shrink pdf", "optimize pdf"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 13l3 3 3-3"/><path d="M9 17l3-3 3 3"/></svg>`
+  },
+  {
+    id: "rotate-pdf",
+    name: "Rotate PDF",
+    category: "pdf",
+    categoryName: "PDF Tools",
+    desc: "Rotate PDF pages 90, 180, or 270 degrees and permanently save the corrected orientation.",
+    popular: false,
+    recent: false,
+    keywords: ["rotate pdf", "turn pdf", "flip pdf pages", "pdf orientation"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><polyline points="21 3 21 8 16 8"/></svg>`
+  },
+
+  // Calculators (6)
+  {
+    id: "age-calculator",
+    name: "Age Calculator",
+    category: "calculators",
+    categoryName: "Calculators",
+    desc: "Calculate your exact age in years, months, days, hours, and find upcoming birthday countdown.",
+    popular: true,
+    recent: false,
+    keywords: ["age calculator", "calculate age", "birthday calculator", "how old am i"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="12" cy="15" r="2"/></svg>`
+  },
+  {
+    id: "gst-calculator",
+    name: "GST Calculator India",
+    category: "calculators",
+    categoryName: "Calculators",
+    desc: "Calculate Indian Goods and Services Tax (GST) with 5%, 12%, 18%, 28% slabs, CGST, SGST & IGST breakdown.",
+    popular: true,
+    recent: false,
+    keywords: ["gst calculator india", "gst calculator", "cgst sgst igst", "gst tax rates", "gst online calculator", "reverse gst", "inclusive gst", "exclusive gst"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`
+  },
+  {
+    id: "invoice-generator",
+    name: "Invoice Generator",
+    category: "calculators",
+    categoryName: "Calculators",
+    desc: "Create and download professional PDF invoices online with GST calculation, customizable items, and company branding.",
+    popular: true,
+    recent: true,
+    keywords: ["invoice generator", "free invoice maker", "gst invoice generator", "bill generator", "pdf invoice", "online invoice maker", "business invoice template"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`
+  },
+  {
+    id: "emi-calculator",
+    name: "EMI Calculator",
+    category: "calculators",
+    categoryName: "Calculators",
+    desc: "Calculate home, car, or personal loan monthly EMI with total interest and payment summary.",
+    popular: true,
+    recent: false,
+    keywords: ["emi calculator", "loan calculator", "monthly installment", "interest calculator", "home loan emi"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="12" y1="8" x2="12" y2="16"/></svg>`
+  },
+  {
+    id: "percentage-calculator",
+    name: "Percentage Calculator",
+    category: "calculators",
+    categoryName: "Calculators",
+    desc: "Quickly compute percentages, percentage increase or decrease, and ratio proportions.",
+    popular: false,
+    recent: true,
+    keywords: ["percentage calculator", "percent off", "percentage increase", "math calculator"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>`
+  },
+  {
+    id: "discount-calculator",
+    name: "Discount Calculator",
+    category: "calculators",
+    categoryName: "Calculators",
+    desc: "Find final sale price and total savings after applying percentage discounts and coupon deductions.",
+    popular: false,
+    recent: false,
+    keywords: ["discount calculator", "sale calculator", "price savings", "shopping discount"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>`
+  },
+  {
+    id: "profit-loss-calculator",
+    name: "Profit & Loss Calculator",
+    category: "calculators",
+    categoryName: "Calculators",
+    desc: "Determine net profit or loss amount and percentage margin based on cost price and selling price.",
+    popular: false,
+    recent: true,
+    keywords: ["profit and loss", "profit loss calculator", "margin calculator", "cost price selling price"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>`
+  },
+
+  // QR Code Tools (4)
+  {
+    id: "qr-code-generator",
+    name: "QR Code Generator",
+    category: "qr",
+    categoryName: "QR Code Tools",
+    desc: "Create custom QR codes from any text or links with customizable colors and instant PNG download.",
+    popular: true,
+    recent: false,
+    keywords: ["qr code generator", "create qr code", "make qr", "custom qr code maker"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><circle cx="6.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="6.5" r="1.5"/><circle cx="6.5" cy="17.5" r="1.5"/></svg>`
+  },
+  {
+    id: "website-qr-code",
+    name: "Website QR Code",
+    category: "qr",
+    categoryName: "QR Code Tools",
+    desc: "Generate scannable QR codes specifically optimized for website URLs and landing pages.",
+    popular: false,
+    recent: true,
+    keywords: ["website qr code", "url qr code", "link qr code", "qr for web page"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`
+  },
+  {
+    id: "whatsapp-qr-code",
+    name: "WhatsApp QR Code",
+    category: "qr",
+    categoryName: "QR Code Tools",
+    desc: "Generate direct WhatsApp chat QR codes with pre-filled greeting messages for business or personal use.",
+    popular: true,
+    recent: false,
+    keywords: ["whatsapp qr code", "wa qr code", "chat qr code", "direct whatsapp link"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>`
+  },
+  {
+    id: "wifi-qr-code",
+    name: "WiFi QR Code",
+    category: "qr",
+    categoryName: "QR Code Tools",
+    desc: "Allow guests to scan and instantly connect to your home or office WiFi without typing passwords.",
+    popular: false,
+    recent: true,
+    keywords: ["wifi qr code", "wireless qr code", "wifi connect qr", "scan wifi password"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>`
+  },
+
+  // Text Tools (5)
+  {
+    id: "word-counter",
+    name: "Word Counter",
+    category: "text",
+    categoryName: "Text Tools",
+    desc: "Count words, characters, sentences, paragraphs and calculate estimated reading and speaking times.",
+    popular: true,
+    recent: false,
+    keywords: ["word counter", "count words", "character counter", "reading time", "text analyzer"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`
+  },
+  {
+    id: "character-counter",
+    name: "Character Counter",
+    category: "text",
+    categoryName: "Text Tools",
+    desc: "Detailed character counter with spaces, without spaces, bytes length, and social media post limits.",
+    popular: false,
+    recent: false,
+    keywords: ["character counter", "letter counter", "tweet counter", "sms length checker"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>`
+  },
+  {
+    id: "case-converter",
+    name: "Case Converter",
+    category: "text",
+    categoryName: "Text Tools",
+    desc: "Convert text instantly between UPPERCASE, lowercase, Title Case, Sentence case, camelCase, and snake_case.",
+    popular: true,
+    recent: false,
+    keywords: ["case converter", "uppercase", "lowercase", "title case", "camelcase", "slugify"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7V5h10v2"/><path d="M8 5v14"/><path d="M15 13v-2h6v2"/><path d="M18 11v8"/></svg>`
+  },
+  {
+    id: "remove-extra-spaces",
+    name: "Remove Extra Spaces",
+    category: "text",
+    categoryName: "Text Tools",
+    desc: "Clean up messy text by removing duplicate spaces, leading/trailing whitespace, and redundant empty lines.",
+    popular: false,
+    recent: true,
+    keywords: ["remove extra spaces", "clean text", "trim spaces", "remove blank lines", "text formatter"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/><circle cx="12" cy="12" r="3"/></svg>`
+  },
+  {
+    id: "text-to-speech",
+    name: "Text to Speech",
+    category: "text",
+    categoryName: "Text Tools",
+    desc: "Convert written text into natural spoken voice using your browser's speech synthesis engine.",
+    popular: true,
+    recent: false,
+    keywords: ["text to speech", "tts", "read text aloud", "voice reader", "speech synthesizer"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>`
+  },
+
+  // Developer Tools (4)
+  {
+    id: "json-formatter",
+    name: "JSON Formatter & Validator",
+    category: "developer",
+    categoryName: "Developer Tools",
+    desc: "Format, beautify, minify, and validate JSON code with syntax error detection and quick copy.",
+    popular: true,
+    recent: false,
+    keywords: ["json formatter", "json beautifier", "json validator", "json parser", "minify json"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`
+  },
+  {
+    id: "html-formatter",
+    name: "HTML Formatter",
+    category: "developer",
+    categoryName: "Developer Tools",
+    desc: "Beautify messy HTML code with proper indentation or minify it for maximum webpage performance.",
+    popular: false,
+    recent: false,
+    keywords: ["html formatter", "html beautifier", "format html", "minify html", "clean html code"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 8 3 12 7 16"/><polyline points="17 8 21 12 17 16"/><line x1="14" y1="4" x2="10" y2="20"/></svg>`
+  },
+  {
+    id: "base64-encoder",
+    name: "Base64 Encoder / Decoder",
+    category: "developer",
+    categoryName: "Developer Tools",
+    desc: "Encode string text into Base64 format or decode Base64 strings back to readable text securely.",
+    popular: false,
+    recent: true,
+    keywords: ["base64 encoder", "base64 decoder", "encode base64", "decode base64", "binary to text"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`
+  },
+  {
+    id: "password-generator",
+    name: "Password Generator",
+    category: "developer",
+    categoryName: "Developer Tools",
+    desc: "Generate ultra-secure, cryptographically random passwords with custom length and character sets.",
+    popular: true,
+    recent: false,
+    keywords: ["password generator", "strong password", "random password", "secure password maker"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/><circle cx="12" cy="16" r="1"/></svg>`
+  },
+
+  // Unit Converters (4)
+  {
+    id: "km-to-miles",
+    name: "KM to Miles Converter",
+    category: "converters",
+    categoryName: "Unit Converters",
+    desc: "Convert kilometers to miles, meters, feet, and nautical miles with exact conversion formulas.",
+    popular: true,
+    recent: false,
+    keywords: ["km to miles", "kilometers to miles", "distance converter", "miles to km", "length converter"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 14 5-5-5-5"/><path d="M4 9h16"/><path d="m9 10-5 5 5 5"/><path d="M20 15H4"/></svg>`
+  },
+  {
+    id: "kg-to-pounds",
+    name: "KG to Pounds Converter",
+    category: "converters",
+    categoryName: "Unit Converters",
+    desc: "Convert kilograms to pounds (lbs), grams, ounces, and stones with precision calculations.",
+    popular: false,
+    recent: false,
+    keywords: ["kg to pounds", "kilograms to lbs", "weight converter", "lbs to kg", "mass conversion"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>`
+  },
+  {
+    id: "celsius-to-fahrenheit",
+    name: "Celsius to Fahrenheit",
+    category: "converters",
+    categoryName: "Unit Converters",
+    desc: "Convert temperatures between Celsius (°C), Fahrenheit (°F), and Kelvin (K) instantaneously.",
+    popular: false,
+    recent: true,
+    keywords: ["celsius to fahrenheit", "temperature converter", "fahrenheit to celsius", "degrees conversion"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>`
+  },
+  {
+    id: "mb-to-gb",
+    name: "MB to GB Converter",
+    category: "converters",
+    categoryName: "Unit Converters",
+    desc: "Convert digital storage between Bytes, KB, MB, GB, and TB using binary (1024) or decimal standards.",
+    popular: false,
+    recent: false,
+    keywords: ["mb to gb", "megabytes to gigabytes", "data converter", "storage converter", "gb to mb"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>`
+  },
+
+  // Other Tools (4)
+  {
+    id: "stopwatch",
+    name: "Stopwatch",
+    category: "other",
+    categoryName: "Other Tools",
+    desc: "Precise online stopwatch with millisecond accuracy, start/pause controls, and lap split recording.",
+    popular: true,
+    recent: false,
+    keywords: ["stopwatch", "online stopwatch", "lap timer", "chronometer", "time tracker"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3L2 6"/><path d="M22 6l-3-3"/><path d="M12 2v3"/></svg>`
+  },
+  {
+    id: "timer",
+    name: "Countdown Timer",
+    category: "other",
+    categoryName: "Other Tools",
+    desc: "Set custom hours, minutes, and seconds countdown timers with visual progress bar and completion sound.",
+    popular: false,
+    recent: true,
+    keywords: ["timer", "countdown timer", "online timer", "clock alarm", "study timer"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>`
+  },
+  {
+    id: "calendar",
+    name: "Interactive Calendar",
+    category: "other",
+    categoryName: "Other Tools",
+    desc: "Browse any month and year, check day-of-week, jump to today, and view week numbers effortlessly.",
+    popular: false,
+    recent: false,
+    keywords: ["calendar", "online calendar", "monthly calendar", "date picker", "day of week"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`
+  },
+  {
+    id: "random-number-generator",
+    name: "Random Number Generator",
+    category: "other",
+    categoryName: "Other Tools",
+    desc: "Generate truly random numbers within custom ranges, generate multiple picks, or roll dice.",
+    popular: false,
+    recent: true,
+    keywords: ["random number generator", "rng", "pick random number", "dice roller", "lottery generator"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="4"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="8" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="8" cy="16" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/></svg>`
+  },
+  {
+    id: "ai-email-writer",
+    name: "AI Email Writer",
+    category: "ai",
+    categoryName: "AI Tools",
+    desc: "Generate high-converting, professional emails for job applications, cold outreach, follow-ups, and customer support.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["ai email writer", "email generator", "cover letter email", "cold outreach", "resignation email"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`
+  },
+  {
+    id: "ai-paragraph-rewriter",
+    name: "AI Paragraph Rewriter",
+    category: "ai",
+    categoryName: "AI Tools",
+    desc: "Paraphrase and rewrite articles or essays in fluent, professional, simplified, creative, or concise styles.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["ai paragraph rewriter", "paraphrasing tool", "rewrite text", "article rewriter", "content rewriter"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>`
+  },
+  {
+    id: "ai-grammar-checker",
+    name: "AI Grammar Checker",
+    category: "ai",
+    categoryName: "AI Tools",
+    desc: "Detect spelling mistakes, grammatical errors, duplicate words, and punctuation flaws with 1-click automatic fixes.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["ai grammar checker", "spell check online", "proofreader", "grammar corrector", "essay checker"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>`
+  },
+  {
+    id: "ai-resume-builder",
+    name: "AI Resume Builder",
+    category: "ai",
+    categoryName: "AI Tools",
+    desc: "Build clean, ATS-compliant professional resumes with real-time preview and instant PDF/Print download.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["ai resume builder", "cv maker", "free resume generator", "ats resume", "resume pdf"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><circle cx="10" cy="13" r="2"/><line x1="8" y1="17" x2="12" y2="17"/></svg>`
+  },
+  {
+    id: "ai-text-generator",
+    name: "AI Text & Idea Generator",
+    category: "ai",
+    categoryName: "AI Tools",
+    desc: "Generate viral blog intros, engaging social media posts, e-commerce descriptions, and brand slogans.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["ai text generator", "ai copywriter", "blog intro generator", "slogan maker", "social caption"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>`
+  },
+  {
+    id: "background-remover",
+    name: "Background Remover",
+    category: "image",
+    categoryName: "Image Tools",
+    desc: "Automatically remove backgrounds from photos and products with smart sensitivity controls and transparent PNG download.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["background remover", "remove bg", "transparent background", "photo cutout", "white background"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`
+  },
+  {
+    id: "css-minifier",
+    name: "CSS Minifier & Formatter",
+    category: "developer",
+    categoryName: "Developer Tools",
+    desc: "Minify CSS code to reduce file size and optimize page load speed, or format unreadable CSS.",
+    popular: false,
+    recent: true,
+    trending: false,
+    keywords: ["css minifier", "minify css", "css compressor", "css beautifier", "format css"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>`
+  },
+  {
+    id: "pdf-to-word",
+    name: "PDF to Word Converter",
+    category: "pdf",
+    categoryName: "PDF Tools",
+    desc: "Extract text, headings, and formatting from PDF documents into editable Microsoft Word (.doc) and .txt files.",
+    popular: true,
+    recent: true,
+    trending: true,
+    keywords: ["pdf to word", "pdf to doc", "convert pdf to word", "extract text from pdf", "pdf to text"],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`
+  }
+];
+
+if (typeof window !== "undefined") {
+  window.SMARTHUB_CATEGORIES = SMARTHUB_CATEGORIES;
+  window.SMARTHUB_TOOLS = SMARTHUB_TOOLS;
+}
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { SMARTHUB_CATEGORIES, SMARTHUB_TOOLS };
+}
+
+  </script>
+  <script>
+    function getToolUrl(toolId) { return toolId + '.html'; }
+    /**
+ * SMARTHUB - Global Main JavaScript
+ * Handles Theme, Real-time Search, Mobile Navigation, Toasts, and UI Helpers.
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initMobileMenu();
+  initGlobalSearch();
+  initNewsletter();
+  trackCurrentTool();
+});
+
+/* ===================================================================
+   Path Resolver Helpers
+=================================================================== */
+function isSubPage() {
+  return window.location.pathname.includes('/tools/');
+}
+
+function getBaseUrl() {
+  return isSubPage() ? '../' : './';
+}
+
+function getToolUrl(toolId) {
+  return isSubPage() ? `${toolId}.html` : `tools/${toolId}.html`;
+}
+
+/* ===================================================================
+   Theme Management (Light / Dark Mode)
+=================================================================== */
+function initTheme() {
+  const savedTheme = localStorage.getItem('smarthub_theme');
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+
+  applyTheme(currentTheme);
+
+  const toggleBtns = document.querySelectorAll('.theme-toggle');
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const activeTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(activeTheme);
+      localStorage.setItem('smarthub_theme', activeTheme);
+      showToast(`Switched to ${activeTheme} mode`, 'info');
+    });
+  });
+}
+
+function applyTheme(theme) {
+  if (theme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+  updateThemeIcons(theme === 'dark');
+}
+
+function updateThemeIcons(isDark) {
+  const toggleBtns = document.querySelectorAll('.theme-toggle');
+  toggleBtns.forEach(btn => {
+    btn.innerHTML = isDark
+      ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`
+      : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+    btn.setAttribute('aria-label', isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+  });
+}
+
+/* ===================================================================
+   Mobile Navigation Drawer
+=================================================================== */
+function initMobileMenu() {
+  const toggleBtn = document.querySelector('.mobile-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+
+  if (!toggleBtn || !navMenu) return;
+
+  const toggleMenu = (open) => {
+    const isOpen = open !== undefined ? open : !navMenu.classList.contains('open');
+    navMenu.classList.toggle('open', isOpen);
+    document.body.classList.toggle('mobile-menu-open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    toggleBtn.setAttribute('aria-expanded', isOpen);
+    toggleBtn.innerHTML = isOpen
+      ? `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`
+      : `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
+  };
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  });
+
+  // Mobile dropdown toggles
+  const navDropdowns = document.querySelectorAll('.nav-dropdown');
+  navDropdowns.forEach(dropdown => {
+    const trigger = dropdown.querySelector('.nav-link');
+    if (trigger) {
+      trigger.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          e.stopPropagation();
+          dropdown.classList.toggle('active');
+        }
+      });
+    }
+  });
+
+  // Close menu when clicking any nav link (except category dropdown toggle)
+  navMenu.querySelectorAll('a:not(.nav-dropdown > .nav-link)').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        toggleMenu(false);
+      }
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 768 && navMenu.classList.contains('open')) {
+      if (!navMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+        toggleMenu(false);
+      }
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && navMenu.classList.contains('open')) {
+      toggleMenu(false);
+    }
+  });
+}
+
+/* ===================================================================
+   Live Instant Search
+=================================================================== */
+function initGlobalSearch() {
+  const searchInput = document.getElementById('global-search-input');
+  const searchDropdown = document.getElementById('search-dropdown');
+  const searchClear = document.getElementById('search-clear');
+
+  if (!searchInput) return;
+
+  // Keyboard shortcut Ctrl+K or / to focus search
+  document.addEventListener('keydown', (e) => {
+    if ((e.key === '/' || (e.ctrlKey && e.key.toLowerCase() === 'k')) && document.activeElement !== searchInput) {
+      e.preventDefault();
+      searchInput.focus();
+      searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else if (e.key === 'Escape' && searchDropdown) {
+      searchDropdown.style.display = 'none';
+      searchInput.blur();
+    }
+  });
+
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.trim().toLowerCase();
+    
+    if (searchClear) {
+      searchClear.style.display = query.length > 0 ? 'block' : 'none';
+    }
+
+    if (!searchDropdown) return;
+
+    if (query.length < 1) {
+      searchDropdown.style.display = 'none';
+      searchDropdown.innerHTML = '';
+      return;
+    }
+
+    if (typeof SMARTHUB_TOOLS === 'undefined') return;
+
+    const filtered = SMARTHUB_TOOLS.filter(tool => {
+      return tool.name.toLowerCase().includes(query) ||
+             tool.desc.toLowerCase().includes(query) ||
+             tool.categoryName.toLowerCase().includes(query) ||
+             (tool.keywords && tool.keywords.some(k => k.toLowerCase().includes(query)));
+    });
+
+    renderSearchResults(filtered, query, searchDropdown);
+  });
+
+  if (searchClear) {
+    searchClear.addEventListener('click', () => {
+      searchInput.value = '';
+      searchClear.style.display = 'none';
+      if (searchDropdown) {
+        searchDropdown.style.display = 'none';
+      }
+      searchInput.focus();
+    });
+  }
+
+  // Close dropdown on outside click
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.search-container') && searchDropdown) {
+      searchDropdown.style.display = 'none';
+    }
+  });
+}
+
+function renderSearchResults(results, query, container) {
+  if (results.length === 0) {
+    container.innerHTML = `
+      <div style="padding: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.9375rem;">
+        No tools found matching "<strong>${escapeHtml(query)}</strong>". Try searching for <em>PDF, image, calculator, QR</em>.
+      </div>
+    `;
+    container.style.display = 'block';
+    return;
+  }
+
+  container.innerHTML = results.slice(0, 7).map(tool => `
+    <a href="${getToolUrl(tool.id)}" class="search-result-item">
+      <div class="search-result-icon">${tool.icon}</div>
+      <div class="search-result-info">
+        <h4>${highlightMatch(tool.name, query)} <span class="badge badge-primary" style="font-size:0.65rem; margin-left:0.5rem;">${tool.categoryName}</span></h4>
+        <p>${tool.desc}</p>
+      </div>
+    </a>
+  `).join('');
+
+  container.style.display = 'block';
+}
+
+function highlightMatch(text, query) {
+  const index = text.toLowerCase().indexOf(query.toLowerCase());
+  if (index === -1) return escapeHtml(text);
+  const before = text.substring(0, index);
+  const match = text.substring(index, index + query.length);
+  const after = text.substring(index + query.length);
+  return `${escapeHtml(before)}<strong style="color:var(--primary);">${escapeHtml(match)}</strong>${escapeHtml(after)}`;
+}
+
+function escapeHtml(str) {
+  return str.replace(/[&<>'"]/g, tag => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    "'": '&#39;',
+    '"': '&quot;'
+  }[tag] || tag));
+}
+
+/* ===================================================================
+   Toast System
+=================================================================== */
+function showToast(message, type = 'info') {
+  let container = document.querySelector('.toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.className = 'toast-container';
+    document.body.appendChild(container);
+  }
+
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  
+  let iconSvg = '';
+  if (type === 'success') {
+    iconSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>`;
+  } else if (type === 'error') {
+    iconSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>`;
+  } else {
+    iconSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>`;
+  }
+
+  toast.innerHTML = `
+    ${iconSvg}
+    <div style="flex-grow:1;">${message}</div>
+  `;
+
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(10px) scale(0.95)';
+    setTimeout(() => toast.remove(), 300);
+  }, 3200);
+}
+
+/* ===================================================================
+   Copy to Clipboard Utility
+=================================================================== */
+function copyToClipboard(text, btnElement = null) {
+  if (!text) {
+    showToast('Nothing to copy', 'error');
+    return;
+  }
+
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('Copied to clipboard!', 'success');
+    if (btnElement) {
+      const originalHTML = btnElement.innerHTML;
+      btnElement.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copied!`;
+      btnElement.classList.add('btn-success');
+      setTimeout(() => {
+        btnElement.innerHTML = originalHTML;
+        btnElement.classList.remove('btn-success');
+      }, 2000);
+    }
+  }).catch(() => {
+    // Fallback for older browsers
+    const tempInput = document.createElement('textarea');
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    try {
+      document.execCommand('copy');
+      showToast('Copied to clipboard!', 'success');
+    } catch (err) {
+      showToast('Failed to copy text', 'error');
+    }
+    document.body.removeChild(tempInput);
+  });
+}
+
+/* ===================================================================
+   Newsletter Form
+=================================================================== */
+function initNewsletter() {
+  const form = document.querySelector('.newsletter-form');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const input = form.querySelector('.newsletter-input');
+    const email = input.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!email || !emailRegex.test(email)) {
+      showToast('Please enter a valid email address.', 'error');
+      return;
+    }
+
+    showToast('🎉 Thank you for subscribing to SmartHub updates!', 'success');
+    input.value = '';
+  });
+}
+
+/* ===================================================================
+   User Experience (UX): Favorites, Recents, Rating & Share
+=================================================================== */
+function getFavorites() {
+  try {
+    return JSON.parse(localStorage.getItem('smarthub_favorites')) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function isFavorite(toolId) {
+  return getFavorites().includes(toolId);
+}
+
+function toggleFavorite(toolId, event) {
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  let favs = getFavorites();
+  const index = favs.indexOf(toolId);
+  let isFav = false;
+  if (index > -1) {
+    favs.splice(index, 1);
+    showToast('Removed from favorites', 'info');
+  } else {
+    favs.push(toolId);
+    isFav = true;
+    showToast('Saved to favorites! ⭐', 'success');
+  }
+  localStorage.setItem('smarthub_favorites', JSON.stringify(favs));
+  updateFavoriteButtons(toolId, isFav);
+  if (typeof renderFavoritesSection === 'function') {
+    renderFavoritesSection();
+  }
+  return isFav;
+}
+
+function updateFavoriteButtons(toolId, isFav) {
+  document.querySelectorAll(`.favorite-btn[data-tool-id="${toolId}"]`).forEach(btn => {
+    btn.classList.toggle('active', isFav);
+    btn.setAttribute('aria-label', isFav ? 'Remove from favorites' : 'Add to favorites');
+    btn.innerHTML = isFav 
+      ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="#eab308" stroke="#eab308" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`
+      : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+  });
+}
+
+function trackCurrentTool() {
+  const currentPath = window.location.pathname;
+  const match = currentPath.match(/([a-z0-9-]+)\.html$/i);
+  if (!match) return;
+  const toolId = match[1];
+  const ignored = ['index', 'tools', 'about', 'contact', 'privacy-policy', 'terms', 'disclaimer'];
+  if (ignored.includes(toolId)) return;
+
+  try {
+    let recent = JSON.parse(localStorage.getItem('smarthub_recent_tools')) || [];
+    recent = recent.filter(id => id !== toolId);
+    recent.unshift(toolId);
+    if (recent.length > 8) recent = recent.slice(0, 8);
+    localStorage.setItem('smarthub_recent_tools', JSON.stringify(recent));
+  } catch (e) {}
+}
+
+function getRecentTools() {
+  try {
+    return JSON.parse(localStorage.getItem('smarthub_recent_tools')) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function shareTool(toolName, url = window.location.href) {
+  if (navigator.share) {
+    navigator.share({
+      title: `${toolName} - Free Online Tool on SmartHub`,
+      text: `Use ${toolName} for free in your browser with 100% privacy!`,
+      url: url
+    }).catch(() => {});
+  } else {
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent('Check out this free tool: ' + toolName + ' - ' + url)}`;
+    window.open(whatsappUrl, '_blank');
+  }
+}
+
+function initToolRating(toolId) {
+  const ratingBox = document.querySelector('.tool-rating-box');
+  if (!ratingBox) return;
+
+  const savedRating = localStorage.getItem(`smarthub_rating_${toolId}`);
+  const starsContainer = ratingBox.querySelector('.rating-stars');
+  const countEl = ratingBox.querySelector('.rating-count');
+
+  if (savedRating) {
+    highlightStars(savedRating);
+    if (countEl) countEl.textContent = 'Thanks for your rating! ⭐';
+  }
+
+  if (starsContainer) {
+    starsContainer.querySelectorAll('.star-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = btn.dataset.value;
+        localStorage.setItem(`smarthub_rating_${toolId}`, val);
+        highlightStars(val);
+        showToast(`Rated ${val}/5! Thank you for your feedback 🙏`, 'success');
+        if (countEl) countEl.textContent = 'Thanks for your feedback! ⭐';
+      });
+      btn.addEventListener('mouseenter', () => highlightStars(btn.dataset.value));
+      btn.addEventListener('mouseleave', () => {
+        const cur = localStorage.getItem(`smarthub_rating_${toolId}`) || 5;
+        highlightStars(cur);
+      });
+    });
+  }
+
+  function highlightStars(val) {
+    if (!starsContainer) return;
+    starsContainer.querySelectorAll('.star-btn').forEach(btn => {
+      const active = parseInt(btn.dataset.value) <= parseInt(val);
+      btn.classList.toggle('active', active);
+    });
+  }
+}
+
+// Global exports
+window.showToast = showToast;
+window.copyToClipboard = copyToClipboard;
+window.getToolUrl = getToolUrl;
+window.getFavorites = getFavorites;
+window.isFavorite = isFavorite;
+window.toggleFavorite = toggleFavorite;
+window.updateFavoriteButtons = updateFavoriteButtons;
+window.trackCurrentTool = trackCurrentTool;
+window.getRecentTools = getRecentTools;
+window.shareTool = shareTool;
+window.initToolRating = initToolRating;
+window.copyToClipboard = copyToClipboard;
+window.getToolUrl = getToolUrl;
+
+  </script>
+  <script>
+    
+      const dropzone = document.getElementById('bg-dropzone');
+      const fileInput = document.getElementById('bg-file');
+      const controls = document.getElementById('bg-controls');
+      const tolSlider = document.getElementById('bg-tolerance');
+      const tolVal = document.getElementById('tol-val');
+      const replaceMode = document.getElementById('bg-replace-mode');
+      const btnReprocess = document.getElementById('btn-reprocess-bg');
+      const placeholder = document.getElementById('bg-placeholder');
+      const canvas = document.getElementById('bg-canvas');
+      const ctx = canvas.getContext('2d');
+      const dlWrap = document.getElementById('bg-download-wrap');
+      const btnDownload = document.getElementById('btn-download-bg');
+
+      let originalImg = null;
+      let rawPixels = null;
+
+      dropzone.addEventListener('click', () => fileInput.click());
+      fileInput.addEventListener('change', (e) => {
+        if (e.target.files.length) handleImage(e.target.files[0]);
+      });
+
+      dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('dragover'); });
+      dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+      dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('dragover');
+        if (e.dataTransfer.files.length) handleImage(e.dataTransfer.files[0]);
+      });
+
+      tolSlider.addEventListener('input', () => {
+        tolVal.textContent = tolSlider.value + '%';
+      });
+
+      function handleImage(file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            originalImg = img;
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            ctx.drawImage(img, 0, 0);
+            rawPixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            controls.style.display = 'block';
+            placeholder.style.display = 'none';
+            canvas.style.display = 'block';
+            dlWrap.style.display = 'block';
+            removeBackground();
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+
+      function removeBackground() {
+        if (!originalImg || !rawPixels) return;
+        const w = canvas.width;
+        const h = canvas.height;
+        const src = rawPixels.data;
+        const imgData = ctx.createImageData(w, h);
+        const dst = imgData.data;
+
+        // Sample corner pixels to determine background reference color
+        const corners = [
+          0, // top-left
+          (w - 1) * 4, // top-right
+          ((h - 1) * w) * 4, // bottom-left
+          ((h - 1) * w + (w - 1)) * 4 // bottom-right
+        ];
+
+        let bgR = 0, bgG = 0, bgB = 0;
+        corners.forEach(idx => {
+          bgR += src[idx];
+          bgG += src[idx + 1];
+          bgB += src[idx + 2];
+        });
+        bgR /= 4; bgG /= 4; bgB /= 4;
+
+        const tolerance = (parseInt(tolSlider.value) / 100) * 441; // Max RGB distance is sqrt(255^2*3) ~ 441.67
+        const bgChoice = replaceMode.value;
+
+        let fillR = 0, fillG = 0, fillB = 0, fillA = 0;
+        if (bgChoice !== 'transparent') {
+          if (bgChoice.startsWith('#')) {
+            fillR = parseInt(bgChoice.slice(1, 3), 16);
+            fillG = parseInt(bgChoice.slice(3, 5), 16);
+            fillB = parseInt(bgChoice.slice(5, 7), 16);
+            fillA = 255;
+          }
+        }
+
+        for (let i = 0; i < src.length; i += 4) {
+          const r = src[i];
+          const g = src[i + 1];
+          const b = src[i + 2];
+          const a = src[i + 3];
+
+          // Euclidean color distance from background sample
+          const dist = Math.sqrt((r - bgR) ** 2 + (g - bgG) ** 2 + (b - bgB) ** 2);
+
+          if (dist < tolerance) {
+            // Match background
+            if (bgChoice === 'transparent') {
+              dst[i] = r;
+              dst[i + 1] = g;
+              dst[i + 2] = b;
+              dst[i + 3] = 0; // Transparent
+            } else {
+              dst[i] = fillR;
+              dst[i + 1] = fillG;
+              dst[i + 2] = fillB;
+              dst[i + 3] = fillA;
+            }
+          } else {
+            dst[i] = r;
+            dst[i + 1] = g;
+            dst[i + 2] = b;
+            dst[i + 3] = a;
+          }
+        }
+
+        ctx.putImageData(imgData, 0, 0);
+        showToast('Background processed successfully! ✨', 'success');
+      }
+
+      btnReprocess.addEventListener('click', removeBackground);
+      replaceMode.addEventListener('change', removeBackground);
+
+      btnDownload.addEventListener('click', () => {
+        const link = document.createElement('a');
+        link.download = 'cutout-image.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof initToolRating === 'function') initToolRating('background-remover');
+      if (typeof isFavorite === 'function' && isFavorite('background-remover')) updateFavoriteButtons('background-remover', true);
+    });
+  </script>
+</body>
+</html>

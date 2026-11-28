@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initGlobalSearch();
   initNewsletter();
+  trackCurrentTool();
 });
 
 /* ===================================================================
@@ -336,7 +337,143 @@ function initNewsletter() {
   });
 }
 
+/* ===================================================================
+   User Experience (UX): Favorites, Recents, Rating & Share
+=================================================================== */
+function getFavorites() {
+  try {
+    return JSON.parse(localStorage.getItem('smarthub_favorites')) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function isFavorite(toolId) {
+  return getFavorites().includes(toolId);
+}
+
+function toggleFavorite(toolId, event) {
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  let favs = getFavorites();
+  const index = favs.indexOf(toolId);
+  let isFav = false;
+  if (index > -1) {
+    favs.splice(index, 1);
+    showToast('Removed from favorites', 'info');
+  } else {
+    favs.push(toolId);
+    isFav = true;
+    showToast('Saved to favorites! ⭐', 'success');
+  }
+  localStorage.setItem('smarthub_favorites', JSON.stringify(favs));
+  updateFavoriteButtons(toolId, isFav);
+  if (typeof renderFavoritesSection === 'function') {
+    renderFavoritesSection();
+  }
+  return isFav;
+}
+
+function updateFavoriteButtons(toolId, isFav) {
+  document.querySelectorAll(`.favorite-btn[data-tool-id="${toolId}"]`).forEach(btn => {
+    btn.classList.toggle('active', isFav);
+    btn.setAttribute('aria-label', isFav ? 'Remove from favorites' : 'Add to favorites');
+    btn.innerHTML = isFav 
+      ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="#eab308" stroke="#eab308" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`
+      : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+  });
+}
+
+function trackCurrentTool() {
+  const currentPath = window.location.pathname;
+  const match = currentPath.match(/([a-z0-9-]+)\.html$/i);
+  if (!match) return;
+  const toolId = match[1];
+  const ignored = ['index', 'tools', 'about', 'contact', 'privacy-policy', 'terms', 'disclaimer'];
+  if (ignored.includes(toolId)) return;
+
+  try {
+    let recent = JSON.parse(localStorage.getItem('smarthub_recent_tools')) || [];
+    recent = recent.filter(id => id !== toolId);
+    recent.unshift(toolId);
+    if (recent.length > 8) recent = recent.slice(0, 8);
+    localStorage.setItem('smarthub_recent_tools', JSON.stringify(recent));
+  } catch (e) {}
+}
+
+function getRecentTools() {
+  try {
+    return JSON.parse(localStorage.getItem('smarthub_recent_tools')) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function shareTool(toolName, url = window.location.href) {
+  if (navigator.share) {
+    navigator.share({
+      title: `${toolName} - Free Online Tool on SmartHub`,
+      text: `Use ${toolName} for free in your browser with 100% privacy!`,
+      url: url
+    }).catch(() => {});
+  } else {
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent('Check out this free tool: ' + toolName + ' - ' + url)}`;
+    window.open(whatsappUrl, '_blank');
+  }
+}
+
+function initToolRating(toolId) {
+  const ratingBox = document.querySelector('.tool-rating-box');
+  if (!ratingBox) return;
+
+  const savedRating = localStorage.getItem(`smarthub_rating_${toolId}`);
+  const starsContainer = ratingBox.querySelector('.rating-stars');
+  const countEl = ratingBox.querySelector('.rating-count');
+
+  if (savedRating) {
+    highlightStars(savedRating);
+    if (countEl) countEl.textContent = 'Thanks for your rating! ⭐';
+  }
+
+  if (starsContainer) {
+    starsContainer.querySelectorAll('.star-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = btn.dataset.value;
+        localStorage.setItem(`smarthub_rating_${toolId}`, val);
+        highlightStars(val);
+        showToast(`Rated ${val}/5! Thank you for your feedback 🙏`, 'success');
+        if (countEl) countEl.textContent = 'Thanks for your feedback! ⭐';
+      });
+      btn.addEventListener('mouseenter', () => highlightStars(btn.dataset.value));
+      btn.addEventListener('mouseleave', () => {
+        const cur = localStorage.getItem(`smarthub_rating_${toolId}`) || 5;
+        highlightStars(cur);
+      });
+    });
+  }
+
+  function highlightStars(val) {
+    if (!starsContainer) return;
+    starsContainer.querySelectorAll('.star-btn').forEach(btn => {
+      const active = parseInt(btn.dataset.value) <= parseInt(val);
+      btn.classList.toggle('active', active);
+    });
+  }
+}
+
 // Global exports
 window.showToast = showToast;
+window.copyToClipboard = copyToClipboard;
+window.getToolUrl = getToolUrl;
+window.getFavorites = getFavorites;
+window.isFavorite = isFavorite;
+window.toggleFavorite = toggleFavorite;
+window.updateFavoriteButtons = updateFavoriteButtons;
+window.trackCurrentTool = trackCurrentTool;
+window.getRecentTools = getRecentTools;
+window.shareTool = shareTool;
+window.initToolRating = initToolRating;
 window.copyToClipboard = copyToClipboard;
 window.getToolUrl = getToolUrl;
