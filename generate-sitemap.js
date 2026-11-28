@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { SMARTHUB_TOOLS } = require('./assets/js/tools-data.js');
 
-const baseUrl = 'https://dinesh2199.github.io/smarthub';
+const baseUrl = 'https://smarthub.rk-solutions.co.in';
 const today = '2026-11-28';
 
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';

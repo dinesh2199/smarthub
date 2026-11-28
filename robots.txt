@@ -1,10 +1,8 @@
 # SmartHub Robots.txt
-# https://dinesh2199.github.io/smarthub
+# https://smarthub.rk-solutions.co.in
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://dinesh2199.github.io/smarthub/sitemap.xml
-Sitemap: https://smarthub.online/sitemap.xml
-
+Sitemap: https://smarthub.rk-solutions.co.in/sitemap.xml

@@ -159,12 +159,12 @@ function buildStandaloneIndex() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>SmartHub – All-in-One Online Tools Website | Free, Fast &amp; Easy</title>
   <meta name="description" content="SmartHub is your all-in-one suite of 48+ free, fast, and secure online tools for images, PDFs, calculations, QR codes, text, and development. 100% browser-based &amp; private.">
-  <link rel="canonical" href="https://dinesh2199.github.io/smarthub/">
+  <link rel="canonical" href="https://smarthub.rk-solutions.co.in/">
   
   <meta property="og:type" content="website">
   <meta property="og:title" content="SmartHub – Everything You Need, All in One Smart Place">
   <meta property="og:description" content="Free, fast &amp; easy online tools for everyone. Compress images, merge PDFs, calculate EMI, generate QR codes, format JSON and more.">
-  <meta property="og:url" content="https://dinesh2199.github.io/smarthub/">
+  <meta property="og:url" content="https://smarthub.rk-solutions.co.in/">
   <meta property="og:site_name" content="SmartHub">
   
   <meta name="twitter:card" content="summary_large_image">
@@ -185,11 +185,11 @@ function buildStandaloneIndex() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "SmartHub",
-    "url": "https://dinesh2199.github.io/smarthub/",
+    "url": "https://smarthub.rk-solutions.co.in/",
     "description": "All-in-one free, fast, and private browser-based tools directory.",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://dinesh2199.github.io/smarthub/tools.html?q={search_term_string}",
+      "target": "https://smarthub.rk-solutions.co.in/tools.html?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   }
@@ -558,7 +558,7 @@ function buildStandaloneToolsInRoot() {
 
     const pageTitle = `${tool.name} – Free Online Tool | SmartHub`;
     const metaDesc = `${tool.desc} 100% free, private browser-based tool on SmartHub with zero file upload limits or registration.`;
-    const canonicalUrl = `https://dinesh2199.github.io/smarthub/${tool.id}.html`;
+    const canonicalUrl = `https://smarthub.rk-solutions.co.in/${tool.id}.html`;
     const faqs = getCategoryFAQs ? getCategoryFAQs(tool) : [];
 
     const schemaData = {
@@ -587,13 +587,13 @@ function buildStandaloneToolsInRoot() {
               "@type": "ListItem",
               "position": 1,
               "name": "Home",
-              "item": "https://dinesh2199.github.io/smarthub/index.html"
+              "item": "https://smarthub.rk-solutions.co.in/index.html"
             },
             {
               "@type": "ListItem",
               "position": 2,
               "name": tool.categoryName,
-              "item": `https://dinesh2199.github.io/smarthub/tools.html?category=${tool.category}`
+              "item": `https://smarthub.rk-solutions.co.in/tools.html?category=${tool.category}`
             },
             {
               "@type": "ListItem",
@@ -798,7 +798,7 @@ ${JSON.stringify(schemaData, null, 2)}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="refresh" content="0; url=../${tool.id}.html">
-  <link rel="canonical" href="https://dinesh2199.github.io/smarthub/${tool.id}.html">
+  <link rel="canonical" href="https://smarthub.rk-solutions.co.in/${tool.id}.html">
   <title>Redirecting to ${tool.name} | SmartHub</title>
   <script>window.location.replace('../${tool.id}.html');</script>
 </head>
@@ -819,12 +819,12 @@ function buildStandaloneToolsDirectory() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>All Online Tools – Directory &amp; Categories | SmartHub</title>
   <meta name="description" content="Browse all 48+ free, fast, and secure online tools on SmartHub. Filter by AI tools, image tools, PDF utilities, calculators, QR tools, text tools, converters and more.">
-  <link rel="canonical" href="https://dinesh2199.github.io/smarthub/tools.html">
+  <link rel="canonical" href="https://smarthub.rk-solutions.co.in/tools.html">
   
   <meta property="og:type" content="website">
   <meta property="og:title" content="All Online Tools Directory | SmartHub">
   <meta property="og:description" content="Explore 48+ online tools in one smart place. Client-side processing, 100% free forever, no login.">
-  <meta property="og:url" content="https://dinesh2199.github.io/smarthub/tools.html">
+  <meta property="og:url" content="https://smarthub.rk-solutions.co.in/tools.html">
   <meta property="og:site_name" content="SmartHub">
   
   <meta name="twitter:card" content="summary_large_image">
@@ -845,7 +845,7 @@ function buildStandaloneToolsDirectory() {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "SmartHub Online Tools Directory",
-    "url": "https://dinesh2199.github.io/smarthub/tools.html",
+    "url": "https://smarthub.rk-solutions.co.in/tools.html",
     "description": "Full directory of 39+ free, private, browser-based online tools across 8 categories."
   }
   </script>
